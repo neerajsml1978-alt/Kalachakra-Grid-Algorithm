@@ -25,3 +25,20 @@ self.addEventListener('fetch', (event) => {
     })
   );
 });
+ // 3. पुराना कैश हटाना (Activation)
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cache) => {
+          if (cache !== CACHE_NAME) {
+            console.log('पुराना कैश हटाया जा रहा है:', cache);
+            return caches.delete(cache);
+          }
+        })
+      );
+    })
+  );
+});
+
+
