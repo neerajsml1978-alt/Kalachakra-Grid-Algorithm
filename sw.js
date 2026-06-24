@@ -1,11 +1,11 @@
 const CACHE_NAME = 'hwjh-calendar-v1';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/style.css',
-  '/script.js',
-  '/icon-192.png',
-  '/icon-512.png'
+  './',
+  './index.html',
+  './style.css',
+  './script.js',
+  './icon-192.png',
+  './icon-512.png'
 ];
 
 // 1. सर्विस वर्कर इंस्टॉल करना
