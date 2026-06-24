@@ -1,8 +1,10 @@
-{}{
-  "name": "मेरे कैलेंडर का नाम",
-  "short_name": "कैलेंडर",
+{
+  "name": "कालचक्र: सटीक ग्रिड कैलेंडर",
+  "short_name": "कालचक्र",
+  "description": "ज्योतिषाचार्य नीरज गोयल जी द्वारा विकसित ग्रिड आधारित कैलेंडर।",
   "start_url": "./index.html",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#ffffff",
   "theme_color": "#000000",
   "icons": [
