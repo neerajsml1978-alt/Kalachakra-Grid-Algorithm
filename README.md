@@ -1,13 +1,13 @@
 <h1>कालचक्र ग्रिड थ्योरी (Kalchakra Grid Theory)</h1>
-
 <p><b>शोधकर्ता:</b> ज्योतिषाचार्य नीरज गोयल</p>
 <p><i>ग्रेगोरियन कैलेंडर के लिए एक दृश्य-गणितीय गणना एल्गोरिदम</i></p>
     <div class="doi-box">
-        DOI: <code>10.5281/zenodo.21078011</code>
-    </div>
-
+    DOI: 
+    <a href="https://doi.org/10.5281/zenodo.21078011" target="_blank" rel="noopener" style="text-decoration: none; color: #3498db; font-weight: bold;">
+        10.5281/zenodo.21078011
+    </a>
+</div>
 <hr>
-
 <h2>१.📖 प्रस्तावना (Introduction)</h2>
 <p>कालचक्र ग्रिड थ्योरी एक नवीन गणना पद्धति है जो ग्रेगोरियन कैलेंडर की तिथियों को 'वार' (Day of the Week) में परिवर्तित करने के लिए बीजगणितीय सूत्रों (Algebraic Formulas) के स्थान पर <b>'मैट्रिक्स इंटरसेक्शन' (Matrix Intersection)</b> का उपयोग करती है। यह पद्धति विशेष रूप से मानवीय गणना और कुशल सॉफ्टवेयर कार्यान्वयन के लिए डिज़ाइन की गई है।</p>
 
