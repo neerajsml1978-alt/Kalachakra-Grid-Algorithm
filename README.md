@@ -73,3 +73,10 @@
   <li><b>सॉफ्टवेयर API:</b> किसी भी कैलेंडर आधारित एप्लिकेशन में 'सटीक वार गणना' हेतु एक लाइटवेट लाइब्रेरी के रूप में विकसित किया जा सकता है।</li>
   <li><b>वैश्विक मानक:</b> अकादमिक प्रमाणीकरण के साथ, यह विश्व की सबसे तेज 'मैनुअल कैलेंडर गणना' पद्धति बनने की क्षमता रखती है।</li>
 </ul>
+<div style="text-align: center; margin: 40px 0; padding: 20px; background-color: #f9f9f9; border-radius: 10px; border: 1px dashed #3498db;">
+    <p style="font-size: 1.1em; color: #2c3e50; margin-bottom: 15px;">इस सिद्धांत को व्यवहार में देखें और कालचक्र की गणना का अनुभव करें:</p>
+    <a href="https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/"
+    style="background-color: #27ae60; color: white; padding: 15px 30px; text-decoration: none; border-radius: 50px; font-size: 18px; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.2); transition: background 0.3s;">
+       🚀 अभी कालचक्र ऐप आज़माएं
+    </a>
+</div>
