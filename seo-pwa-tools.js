@@ -15,5 +15,3 @@ function installApp() {
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js');
 }
-// टेस्टिंग के लिए: सिर्फ यह लाइन जोड़ें, इंस्टॉल करने पर हटा दें
-document.getElementById('installBtn').style.display = 'block'; 
