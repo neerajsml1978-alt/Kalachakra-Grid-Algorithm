@@ -187,7 +187,10 @@ font-size: 14px;
  </style>
 </head>
 <body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
-<div class="app-container">
+<div class="app-container"> 
+ <button id="installBtn" onclick="installApp()" style="display: none; position: fixed; top: 15px; right: 15px; z-index: 9999; background: #e0e0e0; border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">
+    📥
+ </button> 
  <div class="navagraha-logo"></div>
  <h2 style="margin:0 0 5px 0; color:var(--accent-color);">कालचक्र सटीक कैलेंडर </h2>
  <p style="margin:0 0 15px 0; font-size:12px; color:#5d4037; font-weight: bold;">
@@ -496,6 +499,7 @@ function startMagicTrace() {
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js');
   }
-</script>
+</script> 
+<script src="seo-pwa-tools.js"></script>
 </body>
 </html>
