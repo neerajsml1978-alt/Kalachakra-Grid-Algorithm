@@ -1,13 +1,11 @@
 const CACHE_NAME = 'hwjh-calendar-v1';
 const ASSETS = [
-  './',
   './index.html',
-  './style.css',
-  './script.js',
+  './manifest.json',
   './icon-192.png',
-  './icon-512.png'
+  './icon-512.png',
+  './seo-pwa-tools.js' // नई फाइल का नाम यहाँ जोड़ें
 ];
-
 // 1. सर्विस वर्कर इंस्टॉल करना
 self.addEventListener('install', (event) => {
   event.waitUntil(
