@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<link rel="manifest" href="./manifest.json">
-<meta name="theme-color" content="#000000">
-<link rel="apple-touch-icon" href="./icon-192.png">
+    <!-- मेटा सूचना और कैरेक्टर सेट -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    
+    <!-- टाइटल -->
+    <title>कालचक्र कैलेंडर:ज्योतिषाचार्य नीरज गोयल का सटीक date to day कैलकुलेटर</title>
 
- <meta property="og:image" content="./preview.jpg">
-  <meta property="og:description" content="ग्रेगोरियन कैलेंडर के लिए एक दृश्य-गणितीय गणना एल्गोरिदम। सेकंडों में वार पता करें।">
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>कालचक्र कैलेंडर:ज्योतिषाचार्य नीरज गोयल का सटीक date to day कैलकुलेटर </title>
+    <!-- PWA मैनिफेस्ट और आइकॉन -->
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./icon-192.png">
+
+    <!-- SEO मेटा टैग्स (जो पहले नहीं थे) -->
+    <meta name="description" content="ज्योतिषाचार्य नीरज गोयल द्वारा रचित कालचक्र कैलेंडर: एक दृश्य-गणितीय एल्गोरिदम जो किसी भी तारीख का वार सेकंडों में सटीक बताता है।">
+    <meta name="keywords" content="कालचक्र, ज्योतिष, date to day calculator, नीरज गोयल, कैलेंडर एल्गोरिदम, सटीक वार गणना, पंचांग">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Neeraj Goel">
+    <link rel="canonical" href="https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/">
+
+    <!-- सोशल मीडिया शेयरिंग टैग्स (जो पहले से थे) -->
+    <meta property="og:image" content="./preview.jpg">
+    <meta property="og:description" content="ग्रेगोरियन कैलेंडर के लिए एक दृश्य-गणितीय गणना एल्गोरिदम। सेकंडों में वार पता करें।">
+    <meta property="og:title" content="कालचक्र सटीक कैलेंडर: Date to Day कैलकुलेटर">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/">
  <style>
  :root {
  --primary-color: #d84315; /* सनातनी भगवा / गहरा नारंगी */
@@ -20,7 +36,6 @@
  --dark-blue: #1a237e;
  --whatsapp-green: #25d366; /* WhatsApp रंग */
  }
-
 body {
  font-family: 'Segoe UI', Arial, sans-serif;
  background-color: #f5f5f5;
@@ -30,7 +45,6 @@ body {
  flex-direction: column;
  align-items: center;
  }
-
 .app-container {
  max-width: 550px;
  width: 100%;
@@ -43,7 +57,6 @@ body {
  margin-bottom: 15px;
  border: 2px solid var(--gold);
  }
-
 /* नवग्रह चक्र लोगो */
  .navagraha-logo {
  width: 80px;
@@ -61,13 +74,11 @@ body {
  border: 3px solid var(--gold);
  animation: spin 20s linear infinite;
  }
-
 /* सूर्य केंद्र */
  .navagraha-logo::before {
  content: "☀️";
  font-size: 20px;
  }
-
 /* आसपास के ग्रह बिंदु */
  .navagraha-logo::after {
  content: "";
@@ -77,17 +88,14 @@ body {
  border: 1px dashed rgba(255,255,255,0.5);
  border-radius: 50%;
  }
-
 @keyframes spin {
  100% { transform: rotate(360deg); }
  }
-
 .input-row { display: flex; gap: 8px; margin-bottom: 15px; }
  .input-group { flex: 1; text-align: left; }
  label { display: block; margin-bottom: 4px; font-weight: bold; font-size: 13px; color: #3e2723; }
  input, select { width: 100%; padding: 10px; border: 2px solid #cfd8dc; border-radius: 8px; font-size: 15px; box-sizing: border-box; }
  input:focus, select:focus { border-color: var(--primary-color); outline: none; }
-
 button {
  width: 100%; padding: 14px; background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white;
  border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer;
