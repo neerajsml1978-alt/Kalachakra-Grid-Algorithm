@@ -331,7 +331,7 @@ font-size: 14px;
  { labels: "18, 46, 74", codes: ['M', 's', 't', 'T'] },
  { labels: "19, 47, 75", codes: ['T', 'S', 'F', 'W'] },
  { labels: "20, 48, 76", codes: ['W', 'M', 's', 't'] },
- { Tribels: "21, 49, 77", codes: ['F', 'W', 'M', 's'] },
+ { labels: "21, 49, 77", codes: ['F', 'W', 'M', 's'] },
  { labels: "22, 50, 78", codes: ['s', 't', 'T', 'S'] },
  { labels: "23, 51, 79", codes: ['S', 'F', 'W', 'M'] },
  { labels: "24, 52, 80", codes: ['M', 's', 't', 'T'] },
@@ -380,7 +380,7 @@ function startMagicTrace() {
     const lastTwo = year % 100;
     const lastTwoStr = lastTwo < 10 ? "0" + lastTwo : lastTwo.toString();
     let rIdx = chart1Data.findIndex(r => r.labels && r.labels.includes(lastTwoStr));
-    if (rIdx === -1 && (lastTwo === 21 || lastTwo === 49 || lastTwo === 7.7 || lastTwo === 77)) rIdx = 21;
+    if (rIdx === -1 && (lastTwo === 21 || lastTwo === 49 || lastTwo === 77)) rIdx = 21;
 
     const century = Math.floor(year / 100) * 100;
     let cIdx = 1; 
