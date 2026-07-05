@@ -75,7 +75,14 @@
 
     <a href="../index.html" class="back-btn">⬅ मुख्य पृष्ठ पर वापस जाएँ</a>
 </div>
-
+<script>
+    // यह स्क्रिप्ट सुनिश्चित करेगी कि 'बैक' बटन दबाने पर पेज रिफ्रेश हो जाए
+    window.onpageshow = function(event) {
+        if (event.persisted) {
+            window.location.reload();
+        }
+    };
+</script>
 </body>
 </html>
 
