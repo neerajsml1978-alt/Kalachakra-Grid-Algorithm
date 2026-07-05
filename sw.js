@@ -9,7 +9,8 @@ const ASSETS = [
   './seo-pwa-tools.js',
   // अगर नक्षत्र वाला पेज अलग फाइल है, तो उसे यहाँ जरूर जोड़ें
   './NakshatraList.html',
-  './nakshatras/ashwini.html'
+  './nakshatras/ashwini.html',
+  './nakshatras/ashwini.jpg'
 ];
 
 // 2. इंस्टॉल इवेंट
