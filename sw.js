@@ -1,12 +1,18 @@
-const CACHE_NAME = 'hwjh-calendar-v1';
+// 1. यहाँ v1 को v2 करें
+const CACHE_NAME = 'hwjh-calendar-v2'; 
 const ASSETS = [
+  './',
   './index.html',
   './manifest.json',
   './icon-192.png',
   './icon-512.png',
-  './seo-pwa-tools.js' // नई फाइल का नाम यहाँ जोड़ें
+  './seo-pwa-tools.js',
+  // अगर नक्षत्र वाला पेज अलग फाइल है, तो उसे यहाँ जरूर जोड़ें
+  './NakshatraList.html',
+  './nakshatras/ashwini.html'
 ];
-// 1. सर्विस वर्कर इंस्टॉल करना
+
+// 2. इंस्टॉल इवेंट
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -15,26 +21,26 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// 2. फाइलों को कैश से सर्व करना
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
-    })
-  );
-});
- // 3. पुराना कैश हटाना (Activation)
+// 3. एक्टिवेट इवेंट (यह पुराना कैश साफ़ करने के लिए अनिवार्य है)
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cache) => {
           if (cache !== CACHE_NAME) {
-            console.log('पुराना कैश हटाया जा रहा है:', cache);
             return caches.delete(cache);
           }
         })
       );
+    })
+  );
+});
+
+// 4. फेच इवेंट
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request).then((response) => {
+      return response || fetch(event.request);
     })
   );
 });
