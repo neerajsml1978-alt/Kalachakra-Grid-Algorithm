@@ -8,7 +8,25 @@ li { padding: 8px 0; border-bottom: 1px solid #ffe0b2; }
 strong { color: #bf360c; }
 .img-style { width: 100%; max-width: 400px; display: block; margin: 0 auto 20px auto; border-radius: 10px; }
 .highlight { background: #fff3e0; padding: 15px; border-radius: 8px; border-left: 5px solid #d84315; }
-     
+  /* फीचर लिस्ट के लिए स्टाइल */
+.feature-list {
+    margin-top: 20px;
+    padding-left: 20px;
+}
+
+.feature-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ffe0b2;
+    margin-bottom: 5px;
+}
+
+/* अगर आप 'strong' टैग को और बेहतर दिखाना चाहते हैं */
+.feature-list strong {
+    color: #bf360c;
+    display: block; /* इससे शीर्षक ऊपर और विवरण नीचे आ जाएगा */
+    margin-bottom: 5px;
+}
+
 .back-btn { 
     display: block; 
     text-align: center; 
