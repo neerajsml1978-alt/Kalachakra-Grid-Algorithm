@@ -232,7 +232,7 @@ font-size: 14px;
 
 <body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
 <div class="floating-menu">
-    <button id="installBtn" style="display: none; background: #e0e0e0;">📥</button>
+  <button id="installBtn" onclick="installApp()" style="display: none; background: #e0e0e0;">📥</button>
     <button onclick="sharePage()" style="background: #ffffff; border: 1px solid #ddd;">🔗</button>
 </div>
 <div class="app-container"> 
@@ -550,18 +550,6 @@ function startMagicTrace() {
 </script> 
 <script src="./seo-pwa-tools.js"></script>
 // शेयरिंग फंक्शन (इसे index.html में ही रखें)
-<script>
-    function sharePage() {
-    if (navigator.share) {
-        navigator.share({
-            title: 'कालचक्र कैलेंडर',
-            text: 'ज्योतिषाचार्य नीरज गोयल का सटीक डेट टू डे कैलकुलेटर',
-            url: window.location.href
-        }).catch(console.error);
-    } else {
-        alert("URL कॉपी कर लिया गया है: " + window.location.href);
-    }
-}
-</script>
+<script src="./nakshatras/sharescript.js"></script>
 </body>
 </html>
