@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hwjh-calendar-v2'; // वर्जन बदलें जब भी मेजर अपडेट हो
+const CACHE_NAME = 'hwjh-calendar-v3'; // वर्जन बदलें जब भी मेजर अपडेट हो
 
 // 1. इंस्टॉल के समय सिर्फ मुख्य फाइलें रखें (जो बहुत जरूरी हैं)
 self.addEventListener('install', (event) => {
