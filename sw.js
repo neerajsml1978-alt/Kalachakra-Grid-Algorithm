@@ -1,28 +1,32 @@
-// 1. यहाँ v1 को v2 करें
-const CACHE_NAME = 'hwjh-calendar-v2'; 
-const ASSETS = [
-  './',
-  './index.html',
-  './manifest.json',
-  './icon-192.png',
-  './icon-512.png',
-  './seo-pwa-tools.js',
-  // अगर नक्षत्र वाला पेज अलग फाइल है, तो उसे यहाँ जरूर जोड़ें
-  './NakshatraList.html',
-  './nakshatras/ashwini.html',
-  './nakshatras/ashwini.jpg'
-];
+const CACHE_NAME = 'hwjh-calendar-v2'; // वर्जन बदलें जब भी मेजर अपडेट हो
 
-// 2. इंस्टॉल इवेंट
+// 1. इंस्टॉल के समय सिर्फ मुख्य फाइलें रखें (जो बहुत जरूरी हैं)
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS);
+      return cache.addAll(['./', './index.html', './style.css', './script.js']);
+    })
+  );
+  self.skipWaiting();
+});
+
+// 2. रनटाइम कैशिंग (जो फाइल खुलेगी, वो अपने आप कैश हो जाएगी)
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request).then((cachedResponse) => {
+      // अगर कैश में है तो वापस करें, वरना नेटवर्क से लाएं
+      return cachedResponse || fetch(event.request).then((networkResponse) => {
+        // नेटवर्क से आई फाइल को कैश में सेव करें
+        return caches.open(CACHE_NAME).then((cache) => {
+          cache.put(event.request, networkResponse.clone());
+          return networkResponse;
+        });
+      });
     })
   );
 });
 
-// 3. एक्टिवेट इवेंट (यह पुराना कैश साफ़ करने के लिए अनिवार्य है)
+// 3. पुराना कैश डिलीट करना (ताकि मेमोरी न भरे)
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
@@ -36,14 +40,3 @@ self.addEventListener('activate', (event) => {
     })
   );
 });
-
-// 4. फेच इवेंट
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
-    })
-  );
-});
-
-
