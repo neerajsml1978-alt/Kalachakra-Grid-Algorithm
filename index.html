@@ -39,8 +39,29 @@
 }
 </script>
 <meta name="google-site-verification" content="hsQPAeKMwhhN-JIJqGDA77Ff6cBZdBFEzHpQ9docuEQ" />
+
 <style>
- :root {
+/* फ्लोटिंग मेनू स्टाइल */
+.floating-menu {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 9999;
+}
+.floating-menu button {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    font-size: 20px;
+}
+    
+:root {
  --primary-color: #d84315; /* सनातनी भगवा / गहरा नारंगी */
  --accent-color: #b71c1c; /* गहरा लाल */
  --row-bg: #fff3e0;
@@ -208,11 +229,13 @@ font-size: 14px;
  </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+<div class="floating-menu">
+    <button id="installBtn" style="display: none; background: #e0e0e0;">📥</button>
+    <button onclick="sharePage()" style="background: #ffffff; border: 1px solid #ddd;">🔗</button>
+</div>
 <div class="app-container"> 
- <button id="installBtn" onclick="installApp()" style="display: none; position: fixed; top: 15px; right: 15px; z-index: 9999; background: #e0e0e0; border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">
-    📥
- </button> 
  <div class="navagraha-logo"></div>
  <h2 style="margin:0 0 5px 0; color:var(--accent-color);">कालचक्र सटीक कैलेंडर </h2>
  <p style="margin:0 0 15px 0; font-size:12px; color:#5d4037; font-weight: bold;">
@@ -526,5 +549,17 @@ function startMagicTrace() {
   }
 </script> 
 <script src="./seo-pwa-tools.js"></script>
+// शेयरिंग फंक्शन (इसे index.html में ही रखें)
+function sharePage() {
+    if (navigator.share) {
+        navigator.share({
+            title: 'कालचक्र कैलेंडर',
+            text: 'ज्योतिषाचार्य नीरज गोयल का सटीक डेट टू डे कैलकुलेटर',
+            url: window.location.href
+        }).catch(console.error);
+    } else {
+        alert("URL कॉपी कर लिया गया है: " + window.location.href);
+    }
+}
 </body>
 </html>
