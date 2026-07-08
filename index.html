@@ -550,7 +550,8 @@ function startMagicTrace() {
 </script> 
 <script src="./seo-pwa-tools.js"></script>
 // शेयरिंग फंक्शन (इसे index.html में ही रखें)
-function sharePage() {
+<script>
+    function sharePage() {
     if (navigator.share) {
         navigator.share({
             title: 'कालचक्र कैलेंडर',
@@ -561,5 +562,6 @@ function sharePage() {
         alert("URL कॉपी कर लिया गया है: " + window.location.href);
     }
 }
+</script>
 </body>
 </html>
