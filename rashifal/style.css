@@ -1,34 +1,89 @@
-/* पूरे पेज का बैकग्राउंड */
+/* 1. पूरे पेज का बैकग्राउंड */
 body {
-    background-color: #fffaf0; /* हल्का क्रीम रंग, आंखों के लिए आरामदायक */
-    font-family: sans-serif;
+    background-color: #f4f7f6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    padding-top: 60px; /* टिकर के लिए जगह */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* ग्रिड का लेआउट */
+/* 2. टिकर बार (सबसे ऊपर) */
+#ticker-bar {
+    background: #d35400;
+    color: #ffffff;
+    padding: 12px 0;
+    font-weight: bold;
+    cursor: pointer;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    font-size: 16px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+/* 3. मुख्य हेडिंग */
+h1 {
+    text-align: center;
+    color: #8e44ad;
+    font-size: 22px;
+    margin: 15px 0;
+}
+
+/* 4. ग्रिड कंटेनर (पूरी स्क्रीन भरने के लिए) */
 .grid-container {
     display: grid;
-    /* एक लाइन में 4 कार्ड्स */
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 10px; /* कार्ड्स के बीच की दूरी */
-    padding: 10px;
+    grid-template-columns: repeat(2, 1fr); /* 2 कॉलम */
+    gap: 15px;
+    padding: 15px;
+    flex-grow: 1;
+    align-content: start;
 }
 
-/* कार्ड्स की स्टाइलिंग */
+/* 5. कार्ड्स का डिज़ाइन (रंगीन और प्रीमियम) */
 .card {
-    background: #ffffff; /* कार्ड का बैकग्राउंड वाइट */
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 12px;
+    border-radius: 20px;
+    padding: 20px 10px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
 }
 
-/* कार्ड के अंदर का कंटेंट */
-.card h3 { font-size: 14px; margin: 5px 0; }
-.card p { font-size: 11px; color: #555; }
-@media (max-width: 600px) {
+.card:hover {
+    transform: scale(1.03);
+}
+
+/* कार्ड्स को अलग-अलग रंग देने के लिए */
+.card:nth-child(4n+1) { background: #ffebee; } /* हल्का लाल */
+.card:nth-child(4n+2) { background: #e3f2fd; } /* हल्का नीला */
+.card:nth-child(4n+3) { background: #e8f5e9; } /* हल्का हरा */
+.card:nth-child(4n+4) { background: #fff3e0; } /* हल्का नारंगी */
+
+.card h3 {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+.card p {
+    font-size: 13px;
+    color: #444;
+    line-height: 1.4;
+    margin: 5px 0 0 0;
+}
+
+/* 6. मोबाइल के लिए और बेहतर सेटिंग */
+@media (max-width: 400px) {
     .grid-container {
-        grid-template-columns: repeat(2, 1fr); /* मोबाइल पर एक लाइन में 2 कार्ड्स */
+        gap: 10px;
+        padding: 10px;
+    }
+    .card {
+        padding: 15px 8px;
     }
 }
