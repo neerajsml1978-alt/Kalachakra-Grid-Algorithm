@@ -13,16 +13,19 @@ const rashifalData = [
     { rashi: "मीन (Pisces)", icon: "♓", msg: "रचनात्मक कार्यों में मन लगेगा, दिन बहुत सुखद है।" }
 ];
 
-// पेज पर कार्ड्स लोड करने का फंक्शन
+const colors = ["#ffebee", "#e3f2fd", "#e8f5e9", "#fff3e0", "#f3e5f5", "#fce4ec"];
+
 function loadRashifal() {
-    const container = document.getElementById('rashifal-container');
+    // तारीख अपडेट करें
+    document.getElementById('current-date').innerText = new Date().toLocaleDateString('hi-IN');
     
-    // यह सुनिश्चित करने के लिए कि पुराना कंटेंट साफ हो जाए
+    const container = document.getElementById('rashifal-container');
     container.innerHTML = '';
 
-    rashifalData.forEach(item => {
+    rashifalData.forEach((item, index) => {
         const card = document.createElement('div');
         card.className = 'card';
+        card.style.backgroundColor = colors[index % colors.length];
         card.innerHTML = `
             <div style="font-size: 30px;">${item.icon}</div>
             <h3>${item.rashi}</h3>
@@ -32,9 +35,4 @@ function loadRashifal() {
     });
 }
 
-// पेज लोड होते ही फंक्शन कॉल करें
 window.onload = loadRashifal;
-// script.js में कार्ड बनाते समय यह जोड़ें:
-const colors = ["#ffebee", "#e3f2fd", "#e8f5e9", "#fff3e0", "#f3e5f5", "#fce4ec"];
-// ...
-card.style.backgroundColor = colors[index % colors.length]; // हर कार्ड को अलग रंग देगा
