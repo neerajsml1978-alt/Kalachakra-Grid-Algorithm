@@ -34,3 +34,7 @@ function loadRashifal() {
 
 // पेज लोड होते ही फंक्शन कॉल करें
 window.onload = loadRashifal;
+// script.js में कार्ड बनाते समय यह जोड़ें:
+const colors = ["#ffebee", "#e3f2fd", "#e8f5e9", "#fff3e0", "#f3e5f5", "#fce4ec"];
+// ...
+card.style.backgroundColor = colors[index % colors.length]; // हर कार्ड को अलग रंग देगा
