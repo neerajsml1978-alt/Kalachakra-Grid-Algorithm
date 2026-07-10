@@ -1,15 +1,34 @@
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 15px;
-    padding: 20px;
+/* पूरे पेज का बैकग्राउंड */
+body {
+    background-color: #fffaf0; /* हल्का क्रीम रंग, आंखों के लिए आरामदायक */
+    font-family: sans-serif;
 }
 
+/* ग्रिड का लेआउट */
+.grid-container {
+    display: grid;
+    /* एक लाइन में 4 कार्ड्स */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 10px; /* कार्ड्स के बीच की दूरी */
+    padding: 10px;
+}
+
+/* कार्ड्स की स्टाइलिंग */
 .card {
-    background: #fff;
+    background: #ffffff; /* कार्ड का बैकग्राउंड वाइट */
     border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 15px;
+    padding: 10px;
+    border-radius: 12px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+/* कार्ड के अंदर का कंटेंट */
+.card h3 { font-size: 14px; margin: 5px 0; }
+.card p { font-size: 11px; color: #555; }
+@media (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* मोबाइल पर एक लाइन में 2 कार्ड्स */
+    }
 }
