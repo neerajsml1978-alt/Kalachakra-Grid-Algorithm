@@ -1,0 +1,37 @@
+<style>
+  .ticker-wrap { 
+    width: 100%; 
+    overflow: hidden; 
+    background: transparent; /* बैकग्राउंड कलर हटा दिया */
+    padding: 5px 0; /* पैडिंग को 10px से घटाकर 5px कर दिया */
+    margin-bottom: 0px; /* मार्जिन भी घटा दी ताकि गैप कम हो */
+  }
+  .ticker-move { 
+    display: flex; 
+    white-space: nowrap; 
+    animation: marquee 15s linear infinite; 
+  }
+  .ticker-item { 
+    padding: 0 20px; /* साइड गैप कम किया */
+    font-weight: bold; 
+    font-size: 16px; /* फोंट साइज़ थोड़ा कम किया */
+    color: #c82333; 
+    text-decoration: none; 
+    cursor: pointer; 
+  }
+  @keyframes marquee { 
+    0% { transform: translateX(100%); } 
+    100% { transform: translateX(-100%); } 
+  }
+</style>
+
+<div class="ticker-wrap">
+  <div class="ticker-move" id="ticker">
+    <a href="rashifal.html" class="ticker-item">✦आज का राशिफल: अपनी राशि का भविष्य जानने के लिए यहाँ क्लिक करे ✦</a>
+  </div>
+</div>
+
+<script>
+  const ticker = document.getElementById('ticker');
+  ticker.innerHTML += ticker.innerHTML; 
+</script>
