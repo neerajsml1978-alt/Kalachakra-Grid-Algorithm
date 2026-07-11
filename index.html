@@ -41,20 +41,7 @@
 <meta name="google-site-verification" content="hsQPAeKMwhhN-JIJqGDA77Ff6cBZdBFEzHpQ9docuEQ" />
 
 <style>
-#ticker-bar {
-  background: #ffcc00;
-  color: #000;
-  padding: 5px 0;
-  font-weight: bold;
-  cursor: pointer;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 9999;
-  font-size: 12px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-    /* फ्लोटिंग मेनू स्टाइल */
+ /* फ्लोटिंग मेनू स्टाइल */
 .floating-menu {
     position: fixed;
     top: 15px;
@@ -93,7 +80,7 @@ body {
  align-items: center;
  }
 .app-container {
- margin-top: 25px;
+ margin-top: 0px;
  max-width: 550px;
  width: 100%;
  background: white;
@@ -245,11 +232,7 @@ font-size: 14px;
 </head>
 
 <body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
-  <div id="ticker-bar" onclick="window.location.href='./rashifal/rashifal.html'">
-    <marquee id="ticker-text" behavior="scroll" direction="left" scrollamount="5">
-      आज का राशिफल जानने के लिए यहाँ क्लिक करें...
-    </marquee>
-  </div>
+  <div id="ticker-placeholder"></div>
     <div class="floating-menu">
   <button id="installBtn" onclick="installApp()" style="display: none; background: #e0e0e0;">📥</button>
     <button onclick="sharePage()" style="background: #ffffff; border: 1px solid #ddd;">🔗</button>
@@ -570,13 +553,12 @@ function startMagicTrace() {
 <script src="./seo-pwa-tools.js"></script>
 <script src="./nakshatras/sharescript.js"></script>
 <script> 
-// अपनी पुरानी script.js में ये लाइनें जोड़ें:
-
-const tickerText = document.getElementById('ticker-text');
-if (tickerText) {
-    // यहाँ आप कोई भी एक हेडलाइन दिखा सकते हैं
-    tickerText.innerText = "✨ आज का राशिफल: अपनी राशि का भविष्य जानने के लिए यहाँ क्लिक करें! ✨";
-}
+  // यह कोड ticker.html फाइल को लोड कर देगा
+  fetch('ticker.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('ticker-placeholder').innerHTML = data;
+    });
 </script>
 </body>
 </html>
