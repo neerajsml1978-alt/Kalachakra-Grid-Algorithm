@@ -66,14 +66,14 @@ h1 {
 /* हेडिंग स्टाइलिंग */
 .card h3 {
     margin: 0 0 10px 0;
-    font-size: 45px;
+    font-size: 35px;
     color: #2c3e50;
     font-weight: bold;
 }
 
 /* पैराग्राफ स्टाइलिंग (पढ़ने में आसान) */
 .card p {
-    font-size: 30px;
+    font-size: 25px;
     color: #333;
     line-height: 1.6;
     margin: 0;
@@ -89,4 +89,10 @@ h1 {
     .card {
         padding: 20px 10px;
     }
+}
+.rashi-icon {
+    font-size: 40px !important; 
+    display: block !important;
+    margin-bottom: 15px !important;
+    text-align: center;
 }
