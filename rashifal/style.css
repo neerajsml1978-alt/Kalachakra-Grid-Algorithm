@@ -4,95 +4,77 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    padding-top: 60px; /* टिकर के लिए ऊपर जगह */
+    padding-top: 20px;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
 }
 
-/* 2. टिकर बार (सबसे ऊपर) */
-#ticker-bar {
-    background: #d35400;
-    color: #ffffff;
-    padding: 12px 0;
-    font-weight: bold;
-    cursor: pointer;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 9999;
-    font-size: 16px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-    text-align: center;
-}
-
-/* 3. मुख्य हेडिंग */
+/* 2. मुख्य हेडिंग */
 h1 {
     text-align: center;
     color: #8e44ad;
-    font-size: 45px;
-    margin: 15px 0;
+    font-size: 40px;
+    margin-bottom: 15px;
 }
 
-/* 4. ग्रिड कंटेनर (पूरी स्क्रीन भरने के लिए) */
+/* 3. ग्रिड कंटेनर (राशिफल और उपाय दोनों के लिए) */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* मोबाइल पर 2 कॉलम */
-    gap: 15px;
-    padding: 15px;
-    flex-grow: 1;
-    align-content: start;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-/* 5. कार्ड्स का डिज़ाइन (प्रीमियम और पढ़ने योग्य) */
+/* 4. कार्ड का प्रीमियम डिज़ाइन */
 .card {
     border-radius: 20px;
-    padding: 25px 15px; /* टेक्स्ट को सांस लेने के लिए जगह */
+    padding: 30px 20px;
     text-align: center;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    
+    /* उपाय के लिए विशेष सेटिंग - कार्ड्स को बड़ा और भरा हुआ रखने के लिए */
+    min-height: 220px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .card:hover {
-    transform: scale(1.03);
+    transform: translateY(-10px);
 }
 
-/* कार्ड्स को अलग-अलग रंग देने के लिए */
-.card:nth-child(4n+1) { background: #ffebee; } /* हल्का लाल */
-.card:nth-child(4n+2) { background: #e3f2fd; } /* हल्का नीला */
-.card:nth-child(4n+3) { background: #e8f5e9; } /* हल्का हरा */
-.card:nth-child(4n+4) { background: #fff3e0; } /* हल्का नारंगी */
+/* कार्ड्स के अलग-अलग रंग */
+.card:nth-child(4n+1) { background: #ffebee; } 
+.card:nth-child(4n+2) { background: #e3f2fd; } 
+.card:nth-child(4n+3) { background: #e8f5e9; } 
+.card:nth-child(4n+4) { background: #fff3e0; } 
 
-/* हेडिंग स्टाइलिंग */
+/* हेडिंग और टेक्स्ट स्टाइल */
 .card h3 {
     margin: 0 0 10px 0;
-    font-size: 35px;
+    font-size: 28px;
     color: #2c3e50;
-    font-weight: bold;
 }
 
-/* पैराग्राफ स्टाइलिंग (पढ़ने में आसान) */
 .card p {
-    font-size: 25px;
+    font-size: 22px;
     color: #333;
-    line-height: 1.6;
-    margin: 0;
-    font-weight: bold;
+    line-height: 1.5; /* लाइन हाइट बढ़ने से कार्ड भरा हुआ दिखेगा */
+    font-weight: 1000;
+    margin:0;
 }
 
-/* 6. मोबाइल के लिए और बेहतर सेटिंग */
-@media (max-width: 400px) {
-    .grid-container {
-        gap: 10px;
-        padding: 10px;
-    }
-    .card {
-        padding: 20px 10px;
-    }
-}
 .rashi-icon {
-    font-size: 40px !important; 
-    display: block !important;
-    margin-bottom: 15px !important;
-    text-align: center;
+    font-size: 45px !important; 
+    margin-bottom: 10px !important;
+}
+
+/* 5. मोबाइल के लिए रिस्पॉन्सिव सेटिंग */
+@media (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
 }
