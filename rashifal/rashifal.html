@@ -11,14 +11,16 @@
     <script src="download-button.js"></script>
 </head>
 <body>
-    <h1>आज का राशिफल - <span id="current-date"></span></h1>
+<!-- इसे एक मुख्य कंटेनर के अंदर रखें -->
+<div id="capture-area">
+    <h1 style="text-align: center; color: #8b0000; margin: 20px 0;">आज का राशिफल - <span id="current-date"></span></h1>
     <div id="rashifal-container" class="grid-container"></div>
-
-    <script src="script.js"></script>
+</div>
+     <script src="script.js"></script>
      <script>
         // बटन को जोड़ने का कमांड
         window.addEventListener('load', function() {
-            addDownloadButton('rashifal-container', 'mera-rashifal.png');
+            addDownloadButton('capture-area', 'mera-rashifal.png');
         });
      </script>
 </body>
