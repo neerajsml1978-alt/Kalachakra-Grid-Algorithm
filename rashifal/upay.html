@@ -6,6 +6,10 @@
     <title>दैनिक उपाय</title>
     <!-- यहाँ आपकी वही style.css लिंक है जो मैंने अभी मॉडिफाई की है -->
     <link rel="stylesheet" href="style.css">
+<!-- html2canvas लाइब्रेरी -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- डाउनलोड बटन वाली फाइल -->
+    <script src="download-button.js"></script>
 </head>
 <body>
 
@@ -15,5 +19,11 @@
     <div id="upay-container" class="grid-container"></div>
 
     <script src="upay.js"></script>
+      <script>
+        // बटन को जोड़ने का कमांड (upay-container के लिए)
+        window.addEventListener('load', function() {
+            addDownloadButton('upay-container', 'mera-upay.png');
+        });
+      </script>
 </body>
 </html>
