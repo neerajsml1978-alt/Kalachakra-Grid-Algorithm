@@ -13,6 +13,7 @@ const upayData = [
     { rashi: "मीन (Pisces)", icon: "🐟", upay: "केले के पेड़ पर जल चढ़ाएं और चने की दाल का दान करें।. इससे आपके पारिवारिक जीवन में खुशहाली और सौभाग्य बढ़ेगा।" }
 ];
 function loadUpay() {
+    document.getElementById('current-date').innerText = new Date().toLocaleDateString('hi-IN');
     const container = document.getElementById('upay-container');
     container.innerHTML = '';
 
