@@ -41,7 +41,14 @@
 <meta name="google-site-verification" content="hsQPAeKMwhhN-JIJqGDA77Ff6cBZdBFEzHpQ9docuEQ" />
 
 <style>
- /* फ्लोटिंग मेनू स्टाइल */
+  /* टीकर को ऐप कंटेनर की चौड़ाई और मार्जिन के बराबर सेट करें */
+  #ticker-placeholder {
+      width: 95%;              /* पूरी स्क्रीन का 95% */
+      max-width: 550px;        /* कंटेनर के बराबर */
+      margin: 0 auto 15px auto; /* सेंटर में करें */
+      box-sizing: border-box;
+  }   
+/* फ्लोटिंग मेनू स्टाइल */
 .floating-menu {
     position: fixed;
     top: 15px;
