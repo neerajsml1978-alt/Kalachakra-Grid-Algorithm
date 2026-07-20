@@ -3,27 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>दैनिक उपाय</title>
-    <!-- यहाँ आपकी वही style.css लिंक है जो मैंने अभी मॉडिफाई की है -->
+    <title>आज के अचूक उपाय</title>
     <link rel="stylesheet" href="style.css">
-<!-- html2canvas लाइब्रेरी -->
+    
+    <!-- लाइब्रेरी -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-     <script src="upay.js"></script>
-    <!-- डाउनलोड बटन वाली फाइल -->
+    
+    <!-- डेटा फाइल पहले लोड करें -->
+    <script src="upay.js"></script> 
+    <!-- डाउनलोड फंक्शन फाइल -->
     <script src="download-button.js"></script>
 </head>
 <body>
-<!-- इसे एक मुख्य कंटेनर के अंदर रखें -->
-<div id="capture-area">
-    <h1 style="text-align: center; color: #8b0000; margin: 20px 0;">आज के अचूक उपाय - <span id="current-date"></span></h1>
-    <div id="upay-container" class="grid-container"></div>
-</div>   
+    <div id="capture-area">
+        <h1 style="text-align: center; color: #8b0000; margin: 20px 0;">आज के अचूक उपाय - <span id="current-date"></span></h1>
+        <div id="rashifal-container" class="grid-container"></div>
+    </div>
+    
     <script src="script.js"></script>
-      <script>
-        // बटन को जोड़ने का कमांड (upay-container के लिए)
+    <script>
         window.addEventListener('load', function() {
-            addDownloadButton('capture-area', 'mera-upay.png');
+            addDownloadButton('capture-area', 'mera-rashifal.png');
         });
-      </script>
+    </script>
 </body>
 </html>
