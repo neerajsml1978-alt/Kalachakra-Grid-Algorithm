@@ -1,22 +1,35 @@
-const rashifalData = [
-    { rashi: "मेष (Aries)", icon: "🐏", msg: "आज आपकी राशि के अनुसार गोचर में चंद्रमा छठे भाव में है।. आज खर्चों पर नियंत्रण रखें।. मेहनत अधिक होगी, स्वास्थ्य का ध्यान रखें।" },
-    { rashi: "वृषभ (Taurus)", icon: "🐂", msg: "चंद्रमा पंचम भाव में है।. आज शिक्षा और रचनात्मक कार्यों में सफलता मिलेगी।. संतान से सुखद समाचार प्राप्त हो सकता है, दिन अनुकूल रहेगा।" },
-    { rashi: "मिथुन (Gemini)", icon: "👯", msg: "चंद्रमा चतुर्थ भाव में है।. आज सुख-साधन बढ़ेंगे।. घरेलू कार्यों में व्यस्त रहेंगे।. माता के स्वास्थ्य का ध्यान रखें और शांति बनाए रखें।" },
-    { rashi: "कर्क (Cancer)", icon: "🦀", msg: "चंद्रमा तीसरे भाव में है।. आज पराक्रम में वृद्धि होगी।. भाई-बहनों का सहयोग मिलेगा।. छोटी यात्रा लाभदायक हो सकती है, आत्मविश्वास बढ़ेगा।" },
-    { rashi: "सिंह (Leo)", icon: "🦁", msg: "चंद्रमा दूसरे भाव में है।. आज आर्थिक स्थिति में सुधार होगा।. वाणी में मधुरता आएगी।. परिवार के साथ अच्छा समय बीतेगा, धन संचय में सफलता मिलेगी।" },
-    { rashi: "कन्या (Virgo)", icon: "👩", msg: "चंद्रमा आपकी ही राशि (प्रथम भाव) में है।. आज आप ऊर्जावान महसूस करेंगे।. व्यक्तित्व में निखार आएगा।. मान-सम्मान बढ़ेगा, निर्णय लेने की क्षमता तेज होगी।" },
-    { rashi: "तुला (Libra)", icon: "⚖️", msg: "चंद्रमा बारहवें भाव में है।. आज व्यय की अधिकता हो सकती है।. विदेश संबंधित कार्यों में सफलता मिलेगी।. एकांत में समय बिताना मानसिक शांति देगा।" },
-    { rashi: "वृश्चिक (Scorpio)", icon: "🦂", msg: "चंद्रमा एकादश भाव में है।. आज आय के नए स्रोत बनेंगे।. मित्रों से लाभ होगा और आपकी योजनाएं सफल होंगी।. लाभ प्राप्ति का उत्तम दिन है।" },
-    { rashi: "धनु (Sagittarius)", icon: "🏹", msg: "चंद्रमा दशम भाव में है।. आज कार्यक्षेत्र में सफलता मिलेगी।. पिता का मार्गदर्शन प्राप्त होगा।. पद-प्रतिष्ठा में वृद्धि के संकेत हैं, लक्ष्य प्राप्ति में सफल होंगे।" },
-    { rashi: "मकर (Capricorn)", icon: "🐐", msg: "चंद्रमा नवम भाव में है।. आज भाग्य का पूरा साथ मिलेगा।. धार्मिक कार्यों में मन लगेगा।. लंबी यात्रा के योग हैं, उच्च अधिकारियों से सराहना मिलेगी।" },
-    { rashi: "कुंभ (Aquarius)", icon: "🏺", msg: "चंद्रमा अष्टम भाव में है।. आज कार्यों में सावधानी बरतें।. गुप्त समस्याओं से सतर्क रहें।. निवेश में जोखिम न लें।. धैर्य बनाए रखना ही सफलता की कुंजी है।" },
-    { rashi: "मीन (Pisces)", icon: "🐟", msg: "चंद्रमा सातवें भाव में है।. आज वैवाहिक जीवन में मधुरता आएगी।. साझेदारी के कार्यों में लाभ होगा।. नए संपर्क बनेंगे जो भविष्य में फलदायी होंगे।" }
-];
-
 function loadRashifal() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hour = String(now.getHours()).padStart(2, '0');
+    const minute = String(now.getMinutes()).padStart(2, '0');
+
+    // वर्तमान समय का की (Key) प्रारूप
+    const currentTimeStr = `${year}${month}${day}${hour}${minute}`;
+    
+    // सभी उपलब्ध डेटा कीज़ को लें
+    const sortedKeys = Object.keys(allData).sort();
+    let activeKey = null;
+
+    // सही गोचर समय ढूँढें
+    for (let key of sortedKeys) {
+        let keyNumeric = key.replace(/-/g, '');
+        if (keyNumeric <= currentTimeStr) {
+            activeKey = key;
+        }
+    }
+
+    const rashifalData = allData[activeKey];
     document.getElementById('current-date').innerText = new Date().toLocaleDateString('hi-IN');
     const container = document.getElementById('rashifal-container');
     container.innerHTML = '';
+
+    if (!rashifalData) {
+        container.innerHTML = "<h2 style='text-align:center;'>आज के लिए अभी कोई गोचर अपडेट नहीं है।</h2>";
+        return;
+    }
 
     rashifalData.forEach((item) => {
         const card = document.createElement('div');
@@ -28,9 +41,7 @@ function loadRashifal() {
                 <span class="rashi-icon">${item.icon}</span>
                 <h3>${item.rashi}</h3>
             </div>
-            <ul class="analysis-list">
-                ${points}
-            </ul>
+            <ul class="analysis-list">${points}</ul>
         `;
         container.appendChild(card);
     });
