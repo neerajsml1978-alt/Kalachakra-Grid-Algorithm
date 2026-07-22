@@ -546,29 +546,40 @@ function startMagicTrace() {
     })();
 </script>
 <script>
-    window.onload = function() {
-    const today = new Date();
-    
-    // 1. करंट तारीख सेट करें
-    document.getElementById('day').value = today.getDate();
-    
-    // 2. करंट वर्ष सेट करें
-    document.getElementById('year').value = today.getFullYear();
-    
-    // 3. हिंदी महीनों की सूची के अनुसार सही महीना ढूंढकर सेट करें
-    const monthHindiList = ["जनवरी", "फरवरी", "मार्च", "अप्रैल", "मई", "जून", "जुलाई", "अगस्त", "सितंबर", "अक्टूबर", "नवंबर", "दिसंबर"];
-    const currentMonthName = monthHindiList[today.getMonth()];
-    
-    // 4. ड्रॉप-डाउन से महीने का मिलान करके उसे चुनें
-    const monthSelect = document.getElementById('month');
-    for (let i = 0; i < monthSelect.options.length; i++) {
-        if (monthSelect.options[i].value === currentMonthName) {
-            monthSelect.selectedIndex = i;
-            break;
-        }
-    }
-};
+    // यह कोड मेनू और बाकी सभी चीजों के लोड होने के बाद सुरक्षित तरीके से करंट डेट सेट करेगा
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            const today = new Date();
+            
+            // 1. तारीख सेट करें
+            const dayInput = document.getElementById('day');
+            if (dayInput) {
+                dayInput.value = today.getDate();
+            }
+            
+            // 2. वर्ष सेट करें
+            const yearInput = document.getElementById('year');
+            if (yearInput) {
+                yearInput.value = today.getFullYear();
+            }
+            
+            // 3. महीना सेट करें
+            const monthHindiList = ["जनवरी", "फरवरी", "मार्च", "अप्रैल", "मई", "जून", "जुलाई", "अगस्त", "सितंबर", "अक्टूबर", "नवंबर", "दिसंबर"];
+            const currentMonthName = monthHindiList[today.getMonth()];
+            
+            const monthSelect = document.getElementById('month');
+            if (monthSelect) {
+                for (let i = 0; i < monthSelect.options.length; i++) {
+                    if (monthSelect.options[i].value === currentMonthName) {
+                        monthSelect.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+        }, 300); // 300 मिलीसेकंड का छोटा सा गैप ताकि मेनू अपनी जगह सेट हो जाए
+    });
 </script>
+    
 <script>
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js');
