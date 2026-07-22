@@ -27,7 +27,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/">
 
-    <script type="application/ld+json">
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
@@ -39,11 +39,13 @@
 }
 </script>
 <meta name="google-site-verification" content="hsQPAeKMwhhN-JIJqGDA77Ff6cBZdBFEzHpQ9docuEQ" />
-
+  
+    <!-- यह नया Sidenav वाला CSS लिंक यहाँ जोड़ दें -->
+    <link rel="stylesheet" href="sidenav.css">
 <style>
   /* टीकर को ऐप कंटेनर की चौड़ाई और मार्जिन के बराबर सेट करें */
   #ticker-placeholder {
-      width: 95%;              /* पूरी स्क्रीन का 95% */
+      width: 90%;              /* पूरी स्क्रीन का 90% */
       max-width: 550px;        /* कंटेनर के बराबर */
       margin: 0 auto 15px auto; /* सेंटर में करें */
       box-sizing: border-box;
@@ -239,7 +241,10 @@ font-size: 14px;
 </head>
 
 <body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
-  <div id="ticker-placeholder"></div>
+<!-- थ्री डॉट मेनू बटन -->
+<div style="font-size:30px; cursor:pointer; padding:10px; position:absolute; top:0px; left:0px; z-index:1000;" onclick="toggleNav()">&#8942;</div>
+<div id="menu-container"></div>
+    <div id="ticker-placeholder"></div>
     <div class="floating-menu">
   <button id="installBtn" onclick="installApp()" style="display: none; background: #e0e0e0;">📥</button>
     <button onclick="sharePage()" style="background: #ffffff; border: 1px solid #ddd;">🔗</button>
@@ -279,7 +284,6 @@ font-size: 14px;
  </div>
  <button onclick="startMagicTrace()">कालचक्र ग्रिड का लाइव जादू देखें</button>
 </div>
-
 <div id="finalResult"></div>
 
 <!-- चार्ट १ का कार्ड -->
@@ -578,5 +582,6 @@ function sharePage() {
       document.getElementById('ticker-placeholder').innerHTML = data;
     });
 </script>
+<script src="menu-script.js"></script>
 </body>
 </html>
