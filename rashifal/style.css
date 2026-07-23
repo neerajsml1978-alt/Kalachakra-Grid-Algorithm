@@ -7,7 +7,7 @@ body {
     min-height: 100vh;
 }
 
-/* 2. ग्रिड कंटेनर - 2 कॉलम */
+/* 2. ग्रिड कंटेनर - 3 कॉलम */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
