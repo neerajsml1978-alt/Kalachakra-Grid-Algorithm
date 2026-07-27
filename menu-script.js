@@ -16,6 +16,10 @@ function loadMenu() {
       <a href="./rashifal/vrash.html">वृषभ राशि का भविष्यफल</a>
       <a href="./rashifal/mithun.html">मिथुन राशि का भविष्यफल</a>
       <a href="./rashifal/kark.html">कर्क राशि का भविष्यफल</a>
+      <a href="./rashifal/singh.html">सिंह राशि का भविष्यफल</a>
+      <a href="./rashifal/kanya.html">कन्या राशि का भविष्यफल</a>
+      <a href="./rashifal/tula.html">तुला राशि का भविष्यफल</a>
+
       <a href="./rashifal/upay.html" >आज के अचूक उपाय</a>
       <a href="./rashifal/navgrah.html">नवग्रह मंत्र</a>
     </div>
