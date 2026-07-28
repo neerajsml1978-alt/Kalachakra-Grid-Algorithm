@@ -54,66 +54,87 @@
         </div>
     </div>
     ,
-    <script>
-        function loadPanchang() {
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-            
-            const currentDateStr = `${year}-${month}-${day}`;
-            
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('current-date-heading').innerText = now.toLocaleDateString('hi-IN', options);
+<script>
+    function loadPanchang() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hour = String(now.getHours()).padStart(2, '0');
+        const minute = String(now.getMinutes()).padStart(2, '0');
 
-            const container = document.getElementById('panchang-container');
-            container.innerHTML = '';
+        // वर्तमान समय का की (Key) प्रारूप (जैसे: 2026-07-28-14-30)
+        const currentTimeStr = `${year}-${month}-${day}-${hour}-${minute}`;
+        
+        // सभी उपलब्ध डेटा कीज़ को सॉर्ट करें
+        const sortedKeys = Object.keys(panchangData).sort();
+        let activeKey = null;
 
-            const data = panchangData[currentDateStr];
-
-            if (!data) {
-                container.innerHTML = "<h2 style='text-align:center; color: #555; grid-column: span 3;'>आज के लिए पंचांग डेटा उपलब्ध नहीं है।</h2>";
-                return;
+        // सही सूर्योदय/गोचर समय ढूँढें
+        for (let key of sortedKeys) {
+            if (key <= currentTimeStr) {
+                activeKey = key;
             }
-
-            document.getElementById('sambat-info').innerText = `${data.vikramSambat} | ${data.ayan} | ${data.ritu}`;
-
-            // 12 कार्ड्स की सूची जिसमें अब अगली तिथि/नक्षत्र/योग/करण भी शामिल हैं
-            const items = [
-                { title: "तिथि", icon: "🌙", desc: data.tithi },
-                { title: "नक्षत्र", icon: "✨", desc: data.nakshatra },
-                { title: "योग", icon: "🧘‍♂️", desc: data.yog },
-                { title: "करण", icon: "⚡", desc: data.karan },
-                { title: "सूर्य व चन्द्र गोचर", icon: "🪐", desc: `सूर्य: ${data.sunSign} | चन्द्रमा: ${data.moonSign}` },
-                { title: "सूर्योदय / सूर्यास्त", icon: "🌅", desc: `सूर्योदय: ${data.sunrise} | सूर्यास्त: ${data.sunset}` },
-                { title: "अभिजीत मुहूर्त (शुभ)", icon: "⏰", desc: data.abhijitMuhurat, isHighlight: true },
-                { title: "राहुकाल (अशुभ)", icon: "⚠️", desc: data.rahukaal, isHighlight: true },
-                { title: "दिशा शूल", icon: "🧭", desc: `आज दिशा शूल: ${data.dishaShool} दिशा में रहेगा।` },
-                { title: "आज का विशेष उपाय", icon: "🪔", desc: data.remedy },
-                { title: "नक्षत्र फल / विशेष", icon: "🌟", desc: data.nakshatraphal },
-                { title: "विशेष विवरण", icon: "💡", desc: data.special }
-            ];
-
-            items.forEach((item) => {
-                const card = document.createElement('div');
-                card.className = item.isHighlight ? 'card highlight-card' : 'card';
-                card.innerHTML = `
-                    <div class="card-header">
-                        <span class="rashi-icon">${item.icon}</span>
-                        <h3>${item.title}</h3>
-                    </div>
-                    <ul class="analysis-list">
-                        <li>${item.desc}</li>
-                    </ul>
-                `;
-                container.appendChild(card);
-            });
         }
 
-        window.addEventListener('load', function() {
-            loadPanchang();
-            addDownloadButton('capture-area', 'advanced-panchang.png');
+        const container = document.getElementById('panchang-container');
+        container.innerHTML = '';
+
+        // यदि कोई सटीक की नहीं मिलती, तो पहली उपलब्ध की ले लें
+        if (!activeKey && sortedKeys.length > 0) {
+            activeKey = sortedKeys[0];
+        }
+
+        const data = panchangData[activeKey];
+
+        // तारीख प्रदर्शित करें
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('current-date-heading').innerText = now.toLocaleDateString('hi-IN', options);
+
+        if (!data) {
+            container.innerHTML = "<h2 style='text-align:center; color: #555; grid-column: span 3;'>आज के लिए पंचांग डेटा उपलब्ध नहीं है।</h2>";
+            return;
+        }
+
+        document.getElementById('sambat-info').innerText = `${data.vikramSambat} | ${data.ayan} | ${data.ritu}`;
+
+        // 12 कार्ड्स की सूची
+        const items = [
+            { title: "तिथि", icon: "🌙", desc: data.tithi },
+            { title: "नक्षत्र", icon: "✨", desc: data.nakshatra },
+            { title: "योग", icon: "🧘‍♂️", desc: data.yog },
+            { title: "करण", icon: "⚡", desc: data.karan },
+            { title: "सूर्य व चन्द्र गोचर", icon: "🪐", desc: `सूर्य: ${data.sunSign} | चन्द्रमा: ${data.moonSign}` },
+            { title: "सूर्योदय / सूर्यास्त", icon: "🌅", desc: `सूर्योदय: ${data.sunrise} | सूर्यास्त: ${data.sunset}` },
+            { title: "अभिजीत मुहूर्त (शुभ)", icon: "⏰", desc: data.abhijitMuhurat, isHighlight: true },
+            { title: "राहुकाल (अशुभ)", icon: "⚠️", desc: data.rahukaal, isHighlight: true },
+            { title: "दिशा शूल", icon: "🧭", desc: `आज दिशा शूल: ${data.dishaShool} दिशा में रहेगा।` },
+            { title: "आज का विशेष उपाय", icon: "🪔", desc: data.remedy },
+            { title: "नक्षत्र फल / विशेष", icon: "🌟", desc: data.nakshatraphal },
+            { title: "विशेष विवरण", icon: "💡", desc: data.special }
+        ];
+
+        items.forEach((item) => {
+            const card = document.createElement('div');
+            card.className = item.isHighlight ? 'card highlight-card' : 'card';
+            card.innerHTML = `
+                <div class="card-header">
+                    <span class="rashi-icon">${item.icon}</span>
+                    <h3>${item.title}</h3>
+                </div>
+                <ul class="analysis-list">
+                    <li>${item.desc}</li>
+                </ul>
+            `;
+            container.appendChild(card);
         });
-    </script>
+    }
+
+    window.addEventListener('load', function() {
+        loadPanchang();
+        addDownloadButton('capture-area', 'advanced-panchang.png');
+    });
+</script>
+    
 </body>
 </html>
