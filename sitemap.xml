@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Main Pages -->
   <url>
     <loc>https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/</loc>
     <lastmod>2026-07-08</lastmod>
@@ -18,6 +19,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- 27 Nakshatras Pages -->
   <url>
     <loc>https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/nakshatras/ashwini.html</loc>
     <lastmod>2026-07-08</lastmod>
@@ -38,6 +41,144 @@
   </url>
   <url>
     <loc>https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/nakshatras/rohini.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/nakshatras/mrigashira.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/nakshatras/ardra.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/nakshatras/punarvasu.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/nakshatras/pushya.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/nakshatras/ashlesha.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/nakshatras/magha.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/nakshatras/purva-phalguni.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/nakshatras/uttara-phalguni.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/nakshatras/hasta.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/nakshatras/chitra.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/nakshatras/swati.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/nakshatras/vishakha.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/nakshatras/anuradha.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/nakshatras/jyeshtha.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/nakshatras/mula.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/nakshatras/purva-ashadha.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/nakshatras/uttara-ashadha.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/nakshatras/shravana.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/nakshatras/dhanishta.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/nakshatras/shatabhisha.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/nakshatras/purva-bhadrapada.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neerajsml1978-alt.github.io/KalachRakra-Grid-Algorithm/nakshatras/uttara-bhadrapada.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neerajsml1978-alt.github.io/Kalachakra-Grid-Algorithm/nakshatras/revati.html</loc>
     <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
