@@ -23,6 +23,7 @@ function loadMenu() {
       <a href="./rashifal/navgrah.html">नवग्रह मंत्र</a>
       <a href="./rashifal/panchang.html">आज का पंचांग</a>
       <a href="./rashifal/gurupurnima.html">गुरु पूर्णिमा 2026</a>
+      <a href="savan.html">श्रावण मास 2026</a>
     </div>
   `;
   document.getElementById('menu-container').innerHTML = menuHTML;
