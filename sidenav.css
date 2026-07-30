@@ -8,6 +8,7 @@
   left: 0;
   background-color: #ffffff;
   overflow-x: hidden;
+  overflow-y: auto;
   transition: 0.5s;
   padding-top: 60px;
   box-shadow: 2px 0 10px rgba(0,0,0,0.3);
@@ -34,7 +35,7 @@
   transition: 0.3s;
 }
 
-/* होवर इफ़ेक्ट (चाहें तो जोड़ सकते हैं) */
+/* होवर इफ़ेक्ट */
 .sidenav a:hover {
   background-color: #f1f1f1;
 }
