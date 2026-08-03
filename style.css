@@ -121,12 +121,9 @@ body {
     .astrologer-info, .phone-box {
         font-size: 16px; /* मोबाइल स्क्रीन पर नाम और फोन नंबर का फॉन्ट साइज ताकि यह बॉक्स के अंदर फिट रहे */
     }
+.grid-container { grid-template-columns: 1fr; }
 }
 
-
-@media (max-width: 768px) {
-    .grid-container { grid-template-columns: 1fr; }
-}
 .download-btn {
     display: block;
     margin: 40px auto; /* ऊपर और नीचे जगह बनाने के लिए */
