@@ -34,25 +34,3 @@ const allData = {
         }
     ]
 };
-// केवल एक विशिष्ट भाव को अपडेट करने का फंक्शन
-        function updateSpecificHouse(dateTimeKey, targetRashi, newMsg, newIcon) {
-            if (allData[dateTimeKey]) {
-                let house = allData[dateTimeKey].find(item => item.rashi === targetRashi);
-                
-                if (house) {
-                    house.msg = newMsg;
-                    if (newIcon) house.icon = newIcon;
-                    console.log(`${targetRashi} सफलतापूर्वक अपडेट हो गया है!`);
-                
-                } else {
-                    console.log("यह भाव इस डेटा में मौजूद नहीं है।");
-                }
-            } else {
-                console.log("यह समयांक (Timestamp) मौजूद नहीं है।");
-            }
-        }
-// 1. प्रथम भाव को अपडेट करें
-updateSpecificHouse("2027-07-21-08-00", "प्रथम भाव (लग्न भाव)", "नया प्रथम भाव का संदेश...");
-
-// 2. पंचम भाव को अपडेट करें
-updateSpecificHouse("2027-07-21-08-00", "पंचम भाव", "नया पंचम भाव का संदेश...");
