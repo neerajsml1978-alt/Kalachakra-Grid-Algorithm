@@ -1,4 +1,4 @@
-const baseData [
+const baseData = [
         { 
             rashi: "सूर्य गोचर (चौथे भाव में)", 
             icon: "☀️", 
