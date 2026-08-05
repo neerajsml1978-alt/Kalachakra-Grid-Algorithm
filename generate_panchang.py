@@ -2,7 +2,7 @@ import json
 from datetime import datetime, timedelta
 
 # यहाँ आप जितने दिन का डेटा आगे बढ़ाना चाहें, संख्या लिख सकते हैं (जैसे 30 या 60 दिन)
-total_days = 30
+total_days = 365
 start_date = datetime.now()
 panchang_data = {}
 
