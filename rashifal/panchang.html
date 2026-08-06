@@ -55,48 +55,46 @@
     </div>
     ,
 <script>
-    function loadPanchang() {
-        const now = new Date();
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const day = String(now.getDate()).padStart(2, '0');
-        const hour = String(now.getHours()).padStart(2, '0');
-        const minute = String(now.getMinutes()).padStart(2, '0');
-
-        // वर्तमान समय का की (Key) प्रारूप (जैसे: 2026-07-28-14-30)
-        const currentTimeStr = `${year}-${month}-${day}-${hour}-${minute}`;
-        
-        // सभी उपलब्ध डेटा कीज़ को सॉर्ट करें
-        const sortedKeys = Object.keys(panchangData).sort();
-        let activeKey = null;
-
-        // सही सूर्योदय/गोचर समय ढूँढें
-        for (let key of sortedKeys) {
-            if (key <= currentTimeStr) {
-                activeKey = key;
-            }
-        }
-
+    function loadPanchang(targetDateStr = null) {
         const container = document.getElementById('panchang-container');
+        const dateHeading = document.getElementById('current-date-heading');
+        const sambatInfo = document.getElementById('sambat-info');
+        
         container.innerHTML = '';
 
-        // यदि कोई सटीक की नहीं मिलती, तो पहली उपलब्ध की ले लें
-        if (!activeKey && sortedKeys.length > 0) {
-            activeKey = sortedKeys[0];
+        // यदि कोई तारीख नहीं दी गई है, तो सिस्टम की आज की तारीख लें (YYYY-MM-DD फॉर्मेट में)
+        let dateToFetch = targetDateStr;
+        if (!dateToFetch) {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            dateToFetch = `${year}-${month}-${day}`;
         }
 
-        const data = panchangData[activeKey];
-
-        // तारीख प्रदर्शित करें
+        // तारीख को हिंदी फॉर्मेट में दिखाने के लिए
+        const dateObj = new Date(dateToFetch);
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('current-date-heading').innerText = now.toLocaleDateString('hi-IN', options);
+        
+        if (!isNaN(dateObj)) {
+            dateHeading.innerText = dateObj.toLocaleDateString('hi-IN', options);
+        } else {
+            dateHeading.innerText = "अमान्य तारीख";
+        }
 
+        // 🛑 घंटे और मिनट की जाँच पूरी तरह हटा दी गई है। 
+        // अब यह सीधे panchangData में केवल तारीख (YYYY-MM-DD) के आधार पर डेटा खोजेगा।
+        const data = panchangData[dateToFetch];
+
+        // यदि उस तारीख का डेटा उपलब्ध नहीं है
         if (!data) {
-            container.innerHTML = "<h2 style='text-align:center; color: #555; grid-column: span 3;'>आज के लिए पंचांग डेटा उपलब्ध नहीं है।</h2>";
+            sambatInfo.innerText = "उपलब्ध नहीं";
+            container.innerHTML = `<h2 style='text-align:center; color: #d9534f; grid-column: span 3; padding: 40px;'>माफ़ कीजिए, ${dateToFetch} तारीख के लिए पंचांग डेटा उपलब्ध नहीं है।</h2>`;
             return;
         }
 
-        document.getElementById('sambat-info').innerText = `${data.vikramSambat} | ${data.ayan} | ${data.ritu}`;
+        // यदि डेटा उपलब्ध है तो संवत और अन्य जानकारी दिखाएं
+        sambatInfo.innerText = `${data.vikramSambat || ''} | ${data.ayan || ''} | ${data.ritu || ''}`;
 
         // 12 कार्ड्स की सूची
         const items = [
@@ -123,7 +121,7 @@
                     <h3>${item.title}</h3>
                 </div>
                 <ul class="analysis-list">
-                    <li>${item.desc}</li>
+                    <li>${item.desc || 'उपलब्ध नहीं'}</li>
                 </ul>
             `;
             container.appendChild(card);
@@ -131,10 +129,87 @@
     }
 
     window.addEventListener('load', function() {
-        loadPanchang();
+        loadPanchang(); // पेज लोड होने पर आज की तारीख का डेटा दिखाएगा
+        addDownloadButton('capture-area', 'advanced-panchang.png');
+    });
+    <script>
+    function loadPanchang(targetDateStr = null) {
+        const container = document.getElementById('panchang-container');
+        const dateHeading = document.getElementById('current-date-heading');
+        const sambatInfo = document.getElementById('sambat-info');
+        
+        container.innerHTML = '';
+
+        // यदि कोई तारीख नहीं दी गई है, तो सिस्टम की आज की तारीख लें (YYYY-MM-DD फॉर्मेट में)
+        let dateToFetch = targetDateStr;
+        if (!dateToFetch) {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            dateToFetch = `${year}-${month}-${day}`;
+        }
+
+        // तारीख को हिंदी फॉर्मेट में दिखाने के लिए
+        const dateObj = new Date(dateToFetch);
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        
+        if (!isNaN(dateObj)) {
+            dateHeading.innerText = dateObj.toLocaleDateString('hi-IN', options);
+        } else {
+            dateHeading.innerText = "अमान्य तारीख";
+        }
+
+        // 🛑 घंटे और मिनट की जाँच पूरी तरह हटा दी गई है। 
+        // अब यह सीधे panchangData में केवल तारीख (YYYY-MM-DD) के आधार पर डेटा खोजेगा।
+        const data = panchangData[dateToFetch];
+
+        // यदि उस तारीख का डेटा उपलब्ध नहीं है
+        if (!data) {
+            sambatInfo.innerText = "उपलब्ध नहीं";
+            container.innerHTML = `<h2 style='text-align:center; color: #d9534f; grid-column: span 3; padding: 40px;'>माफ़ कीजिए, ${dateToFetch} तारीख के लिए पंचांग डेटा उपलब्ध नहीं है।</h2>`;
+            return;
+        }
+
+        // यदि डेटा उपलब्ध है तो संवत और अन्य जानकारी दिखाएं
+        sambatInfo.innerText = `${data.vikramSambat || ''} | ${data.ayan || ''} | ${data.ritu || ''}`;
+
+        // 12 कार्ड्स की सूची
+        const items = [
+            { title: "तिथि", icon: "🌙", desc: data.tithi },
+            { title: "नक्षत्र", icon: "✨", desc: data.nakshatra },
+            { title: "योग", icon: "🧘‍♂️", desc: data.yog },
+            { title: "करण", icon: "⚡", desc: data.karan },
+            { title: "सूर्य व चन्द्र गोचर", icon: "🪐", desc: `सूर्य: ${data.sunSign} | चन्द्रमा: ${data.moonSign}` },
+            { title: "सूर्योदय / सूर्यास्त", icon: "🌅", desc: `सूर्योदय: ${data.sunrise} | सूर्यास्त: ${data.sunset}` },
+            { title: "अभिजीत मुहूर्त (शुभ)", icon: "⏰", desc: data.abhijitMuhurat, isHighlight: true },
+            { title: "राहुकाल (अशुभ)", icon: "⚠️", desc: data.rahukaal, isHighlight: true },
+            { title: "दिशा शूल", icon: "🧭", desc: `आज दिशा शूल: ${data.dishaShool} दिशा में रहेगा।` },
+            { title: "आज का विशेष उपाय", icon: "🪔", desc: data.remedy },
+            { title: "नक्षत्र फल / विशेष", icon: "🌟", desc: data.nakshatraphal },
+            { title: "विशेष विवरण", icon: "💡", desc: data.special }
+        ];
+
+        items.forEach((item) => {
+            const card = document.createElement('div');
+            card.className = item.isHighlight ? 'card highlight-card' : 'card';
+            card.innerHTML = `
+                <div class="card-header">
+                    <span class="rashi-icon">${item.icon}</span>
+                    <h3>${item.title}</h3>
+                </div>
+                <ul class="analysis-list">
+                    <li>${item.desc || 'उपलब्ध नहीं'}</li>
+                </ul>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    window.addEventListener('load', function() {
+        loadPanchang(); // पेज लोड होने पर आज की तारीख का डेटा दिखाएगा
         addDownloadButton('capture-area', 'advanced-panchang.png');
     });
 </script>
-    
 </body>
 </html>
