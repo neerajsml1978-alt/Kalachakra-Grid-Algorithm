@@ -1,15 +1,14 @@
-/* 1. बैकग्राउंड सेटिंग */
+/* 1. बैकग्राउंड और हाई-शार्प फॉंट रेंडरिंग सेटिंग */
 body {
     background-color: #f4f7f6; /* ग्रे बैकग्राउंड */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 20px;
     min-height: 100vh;
-    /* यहाँ से नई लाइनें जोड़ें */
+    /* टेक्स्ट क्लैरिटी और शार्पनेस बढ़ाने के लिए */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    
+    text-rendering: geometricPrecision;
 }
 
 /* 2. ग्रिड कंटेनर - 3 कॉलम */
@@ -26,18 +25,18 @@ body {
     border: 2px solid #d4af37;
     border-radius: 20px;
     padding: 20px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
-    min-height: 220px; /* हाइट बढ़ाई गई है */
+    min-height: 220px;
 }
 
 .card:hover {
     transform: translateY(-5px);
 }
 
-/* कार्ड्स के अलग-अलग रंग */
+/* कार्ड्स के अलग-अलग रंग (फेड होने से बचाने के लिए थोड़े गहरे और रिच टोन) */
 .card:nth-child(6n+1) { background: #ffebee; } 
 .card:nth-child(6n+2) { background: #e3f2fd; } 
 .card:nth-child(6n+3) { background: #e8f5e9; } 
@@ -49,7 +48,7 @@ body {
 .card-header {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #d4af37;
+    border-bottom: 2px solid #d4af37;
     padding-bottom: 10px;
     margin-bottom: 10px;
 }
@@ -65,14 +64,14 @@ body {
     font-size: 35px;
 }
 
-/* बुलेट पॉइंट्स */
+/* बुलेट पॉइंट्स और टेक्स्ट क्लैरिटी */
 .analysis-list {
     list-style-type: disc;
     padding-left: 20px;
     margin: 0;
     font-size: 22px;
-    font-weight: 600;
-    color: #1a1a1a; 
+    font-weight: 700; /* फॉंट को और अधिक ठोस और बोल्ड किया गया है */
+    color: #111111;   /* रंग को एकदम गाढ़ा काला किया गया है ताकि फीका न लगे */
     line-height: 1.5;
 }
 
@@ -80,6 +79,7 @@ body {
     margin-bottom: 5px;
 }
 
+/* मोबाइल और छोटी स्क्रीन के लिए रेस्पॉन्सिव डिज़ाइन */
 @media (max-width: 768px) {
     .grid-container { grid-template-columns: 1fr; }
 }
