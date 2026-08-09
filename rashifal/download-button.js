@@ -1,4 +1,4 @@
-// यह फंक्शन किसी भी पेज पर डाउनलोड बटन जोड़ देगा
+// यह फंक्शन किसी भी पेज पर हाई-रेजोल्यूशन डाउनलोड बटन जोड़ देगा
 function addDownloadButton(targetContainerId, fileName) {
     // बटन बनाना
     const btn = document.createElement('button');
@@ -13,14 +13,22 @@ function addDownloadButton(targetContainerId, fileName) {
     btn.style.border = 'none';
     btn.style.borderRadius = '10px';
     btn.style.cursor = 'pointer';
+    btn.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
 
-    // बटन पर क्लिक इवेंट
+    // बटन पर क्लिक इवेंट (High Resolution Scale 4 के साथ)
     btn.addEventListener('click', function() {
         const container = document.getElementById(targetContainerId);
-        html2canvas(container, { scale: 3, backgroundColor: '#f4f7f6' }).then(canvas => {
+        
+        // पिक्सल फटने और फेड होने की समस्या को दूर करने के लिए scale: 4 और useCORS का उपयोग
+        html2canvas(container, { 
+            scale: 4, 
+            useCORS: true,
+            logging: false,
+            backgroundColor: '#f4f7f6' 
+        }).then(canvas => {
             const link = document.createElement('a');
-            link.download = fileName || 'download.png';
-            link.href = canvas.toDataURL('image/png');
+            link.download = fileName || 'mera-rashifal.png';
+            link.href = canvas.toDataURL('image/png', 1.0);
             link.click();
         });
     });
