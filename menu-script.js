@@ -40,6 +40,7 @@ function loadMenu() {
         <a href="./rashifal/kumbh.html">कुंभ राशि</a>
         <a href="./rashifal/meen.html">मीन राशि</a>
       </div>
+      <a href="jyotish_blog.html">ज्योतिष ब्लॉग पोर्टल</a>
 
       <a href="./rashifal/upay.html">आज के अचूक उपाय</a>
       <a href="./rashifal/navgrah.html">नवग्रह विवरण</a>
