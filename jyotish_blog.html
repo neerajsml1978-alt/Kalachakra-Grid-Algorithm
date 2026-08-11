@@ -185,8 +185,8 @@
         
         <!-- मुख्य मेनू लिस्ट -->
         <div id="suggestionsList" class="suggestions-list">
-            <div class="suggestion-item" onclick="selectCategory('rashifal');">⭐ राशिफल (सभी 12 राशियाँ देखें)</div>
-            <div class="suggestion-item" onclick="selectCategory('navagraha');">🪐 नवग्रह गोचर (सभी 9 ग्रह देखें)</div>
+            <div class="suggestion-item" onclick="selectCategory('rashifal');">⭐ विस्तृत राशिफल (सभी 12 राशियाँ देखें)</div>
+            <div class="suggestion-item" onclick="selectCategory('navagraha');">🪐 नवग्रह गोचर फल (सभी 9 ग्रह देखें)</div>
             <div class="suggestion-item" onclick="playDirectVideo('navgrah-mantra.mp4', 'नवग्रह मंत्र');">🎥 नवग्रह मंत्र वीडियो</div>
             <div class="suggestion-item" onclick="loadExternalFile('navgrah.html', 'नवग्रह विशेष');">🪐 नवग्रह विशेष</div> 
             <div class="suggestion-item" onclick="loadExternalFile('gurupurnima.html', 'गुरु पूर्णिमा');">🕉️गुरु पूर्णिमा विशेष</div>
@@ -219,7 +219,7 @@
         <button class="rashmi-btn" onclick="loadExternalFile('mangal_gochar.html', 'मंगल ग्रह का गोचर')">मंगल</button>
         <button class="rashmi-btn" onclick="loadExternalFile('budh_gochar.html', 'बुध ग्रह का गोचर')">बुध</button>
         <button class="rashmi-btn" onclick="loadExternalFile('guru_gochar.html', 'गुरु ग्रह का गोचर')">गुरु</button>
-        <button class="rashmi-btn" onclick="loadExternalFile('shukra_gochar.html', 'शुक्र ग्रह विवरण')">शुक्र का गोचर</button>
+        <button class="rashmi-btn" onclick="loadExternalFile('shukra_gochar.html', 'शुक्र ग्रह विवरण')">शुक्र</button>
         <button class="rashmi-btn" onclick="loadExternalFile('shani_gochar.html', 'शनि ग्रह का गोचर')">शनि</button>
         <button class="rashmi-btn" onclick="loadExternalFile('rahu_gochar.html', 'राहु ग्रह का गोचर')">राहु</button>
         <button class="rashmi-btn" onclick="loadExternalFile('ketu_gochar.html', 'केतु ग्रह का गोचर')">केतु</button>
@@ -247,10 +247,10 @@
 
             if (category === 'rashifal') {
                 rashifalBtns.style.display = 'flex';
-                searchInput.value = 'राशिफल (सभी राशियाँ चुनें)';
+                searchInput.value = विस्तृत राशिफल (सभी राशियाँ चुनें)';
             } else if (category === 'navagraha') {
                 navagrahaBtns.style.display = 'flex';
-                searchInput.value = 'नवग्रह गोचर (ग्रह चुनें)';
+                searchInput.value = 'नवग्रह गोचर फल(ग्रह चुनें)';
             }
         }
 
