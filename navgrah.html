@@ -1,10 +1,69 @@
+<style>
+    /* नवग्रह के लिए विशेष ग्रिड और कार्ड डिज़ाइन */
+    .navgrah-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .navgrah-card {
+        border: 2px solid #d4af37;
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+    }
+
+    .navgrah-card:nth-child(6n+1) { background: #ffebee; } 
+    .navgrah-card:nth-child(6n+2) { background: #e3f2fd; } 
+    .navgrah-card:nth-child(6n+3) { background: #e8f5e9; } 
+    .navgrah-card:nth-child(6n+4) { background: #fff3e0; } 
+    .navgrah-card:nth-child(6n+5) { background: #f3e5f5; } 
+    .navgrah-card:nth-child(6n+6) { background: #fffde7; }
+
+    .navgrah-header {
+        border-bottom: 1px solid #d4af37;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
+
+    .navgrah-header h3 {
+        margin: 0;
+        color: #8b0000;
+        font-size: 28px;
+    }
+
+    .navgrah-list {
+        list-style-type: disc;
+        padding-left: 20px;
+        margin: 0;
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        line-height: 1.5;
+    }
+
+    .navgrah-list li {
+        margin-bottom: 5px;
+    }
+
+    @media (max-width: 600px) {
+        .navgrah-grid { grid-template-columns: 1fr; }
+    }
+</style>
+
 <h1 style="text-align: center; color: #8b0000;">नवग्रह: विवरण एवं बीज मंत्र</h1>
 
-<div class="grid-container">
+<div class="navgrah-grid">
     <!-- सूर्य -->
-    <div class="card">
-        <div class="card-header"><h3>सूर्य</h3></div>
-        <ul class="analysis-list">
+    <div class="navgrah-card">
+        <div class="navgrah-header"><h3>सूर्य</h3></div>
+        <ul class="navgrah-list">
             <li>वार: रविवार</li>
             <li>कारक: आत्मा, पिता, यश</li>
             <li>रत्न: माणिक्य</li>
@@ -14,9 +73,9 @@
     </div>
 
     <!-- चंद्र -->
-    <div class="card">
-        <div class="card-header"><h3>चंद्र</h3></div>
-        <ul class="analysis-list">
+    <div class="navgrah-card">
+        <div class="navgrah-header"><h3>चंद्र</h3></div>
+        <ul class="navgrah-list">
             <li>वार: सोमवार</li>
             <li>कारक: मन, माता, शांति</li>
             <li>रत्न: मोती</li>
@@ -26,9 +85,9 @@
     </div>
 
     <!-- मंगल -->
-    <div class="card">
-        <div class="card-header"><h3>मंगल</h3></div>
-        <ul class="analysis-list">
+    <div class="navgrah-card">
+        <div class="navgrah-header"><h3>मंगल</h3></div>
+        <ul class="navgrah-list">
             <li>वार: मंगलवार</li>
             <li>कारक: ऊर्जा, साहस, भूमि</li>
             <li>रत्न: मूंगा</li>
@@ -38,9 +97,9 @@
     </div>
 
     <!-- बुध -->
-    <div class="card">
-        <div class="card-header"><h3>बुध</h3></div>
-        <ul class="analysis-list">
+    <div class="navgrah-card">
+        <div class="navgrah-header"><h3>बुध</h3></div>
+        <ul class="navgrah-list">
             <li>वार: बुधवार</li>
             <li>कारक: बुद्धि, व्यापार, वाणी</li>
             <li>रत्न: पन्ना</li>
@@ -50,9 +109,9 @@
     </div>
 
     <!-- गुरु -->
-    <div class="card">
-        <div class="card-header"><h3>गुरु</h3></div>
-        <ul class="analysis-list">
+    <div class="navgrah-card">
+        <div class="navgrah-header"><h3>गुरु</h3></div>
+        <ul class="navgrah-list">
             <li>वार: गुरुवार</li>
             <li>कारक: ज्ञान, धन, गुरु</li>
             <li>रत्न: पुखराज</li>
@@ -62,9 +121,9 @@
     </div>
 
     <!-- शुक्र -->
-    <div class="card">
-        <div class="card-header"><h3>शुक्र</h3></div>
-        <ul class="analysis-list">
+    <div class="navgrah-card">
+        <div class="navgrah-header"><h3>शुक्र</h3></div>
+        <ul class="navgrah-list">
             <li>वार: शुक्रवार</li>
             <li>कारक: सुख, कला, प्रेम</li>
             <li>रत्न: हीरा</li>
@@ -74,9 +133,9 @@
     </div>
 
     <!-- शनि -->
-    <div class="card">
-        <div class="card-header"><h3>शनि</h3></div>
-        <ul class="analysis-list">
+    <div class="navgrah-card">
+        <div class="navgrah-header"><h3>शनि</h3></div>
+        <ul class="navgrah-list">
             <li>वार: शनिवार</li>
             <li>कारक: न्याय, कर्म, अनुशासन</li>
             <li>रत्न: नीलम</li>
@@ -86,9 +145,9 @@
     </div>
 
     <!-- राहु -->
-    <div class="card">
-        <div class="card-header"><h3>राहु</h3></div>
-        <ul class="analysis-list">
+    <div class="navgrah-card">
+        <div class="navgrah-header"><h3>राहु</h3></div>
+        <ul class="navgrah-list">
             <li>वार: शनिवार</li>
             <li>कारक: अचानक घटना, भ्रम</li>
             <li>रत्न: गोमेद</li>
@@ -98,9 +157,9 @@
     </div>
 
     <!-- केतु -->
-    <div class="card">
-        <div class="card-header"><h3>केतु</h3></div>
-        <ul class="analysis-list">
+    <div class="navgrah-card">
+        <div class="navgrah-header"><h3>केतु</h3></div>
+        <ul class="navgrah-list">
             <li>वार: मंगलवार</li>
             <li>कारक: मोक्ष, आध्यात्म</li>
             <li>रत्न: लहसुनिया</li>
@@ -110,9 +169,9 @@
     </div>
 
     <!-- विशेष जानकारी कार्ड -->
-    <div class="card extra-box">
-        <div class="card-header"><h3>विशेष जानकारी</h3></div>
-        <ul class="analysis-list">
+    <div class="navgrah-card">
+        <div class="navgrah-header"><h3>विशेष जानकारी</h3></div>
+        <ul class="navgrah-list">
             <li><strong>नवग्रह शांति</strong> के लिए नियमित साधना करें।</li>
             <li>रत्न धारण करने से पहले कुंडली अवश्य दिखाएं।</li>
             <li>ॐ नमः शिवाय का जप सभी ग्रहों के लिए शुभ है।</li>
