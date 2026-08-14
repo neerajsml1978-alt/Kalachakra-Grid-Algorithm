@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>आज का राशिफल</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- html2canvas लाइब्रेरी -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="rashidata.js"></script>
+    <!-- डाउनलोड बटन वाली फाइल -->
+    <script src="download-button.js"></script>
+</head>
+<body>
+<!-- इसे एक मुख्य कंटेनर के अंदर रखें -->
+<div id="capture-area">
+    <h1 style="text-align: center; color: #8b0000; margin: 20px 0;">चंद्र ग्रह का गोचर - 12 राशियों का फल <span id="current-date"style="display: none;"></span></h1>
+    <div id="rashifal-container" class="grid-container"></div>
+</div>
+     <script src="script.js"></script>
+     <script>
+        // बटन को जोड़ने का कमांड
+        window.addEventListener('load', function() {
+            addDownloadButton('capture-area', 'mera-rashifal.png');
+        });
+     </script>
+</body>
+</html>
