@@ -132,7 +132,7 @@
             font-size: 15px;
             color: #333;
             line-height: 1.7;
-            min-height: 350px;
+            min-height: 800px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
             box-sizing: border-box;
         }
@@ -172,7 +172,14 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(179, 0, 0, 0.4);
         }
-    </style>
+   /* आईफ्रेम की ऊंचाई को बढ़ाकर या 100% कर दें ताकि पूरा पंचांग दिखे */
+iframe { 
+    width: 100%; 
+    height: 1200px; /* पंचांग या लंबे पेज के लिए इसे बढ़ा दें ताकि स्क्रॉल की जरूरत न पड़े */
+    border: none; 
+    display: none; 
+}
+</style>
 </head>
 <body>
 
