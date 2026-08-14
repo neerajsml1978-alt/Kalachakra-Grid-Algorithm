@@ -218,7 +218,7 @@
 <!-- 2: नवग्रह गोचर वाले 9 बटन -->
     <div id="navagrahaButtons" class="button-container">
         <button class="rashmi-btn" onclick="loadExternalFile('surya_gochar.html', 'सूर्य ग्रह का गोचर')">सूर्य</button>
-        <button class="rashmi-btn" onclick="loadExternalFile('chandra_gochar.html', 'चंद्र ग्रह का गोचर')">चंद्रमा</button>
+        <button class="rashmi-btn" onclick="loadExternalFile('./rashifal/chandra_gochar.html', 'चंद्र ग्रह का गोचर')">चंद्रमा</button>
         <button class="rashmi-btn" onclick="loadExternalFile('mangal_gochar.html', 'मंगल ग्रह का गोचर')">मंगल</button>
         <button class="rashmi-btn" onclick="loadExternalFile('budh_gochar.html', 'बुध ग्रह का गोचर')">बुध</button>
         <button class="rashmi-btn" onclick="loadExternalFile('guru_gochar.html', 'गुरु ग्रह का गोचर')">गुरु</button>
@@ -290,7 +290,7 @@
             document.getElementById('suggestionsList').style.display = 'none';
 
             // 1. यहाँ उन फाइलों के नाम जोड़ें जिन्हें आप Fetch के बजाय सीधे (Iframe के जरिए) लोड करना चाहते हैं
-            const directLoadFiles = ['./rashifal/panchang.html', './rashifal/rashifal.html']; // आवश्यकतानुसार अन्य फाइलें भी कॉमा लगाकर जोड़ सकते हैं
+            const directLoadFiles = ['./rashifal/panchang.html', './rashifal/rashifal.html','./rashifal/chandra_gochar.html']; // आवश्यकतानुसार अन्य फाइलें भी कॉमा लगाकर जोड़ सकते हैं
 
             if (directLoadFiles.includes(fileName)) {
                 // इन विशेष फाइलों के लिए डायरेक्ट Iframe लोड होगा
