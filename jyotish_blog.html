@@ -357,16 +357,27 @@ iframe {
                 });
         }
 
-                       // कंटेनर को इमेज के रूप में कैप्चर करके डाउनलोड करने का फंक्शन
-                function captureAndDownloadContainer() {
+                               // कैप्चर और डाउनलोड करने का सुरक्षित फंक्शन (जो दोनों ऑप्शन के साथ भी परफेक्ट काम करेगा)
+        function captureAndDownloadContainer() {
             const container = document.getElementById('script-container');
             
-            // थोड़ा सा डिले देकर कैप्चर करना ताकि अन्य स्क्रिप्ट्स या रेंडरिंग बाधा न बनें
+            // सुरक्षा जांच: अगर गलती से भी कंटेनर के अंदर कोई iframe मौजूद है, तो कैप्चर रोक दें और बाहर निकल जाएं
+            if (container.querySelector('iframe')) {
+                alert("यह कंटेंट फ्रेम (Iframe) में है, इसलिए इसे इमेज के रूप में डाउनलोड नहीं किया जा सकता।");
+                return;
+            }
+
+            // हल्का सा डिले देकर html2canvas चलाना ताकि DOM पूरी तरह स्थिर रहे
             setTimeout(() => {
                 html2canvas(container, { 
                     scale: 2, 
                     useCORS: true, 
-                    allowTaint: true 
+                    allowTaint: true,
+                    // केवल मुख्य कंटेनर को टारगेट करने के लिए अतिरिक्त सेटिंग्स
+                    ignoreElements: function(element) {
+                        // अगर कोई अनचाहा छिपा हुआ बटन या फ्रेम हो तो उसे इग्नोर कर देगा
+                        return element.tagName === 'IFRAME';
+                    }
                 }).then(canvas => {
                     const link = document.createElement('a');
                     link.download = 'portal-content.png';
@@ -374,13 +385,12 @@ iframe {
                     link.click();
                 }).catch(err => {
                     console.error("Download error: ", err);
-                    alert("इमेज कैप्चर करने में कोई अन्य स्क्रिप्ट या एक्सटर्नल एलिमेंट बाधा बन रहा है।");
+                    alert("इमेज कैप्चर करने में तकनीकी बाधा आ रही है।");
                 });
-            }, 200); // 200 मिलीसेकंड का समय
+            }, 200);
         }
-
-
-        function showAllSuggestions() {
+        
+function showAllSuggestions() {
             let list = document.getElementById('suggestionsList');
             let items = list.getElementsByClassName('suggestion-item');
             for (let i = 0; i < items.length; i++) {
