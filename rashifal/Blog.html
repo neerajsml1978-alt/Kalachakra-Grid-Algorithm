@@ -327,43 +327,49 @@
     </script>
     <script src="panchangdata.js"></script>
 <script>
-         function redirectToPanchang(selectedDate) {
-            const container = document.getElementById('script-container');
+                 function redirectToPanchang(selectedDate) {
             const searchInput = document.getElementById('searchInput');
-            
             searchInput.value = "पंचांग: " + selectedDate;
 
-            // जांच करें कि panchangData में उस तारीख का डेटा मौजूद है या नहीं
-            if (panchangData[selectedDate]) {
+            // सबसे पहले बाकी सभी कंटेनर छिपाएं और सिर्फ स्क्रिप्ट/फेच वाला कंटेनर दिखाएं
+            hideAllContainers();
+            document.getElementById('script-container').style.display = 'block';
+
+            const container = document.getElementById('dynamic-content');
+
+            // जांच करें कि panchangdata.js लोड हुआ है या नहीं और डेटा मौजूद है या नहीं
+            if (typeof panchangData !== 'undefined' && panchangData[selectedDate]) {
                 let p = panchangData[selectedDate];
 
                 // सभी उपलब्ध डेटा को एचटीएमएल फॉर्मेट में कंटेनर में दिखाना
                 container.innerHTML = `
-                    <h3 style="color: #b30000; text-align: center; margin-bottom: 15px;">📅 ${p.date} (${p.day}) का विस्तृत पंचांग</h3>
+                    <h3 style="color: #b30000; text-align: center; margin-bottom: 15px;">📅 ${p.date || selectedDate} (${p.day || ''}) का विस्तृत पंचांग</h3>
                     <hr style="border: 0; border-top: 1px solid #ddd; margin-bottom: 15px;">
                     
-                    <p><strong>संवत:</strong> ${p.vikramSambat || ''} ${p.shakSambat ? '| ' + p.shakSambat : ''}</p>
-                    <p><strong>अयन व ऋतु:</strong> ${p.ayan || ''}, ${p.ritu || ''}</p>
-                    <p><strong>मास (अमांत / पूर्णिमांत):</strong> अमांत मास: ${p.amasMonth || 'N/A'} | पूर्णिमांत मास: ${p.purnimantMonth || 'N/A'}</p>
-                    <p><strong>तिथी:</strong> ${p.tithi}</p>
-                    <p><strong>नक्षत्र:</strong> ${p.nakshatra}</p>
-                    <p><strong>योग व करण:</strong> योग: ${p.yog} | करण: ${p.karan}</p>
-                    <p><strong>सूर्य/चन्द्र गोचर:</strong> ${p.sunMoonTransit}</p>
-                    <p><strong>सूर्योदय / सूर्यास्त:</strong> ${p.sunriseSunset}</p>
-                    <p><strong>अभिजीत मुहूर्त:</strong> ${p.abhijitMuhurat}</p>
-                    <p><strong>राहुकाल:</strong> ${p.rahukaal}</p>
-                    <p><strong>दिशा शूल:</strong> ${p.dishaShool}</p>
-                    <p><strong>नक्षत्र फल:</strong> ${p.nakshatraphal}</p>
-                    <p><strong>विशेष उपाय:</strong> <span style="color: #2575fc; font-weight: bold;">${p.remedy}</span></p>
-                    <p><strong>विशेष विवरण:</strong> <span style="color: #b30000; font-weight: bold;">${p.special}</span></p>
+                    <p><strong>संवत:</strong> ${p.vikramSambat || 'उपलब्ध नहीं'} ${p.shakSambat ? '| ' + p.shakSambat : ''}</p>
+                    <p><strong>अयन व ऋतु:</strong> ${p.ayan || 'उपलब्ध नहीं'}, ${p.ritu || ''}</p>
+                    <p><strong>मास:</strong> अमांत: ${p.amasMonth || 'N/A'} | पूर्णिमांत: ${p.purnimantMonth || 'N/A'}</p>
+                    <p><strong>तिथी:</strong> ${p.tithi || 'उपलब्ध नहीं'}</p>
+                    <p><strong>नक्षत्र:</strong> ${p.nakshatra || 'उपलब्ध नहीं'}</p>
+                    <p><strong>योग व करण:</strong> योग: ${p.yog || 'N/A'} | करण: ${p.karan || 'N/A'}</p>
+                    <p><strong>सूर्य/चन्द्र गोचर:</strong> ${p.sunMoonTransit || 'उपलब्ध नहीं'}</p>
+                    <p><strong>सूर्योदय / सूर्यास्त:</strong> ${p.sunriseSunset || 'उपलब्ध नहीं'}</p>
+                    <p><strong>अभिजीत मुहूर्त:</strong> ${p.abhijitMuhurat || 'उपलब्ध नहीं'}</p>
+                    <p><strong>राहुकाल:</strong> ${p.rahukaal || 'उपलब्ध नहीं'}</p>
+                    <p><strong>दिशा शूल:</strong> ${p.dishaShool || 'उपलब्ध नहीं'}</p>
+                    <p><strong>नक्षत्र फल:</strong> ${p.nakshatraphal || 'उपलब्ध नहीं'}</p>
+                    <p><strong>विशेष उपाय:</strong> <span style="color: #2575fc; font-weight: bold;">${p.remedy || 'उपलब्ध नहीं'}</span></p>
+                    <p><strong>विशेष विवरण:</strong> <span style="color: #b30000; font-weight: bold;">${p.special || 'उपलब्ध नहीं'}</span></p>
                 `;
                 
+                // डेटा मिलने पर डाउनलोड बटन दिखाएं
                 document.getElementById('downloadArea').style.display = 'block';
             } else {
-                container.innerHTML = `<p style="color: #e74c3c; text-align: center; font-weight: bold; margin-top: 100px;">क्षमा करें, ${selectedDate} का पंचांग डेटा उपलब्ध नहीं है।</p>`;
+                container.innerHTML = `<p style="color: #e74c3c; text-align: center; font-weight: bold; margin: 50px 0;">क्षमा करें, ${selectedDate} का पंचांग डेटा उपलब्ध नहीं है या panchangdata.js लोड नहीं हुई है।</p>`;
                 document.getElementById('downloadArea').style.display = 'none';
             }
-         }
+    }
+    
 </script>
 </body>
 </html>
