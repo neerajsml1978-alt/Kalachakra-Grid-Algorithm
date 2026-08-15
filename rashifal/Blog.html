@@ -72,7 +72,9 @@
     </style>
 </head>
 <body>
-
+    <!-- इसे अपने बॉडी में कहीं भी (छुपाकर) रख सकते हैं -->
+<input type="date" id="portalDatePicker" style="display: none;" onchange="redirectToPanchang(this.value)">
+    
     <!-- हेडिंग -->
     <h1>✨ ब्लॉग और राशिफल पोर्टल ✨</h1>
 
@@ -82,6 +84,7 @@
         
         <!-- मुख्य मेनू लिस्ट -->
         <div id="suggestionsList" class="suggestions-list">
+            <div class="suggestion-item" onclick="document.getElementById('portalDatePicker').showPicker(); document.getElementById('suggestionsList').style.display = 'none';">📅 तिथि के अनुसार पंचांग देखें</div>
             <div class="suggestion-item" onclick="selectCategory('rashifal');">⭐ विस्तृत राशिफल (सभी 12 राशियाँ देखें)</div>
             <div class="suggestion-item" onclick="selectCategory('navagraha');">🪐 नवग्रह गोचर फल (सभी 9 ग्रह देखें)</div>
             <div class="suggestion-item" onclick="playDirectVideo('navgrah-mantra.mp4', 'नवग्रह मंत्र');">🎥 नवग्रह मंत्र वीडियो</div>
