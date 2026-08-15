@@ -65,7 +65,7 @@
             border-radius: 10px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
             z-index: 10;
-            max-height: 220px;
+            max-height: 75vh;
             overflow-y: auto;
             text-align: left;
             display: none;
@@ -388,36 +388,43 @@
         });
     </script>
    <script src="panchangdata.js"></script>
-    <script>
-        <!--Tab to edit-->
-        function redirectToPanchang(selectedDate) {
-    const container = document.getElementById('script-container');
-    const searchInput = document.getElementById('searchInput');
-    
-    searchInput.value = "पंचांग: " + selectedDate;
+<script>
+         function redirectToPanchang(selectedDate) {
+            const container = document.getElementById('script-container');
+            const searchInput = document.getElementById('searchInput');
+            
+            searchInput.value = "पंचांग: " + selectedDate;
 
-    // जांच करें कि panchangData में उस तारीख का डेटा मौजूद है या नहीं
-    if (panchangData[selectedDate]) {
-        let todaysPanchang = panchangData[selectedDate];
+            // जांच करें कि panchangData में उस तारीख का डेटा मौजूद है या नहीं
+            if (panchangData[selectedDate]) {
+                let p = panchangData[selectedDate];
 
-        // एचटीएमएल फॉर्मेट में डेटा को कंटेनर में दिखाना
-        container.innerHTML = `
-            <h3 style="color: #b30000;">📅 ${todaysPanchang.date} (${todaysPanchang.day}) का पंचांग</h3>
-            <p><strong>तिथी:</strong> ${todaysPanchang.tithi}</p>
-            <p><strong>नक्षत्र:</strong> ${todaysPanchang.nakshatra}</p>
-            <p><strong>सूर्योदय / सूर्यास्त:</strong> ${todaysPanchang.sunrise} / ${todaysPanchang.sunset}</p>
-            <p><strong>राहुकाल:</strong> ${todaysPanchang.rahukaal}</p>
-            <p><strong>विशेष उपाय:</strong> ${todaysPanchang.remedy}</p>
-        `;
-        
-        document.getElementById('downloadArea').style.display = 'block';
-    } else {
-        container.innerHTML = `<p style="color: #e74c3c; text-align: center; font-weight: bold; margin-top: 100px;">क्षमा करें, ${selectedDate} का पंचांग डेटा उपलब्ध नहीं है।</p>`;
-        document.getElementById('downloadArea').style.display = 'none';
-    }
-}
-
-    </script>
-
+                // सभी उपलब्ध डेटा को एचटीएमएल फॉर्मेट में कंटेनर में दिखाना
+                container.innerHTML = `
+                    <h3 style="color: #b30000; text-align: center; margin-bottom: 15px;">📅 ${p.date} (${p.day}) का विस्तृत पंचांग</h3>
+                    <hr style="border: 0; border-top: 1px solid #ddd; margin-bottom: 15px;">
+                    
+                    <p><strong>संवत व मास:</strong> ${p.vikramSambat || ''} ${p.shakSambat ? '| ' + p.shakSambat : ''}</p>
+                    <p><strong>अयन व ऋतु:</strong> ${p.ayan || ''}, ${p.ritu || ''} (अमास मास: ${p.amasMonth || 'N/A'}, पूर्णिमांत मास: ${p.purnimantMonth || 'N/A'})</p>
+                    <p><strong>तिथी:</strong> ${p.tithi}</p>
+                    <p><strong>नक्षत्र:</strong> ${p.nakshatra}</p>
+                    <p><strong>योग व करण:</strong> योग: ${p.yog} | करण: ${p.karan}</p>
+                    <p><strong>सूर्य/चन्द्र गोचर:</strong> ${p.sunMoonTransit}</p>
+                    <p><strong>सूर्योदय / सूर्यास्त:</strong> ${p.sunriseSunset}</p>
+                    <p><strong>अभिजीत मुहूर्त:</strong> ${p.abhijitMuhurat}</p>
+                    <p><strong>राहुकाल:</strong> ${p.rahukaal}</p>
+                    <p><strong>दिशा शूल:</strong> ${p.dishaShool}</p>
+                    <p><strong>नक्षत्र फल:</strong> ${p.nakshatraphal}</p>
+                    <p><strong>विशेष उपाय:</strong> <span style="color: #2575fc; font-weight: bold;">${p.remedy}</span></p>
+                    <p><strong>विशेष विवरण:</strong> <span style="color: #b30000; font-weight: bold;">${p.special}</span></p>
+                `;
+                
+                document.getElementById('downloadArea').style.display = 'block';
+            } else {
+                container.innerHTML = `<p style="color: #e74c3c; text-align: center; font-weight: bold; margin-top: 100px;">क्षमा करें, ${selectedDate} का पंचांग डेटा उपलब्ध नहीं है।</p>`;
+                document.getElementById('downloadArea').style.display = 'none';
+            }
+         }
+</script>
 </body>
 </html>
