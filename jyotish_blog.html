@@ -358,18 +358,27 @@ iframe {
         }
 
                        // कंटेनर को इमेज के रूप में कैप्चर करके डाउनलोड करने का फंक्शन
-        function captureAndDownloadContainer() {
+                function captureAndDownloadContainer() {
             const container = document.getElementById('script-container');
             
-            // html2canvas का उपयोग करके कंटेनर को इमेज में बदलना
-            html2canvas(container, { scale: 2, useCORS: true }).then(canvas => {
-                const link = document.createElement('a');
-                link.download = 'portal-content.png';
-                link.href = canvas.toDataURL('image/png');
-                link.click();
-            });
+            // थोड़ा सा डिले देकर कैप्चर करना ताकि अन्य स्क्रिप्ट्स या रेंडरिंग बाधा न बनें
+            setTimeout(() => {
+                html2canvas(container, { 
+                    scale: 2, 
+                    useCORS: true, 
+                    allowTaint: true 
+                }).then(canvas => {
+                    const link = document.createElement('a');
+                    link.download = 'portal-content.png';
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                }).catch(err => {
+                    console.error("Download error: ", err);
+                    alert("इमेज कैप्चर करने में कोई अन्य स्क्रिप्ट या एक्सटर्नल एलिमेंट बाधा बन रहा है।");
+                });
+            }, 200); // 200 मिलीसेकंड का समय
         }
-        
+
 
         function showAllSuggestions() {
             let list = document.getElementById('suggestionsList');
