@@ -357,24 +357,16 @@ iframe {
                 });
         }
 
-                // सुधारे हुए कंटेनर को इमेज के रूप में कैप्चर करने का फंक्शन
+                       // कंटेनर को इमेज के रूप में कैप्चर करके डाउनलोड करने का फंक्शन
         function captureAndDownloadContainer() {
             const container = document.getElementById('script-container');
             
-            // सुरक्षा और एरर हैंडलिंग के साथ html2canvas का उपयोग
-            html2canvas(container, { 
-                scale: 2, 
-                useCORS: true, 
-                allowTaint: false,
-                logging: true // कंसोल में डीबगिंग देखने के लिए
-            }).then(canvas => {
+            // html2canvas का उपयोग करके कंटेनर को इमेज में बदलना
+            html2canvas(container, { scale: 2, useCORS: true }).then(canvas => {
                 const link = document.createElement('a');
                 link.download = 'portal-content.png';
                 link.href = canvas.toDataURL('image/png');
                 link.click();
-            }).catch(error => {
-                console.error("इमेज कैप्चर करने में त्रुटि:", error);
-                alert("इमेज डाउनलोड करने में समस्या आ रही है। संभव है कि इसमें लोड की गई बाहरी फाइल में कोई बाहरी इमेज/फॉन्ट हो जो सुरक्षा कारणों (CORS) से ब्लॉक हो रहा हो।");
             });
         }
         
