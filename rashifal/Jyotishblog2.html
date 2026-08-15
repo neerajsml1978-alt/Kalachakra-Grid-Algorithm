@@ -13,7 +13,7 @@
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             background-attachment: fixed;
             margin: 0;
-            padding: 15px 10px;
+            padding: 10px 10px;
             text-align: center;
             color: #2c3e50;
         }
@@ -32,9 +32,15 @@
         .rashmi-btn:hover { background: #ff7e5f; color: #fff; }
 
         #script-container { 
-            max-width: 900px; width: 95%; margin: 0 auto; background: #fff; 
-            padding: 0; border-radius: 12px; min-height: 500px; 
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); overflow: hidden; text-align: left;
+    max-width: 900px; 
+    width: 92%; /* मोबाइल पर थोड़ा मार्जिन छोड़ने के लिए */
+    margin: 0 auto; 
+    background: #fff; 
+    padding: 15px; /* अंदर की तरफ स्पेस बढ़ाने के लिए पैडिंग दें */
+    border-radius: 12px; 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); 
+    text-align: left;
+    box-sizing: border-box; /* चौड़ाई सही रखने के लिए */
         }
         iframe { width: 100%; height: 600px; border: none; display: none; }
   
@@ -256,17 +262,26 @@
             document.getElementById('downloadArea').style.display = 'none';
         }
 
-        // html2canvas के जरिए इमेज डाउनलोड करने का फंक्शन
         function captureAndDownloadContainer() {
-            const container = document.getElementById('script-container');
-            html2canvas(container).then(canvas => {
-                const link = document.createElement('a');
-                link.download = 'jyotish-content.png';
-                link.href = canvas.toDataURL('image/png');
-                link.click();
-            });
+    const container = document.getElementById('script-container');
+    
+    html2canvas(container, { scale: 2, useCORS: true }).then(canvas => {
+        const imageURL = canvas.toDataURL('image/png');
+        
+        // मोबाइल और डेस्कटॉप दोनों के लिए काम करने वाला तरीका
+        const link = document.createElement('a');
+        link.href = imageURL;
+        link.download = 'jyotish-content.png';
+        
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }).catch(error => {
+        console.error('इमेज कैप्चर करने में त्रुटि:', error);
+        alert('इमेज डाउनलोड करने में विफल रही।');
+    });
         }
-
+        
         function showAllSuggestions() {
             let list = document.getElementById('suggestionsList');
             let items = list.getElementsByClassName('suggestion-item');
