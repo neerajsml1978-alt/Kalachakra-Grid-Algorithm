@@ -42,9 +42,16 @@
             text-align: left;
         }
 
-        iframe { width: 100%; height: 600px; border: none; display: block; border-radius: 12px; }
-  
-        .download-container {
+/* पुराना कोड हटाकर यह नया कोड डालें */
+iframe { 
+    width: 100%; 
+    min-height: 80vh; /* यह स्क्रीन की ऊंचाई के हिसाब से ले लेगा */
+    height: auto; 
+    border: none; 
+    display: block; 
+    border-radius: 12px; 
+}
+           .download-container {
             max-width: 900px;
             width: 95%;
             margin: 15px auto;
@@ -187,32 +194,48 @@
             }
         }
 
-        // 1. Iframe के जरिए फाइल लोड करने का फंक्शन
-        function loadExternalFile(fileName, postName) {
-            const searchInput = document.getElementById('searchInput');
-            searchInput.value = postName; 
-            document.getElementById('suggestionsList').style.display = 'none';
+        // 1. Iframe के जरिए फाइल लोड करने का फंक्शन (हाइट ऑटो-एडजस्टमेंट के साथ)
+function loadExternalFile(fileName, postName) {
+    const searchInput = document.getElementById('searchInput');
+    searchInput.value = postName; 
+    document.getElementById('suggestionsList').style.display = 'none';
 
-            const rashifalFiles = ['mesh.html', 'vrash.html', 'mithun.html', 'kark.html', 'singh.html', 'kanya.html', 'tula.html', 'vrischika.html', 'dhanu.html', 'makar.html', 'kumbh.html', 'meen.html'];
-            const navagrahaFiles = ['surya_gochar.html', 'chandra_gochar.html', '../mangal_gochar.html', '../budh_gochar.html', 'guru_gochar.html', '../shukra_gochar.html', 'shani_gochar.html', 'rahu_gochar.html', 'ketu_gochar.html'];
+    const rashifalFiles = ['mesh.html', 'vrash.html', 'mithun.html', 'kark.html', 'singh.html', 'kanya.html', 'tula.html', 'vrischika.html', 'dhanu.html', 'makar.html', 'kumbh.html', 'meen.html'];
+    
+    // ग्रहों के नाम बिल्कुल सही मैच करने के लिए लिस्ट
+    const navagrahaFiles = ['surya_gochar.html', 'chandra_gochar.html', '../mangal_gochar.html', '../budh_gochar.html', 'guru_gochar.html', '../shukra_gochar.html', 'shani_gochar.html', 'rahu_gochar.html', 'ketu_gochar.html'];
 
-            if (rashifalFiles.includes(fileName)) {
-                document.getElementById('rashifalButtons').style.display = 'flex';
-                document.getElementById('navagrahaButtons').style.display = 'none';
-            } else if (navagrahaFiles.includes(fileName)) {
-                document.getElementById('navagrahaButtons').style.display = 'flex';
-                document.getElementById('rashifalButtons').style.display = 'none';
-            } else {
-                document.getElementById('rashifalButtons').style.display = 'none';
-                document.getElementById('navagrahaButtons').style.display = 'none';
-            }
+    if (rashifalFiles.includes(fileName)) {
+        document.getElementById('rashifalButtons').style.display = 'flex';
+        document.getElementById('navagrahaButtons').style.display = 'none';
+    } else if (navagrahaFiles.includes(fileName)) {
+        document.getElementById('navagrahaButtons').style.display = 'flex';
+        document.getElementById('rashifalButtons').style.display = 'none';
+    } else {
+        document.getElementById('rashifalButtons').style.display = 'none';
+        document.getElementById('navagrahaButtons').style.display = 'none';
+    }
 
-            hideAllContainers();
-            document.getElementById('iframe-container').style.display = 'block';
-            document.getElementById('content-frame').src = fileName;
-            
-            document.getElementById('downloadArea').style.display = 'none';
+    hideAllContainers();
+    
+    const iframeContainer = document.getElementById('iframe-container');
+    const iframe = document.getElementById('content-frame');
+    
+    iframeContainer.style.display = 'block';
+    iframe.src = fileName;
+    
+    // यह कोड सुनिश्चित करेगा कि iframe लोड होने के बाद अपने अंदर के कंटेंट के हिसाब से पूरा नीचे तक खुले
+    iframe.onload = function() {
+        try {
+            let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+            iframe.style.height = iframeDoc.documentElement.scrollHeight + 'px';
+        } catch (e) {
+            iframe.style.height = '800px'; // सुरक्षा के लिए यदि क्रॉस-डोमेन या ब्राउज़र रिस्ट्रिक्शन हो
         }
+    };
+    
+    document.getElementById('downloadArea').style.display = 'none';
+}
 
         // 2. Fetch API के जरिए फाइल लोड करने का फंक्शन (इमेज डाउनलोड के साथ)
         function loadExternalFileViaFetch(fileName, postName) {
