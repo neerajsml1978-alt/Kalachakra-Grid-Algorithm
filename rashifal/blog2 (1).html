@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ब्लॉग और राशिफल - यूनिवर्सल सर्च पोर्टल</title>
+    <!-- html2canvas लाइब्रेरी -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background-attachment: fixed;
+            margin: 0;
+            padding: 10px 5px;
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        h1 { color: #b30000; font-size: 22px; margin: 5px 0 15px 0; }
+
+        .search-box-container { position: relative; width: 95%; max-width: 600px; margin: 0 auto 15px auto; }
+        .search-input { width: 100%; padding: 10px 15px; font-size: 15px; border: 2px solid #6a11cb; border-radius: 25px; outline: none; box-sizing: border-box; }
+
+        .suggestions-list { position: absolute; top: 110%; left: 0; right: 0; background: #fff; border-radius: 10px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); z-index: 10; max-height: 75vh; overflow-y: auto; text-align: left; display: none; }
+        .suggestion-item { padding: 10px 15px; font-size: 14px; cursor: pointer; border-bottom: 1px solid #f1f1f1; }
+        .suggestion-item:hover { background: #6a11cb; color: #fff; }
+
+        .button-container { display: none; flex-wrap: wrap; justify-content: center; gap: 5px; max-width: 850px; margin: 10px auto 20px auto; }
+        .rashmi-btn { background: #fff; border: 1px solid #cbd5e1; padding: 5px 12px; font-size: 13px; border-radius: 15px; cursor: pointer; }
+        .rashmi-btn:hover { background: #ff7e5f; color: #fff; }
+
+        /* अलग-अलग कंटेनर स्टाइल ताकि लेआउट न कटे */
+        .content-wrapper {
+            max-width: 900px; 
+            width: 92%; 
+            margin: 20px auto 0 auto; 
+            background: #fff; 
+            border-radius: 12px; 
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); 
+            box-sizing: border-box;
+            text-align: left;
+        }
+
+        /* iframe का आपका मूल कोड सुरक्षित */
+        iframe { 
+            width: 100%; 
+            min-height: 80vh; 
+            height: auto; 
+            border: none; 
+            display: block; 
+            border-radius: 12px; 
+        }
+
+        .download-container {
+            max-width: 900px;
+            width: 95%;
+            margin: 15px auto;
+            text-align: center;
+            display: none; 
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #b30000, #ff4d4d);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(179, 0, 0, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(135deg, #8b0000, #b30000);
+            transform: translateY(-2px);
+        }
+
+        /* फेच होकर आने वाली सभी फाइलों के कंटेनर को मुख्य पोर्टल पर पूरी चौड़ाई में फैलाने के लिए */
+        #script-container .container, 
+        #script-container > div {
+            max-width: 100% !important;
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 15px !important;
+            box-sizing: border-box !important;
+            box-shadow: none !important;
+            background: transparent !important;
+        }
+
+        /* केवल Fetch और Panchang के लिए फुटर डिज़ाइन */
+
+         .image-footer {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .image-footer h3 {
+            margin: 0 0 8px 0;
+            color: #b45309;
+            font-size: 14pt;
+        }
+        .image-footer p {
+            margin: 0;
+            text-align: center;
+            color: #78350f;}
+            
+        .phone-box {
+         white-space: nowrap;
+         display: inline-block;}
+        
+    </style>
+</head>
+<body>
+    <!-- इसे अपने बॉडी में कहीं भी (छुपाकर) रख सकते हैं -->
+    <input type="date" id="portalDatePicker" style="display: none;" onchange="redirectToPanchang(this.value)">
+    
+    <!-- हेडिंग -->
+    <h1>✨ ब्लॉग और राशिफल पोर्टल ✨</h1>
+
+    <!-- यूनिवर्सल सर्च बॉक्स -->
+    <div class="search-box-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="🔍 मेनू खोजें या चुनें..." onfocus="showAllSuggestions()" onkeyup="filterSuggestions()">
+        
+        <!-- मुख्य मेनू लिस्ट -->
+        <div id="suggestionsList" class="suggestions-list">
+            <div class="suggestion-item" onclick="document.getElementById('portalDatePicker').showPicker(); document.getElementById('suggestionsList').style.display = 'none';">📅 तिथि के अनुसार पंचांग देखें</div>
+            <div class="suggestion-item" onclick="selectCategory('rashifal');">⭐ विस्तृत राशिफल (सभी 12 राशियाँ देखें)</div>
+            <div class="suggestion-item" onclick="selectCategory('navagraha');">🪐 नवग्रह गोचर फल (सभी 9 ग्रह देखें)</div>
+            <div class="suggestion-item" onclick="playDirectVideo('../navgrah-mantra.mp4', 'नवग्रह मंत्र');">🎥 नवग्रह मंत्र वीडियो</div>
+            
+            <!-- हरियाली तीज: Iframe मोड (सिर्फ पढ़ने के लिए) -->
+            <div class="suggestion-item" onclick="loadExternalFile('../hariyali_teej_post.html', 'हरियाली तीज विशेष (Iframe)');">🌿 हरियाली तीज विशेष (Iframe मोड)</div> 
+            
+            <!-- हरियाली तीज: Fetch मोड (इमेज डाउनलोड करने के लिए) -->
+            <div class="suggestion-item" onclick="loadExternalFileViaFetch('../hariyali_teej_post.html', 'हरियाली तीज विशेष (Fetch)');">🌿 हरियाली तीज विशेष (इमेज डाउनलोड मोड)</div> 
+
+            <div class="suggestion-item" onclick="loadExternalFile('navgrah.html', 'नवग्रह विशेष');">🪐 नवग्रह विशेष</div> 
+            <div class="suggestion-item" onclick="loadExternalFileViaFetch('../gurupurnima.html', 'गुरु पूर्णिमा विशेष');">🕉️ गुरु पूर्णिमा विशेष</div>
+            <div class="suggestion-item" onclick="loadExternalFileViaFetch('../savan.html', 'श्रावण मास विशेष');">🔱 श्रावण मास विशेष</div>
+            <div class="suggestion-item" onclick="loadExternalFileViaFetch('../shivratri_jyotish.html', 'महाशिवरात्रि विशेष');">🔱 महाशिवरात्रि विशेष</div> 
+            <div class="suggestion-item" onclick="loadExternalFileViaFetch('../mental-health.html', 'मानसिक रोग');">🧠 मानसिक रोग और तनाव मुक्ति के उपाय</div>
+            <div class="suggestion-item" onclick="loadExternalFileViaFetch('../surya_grahn.html', 'पूर्ण सूर्य ग्रहण - 2026');">🌑 पूर्ण सूर्य ग्रहण - 2026</div> 
+        </div>
+    </div>
+
+    <!-- 1: राशिफल वाले 12 बटन -->
+    <div id="rashifalButtons" class="button-container">
+        <button class="rashmi-btn" onclick="loadExternalFile('mesh.html', 'मेष राशि')">मेष</button>
+        <button class="rashmi-btn" onclick="loadExternalFile('vrash.html', 'वृषभ राशि')">वृषभ</button>
+        <button class="rashmi-btn" onclick="loadExternalFile('mithun.html', 'मिथुन राशि')">मिथुन</button>
+        <button class="rashmi-btn" onclick="loadExternalFile('kark.html', 'कर्क राशि')">कर्क</button>
+        <button class="rashmi-btn" onclick="loadExternalFile('singh.html', 'सिंह राशि')">सिंह</button>
+        <button class="rashmi-btn" onclick="loadExternalFile('kanya.html', 'कन्या राशि')">कन्या</button>
+        <button class="rashmi-btn" onclick="loadExternalFile('tula.html', 'तुला राशि')">तुला</button>
+        <button class="rashmi-btn" onclick="loadExternalFile('vrischika.html', 'वृश्चिक राशि')">वृश्चिक</button>
+        <button class="rashmi-btn" onclick="loadExternalFile('dhanu.html', 'धनु राशि')">धनु</button>
+        <button class="rashmi-btn" onclick="loadExternalFile('makar.html', 'मकर राशि')">मकर</button>
+        <button class="rashmi-btn" onclick="loadExternalFile('kumbh.html', 'कुंभ राशि')">कुंभ</button>
+        <button class="rashmi-btn" onclick="loadExternalFile('meen.html', 'मीन राशि')">मीन</button>
+    </div>
+
+    <!-- 2: नवग्रह गोचर वाले 9 बटन -->
+    <div id="navagrahaButtons" class="button-container">
+        <button class="rashmi-btn" onclick="loadExternalFile('surya_gochar.html', 'सूर्य ग्रह का गोचर फल')">सूर्य</button>
+        <button class="rashmi-btn" onclick="loadExternalFile('chandra_gochar.html', 'चंद्र ग्रह का गोचर फल')">चंद्रमा</button>
+        <button class="rashmi-btn" onclick="loadExternalFile('../mangal_gochar.html', 'मंगल ग्रह का गोचर फल')">मंगल</button>
+        <button class="rashmi-btn" onclick="loadExternalFile('../budh_gochar.html', 'बुध ग्रह का गोचर फल')">बुध</button>
+        <button class="rashmi-btn" onclick="loadExternalFile('guru_gochar.html', 'गुरु ग्रह का गोचर फल')">गुरु</button>
+        <button class="rashmi-btn" onclick="loadExternalFileViaFetch('../shukra_gochar.html', 'शुक्र ग्रह का गोचर फल')">शुक्र</button>
+        <button class="rashmi-btn" onclick="loadExternalFile('shani_gochar.html', 'शनि ग्रह का गोचर फल')">शनि</button>
+        <button class="rashmi-btn" onclick="loadExternalFile('rahu_gochar.html', 'राहु ग्रह का गोचर')">राहु</button>
+        <button class="rashmi-btn" onclick="loadExternalFile('ketu_gochar.html', 'केतु ग्रह का गोचर फल')">केतु</button>
+    </div>
+
+    <!-- अलग-अलग कंटेनर (आईफ्रेम, फेच और प्लेसहॉल्डर के लिए) -->
+    
+    <!-- 1. प्लेसहॉल्डर कंटेनर (शुरुआत में दिखेगा) -->
+    <div id="placeholder-container" class="content-wrapper" style="padding: 20px;">
+        <p style="text-align: center; padding: 80px 20px; color: #666; margin: 0;">✨ कृपया ऊपर सर्च बॉक्स पर क्लिक करके "राशिफल", "नवग्रह गोचर" या कोई अन्य विषय चुनें। ✨</p>
+    </div>
+
+    <!-- 2. Iframe कंटेनर (जब आईफ्रेम मोड चुनो - बिल्कुल सुरक्षित) -->
+    <div id="iframe-container" class="content-wrapper" style="display: none; padding: 0;">
+        <iframe id="content-frame" src=""></iframe>
+    </div>
+
+    <!-- 3. Script / Fetch कंटेनर (जब फेच मोड चुनो - इसमें फुटर आएगा) -->
+    <div id="script-container" class="content-wrapper" style="display: none; padding: 20px;">
+        <div id="dynamic-content" style="padding: 0;"></div>
+    </div>
+
+    <!-- इमेज डाउनलोड बटन एरिया -->
+    <div class="download-container" id="downloadArea">
+        <button class="download-btn" onclick="captureAndDownloadContainer()">📥 इस सामग्री को इमेज के रूप में डाउनलोड करें</button>
+    </div>
+
+    <script>
+        // फुटर का स्टैंडर्ड कोड जो केवल फेच और पंचांग में जोड़ा जाएगा
+        const standardFooterHTML = `
+            <div class="image-footer">
+            <h3>व्यक्तिगत कुंडली विश्लेषण के लिए संपर्क करें</h3>
+            <h3>ज्योतिषाचार्य नीरज गोयल (शामली)<span class="phone-box">📞 9758007088</span></h3>
+        </div>
+        `;
+
+        function hideAllContainers() {
+            document.getElementById('placeholder-container').style.display = 'none';
+            document.getElementById('iframe-container').style.display = 'none';
+            document.getElementById('script-container').style.display = 'none';
+            document.getElementById('content-frame').src = '';
+        }
+
+        function selectCategory(category) {
+            const rashifalBtns = document.getElementById('rashifalButtons');
+            const navagrahaBtns = document.getElementById('navagrahaBtns');
+            const searchInput = document.getElementById('searchInput');
+
+            document.getElementById('suggestionsList').style.display = 'none';
+
+            document.getElementById('rashifalButtons').style.display = 'none';
+            document.getElementById('navagrahaButtons').style.display = 'none';
+
+            hideAllContainers();
+            document.getElementById('placeholder-container').style.display = 'block';
+            document.getElementById('placeholder-container').innerHTML = '<p style="text-align: center; padding: 80px 20px; color: #666; margin: 0;">✨ कृपया नीचे दिए गए बटनों में से अपनी राशि या ग्रह चुनें। ✨</p>';
+            document.getElementById('downloadArea').style.display = 'none';
+
+            if (category === 'rashifal') {
+                document.getElementById('rashifalButtons').style.display = 'flex';
+                searchInput.value = 'विस्तृत राशिफल (सभी राशियाँ देखें)';
+            } else if (category === 'navagraha') {
+                document.getElementById('navagrahaButtons').style.display = 'flex';
+                searchInput.value = 'नवग्रह गोचर फल (सभी 9 ग्रह देखें)';
+            }
+        }
+
+        // 1. Iframe के जरिए फाइल लोड करने का फंक्शन (आपकी मूल फाइल वाला हूबहू कोड)
+        function loadExternalFile(fileName, postName) {
+            const searchInput = document.getElementById('searchInput');
+            searchInput.value = postName; 
+            document.getElementById('suggestionsList').style.display = 'none';
+
+            const rashifalFiles = ['mesh.html', 'vrash.html', 'mithun.html', 'kark.html', 'singh.html', 'kanya.html', 'tula.html', 'vrischika.html', 'dhanu.html', 'makar.html', 'kumbh.html', 'meen.html'];
+            const navagrahaFiles = ['surya_gochar.html', 'chandra_gochar.html', '../mangal_gochar.html', '../budh_gochar.html', 'guru_gochar.html', '../shukra_gochar.html', 'shani_gochar.html', 'rahu_gochar.html', 'ketu_gochar.html'];
+
+            if (rashifalFiles.includes(fileName)) {
+                document.getElementById('rashifalButtons').style.display = 'flex';
+                document.getElementById('navagrahaButtons').style.display = 'none';
+            } else if (navagrahaFiles.includes(fileName)) {
+                document.getElementById('navagrahaButtons').style.display = 'flex';
+                document.getElementById('rashifalButtons').style.display = 'none';
+            } else {
+                document.getElementById('rashifalButtons').style.display = 'none';
+                document.getElementById('navagrahaButtons').style.display = 'none';
+            }
+
+            hideAllContainers();
+            
+            const iframeContainer = document.getElementById('iframe-container');
+            const iframe = document.getElementById('content-frame');
+            
+            iframeContainer.style.display = 'block';
+            iframe.src = fileName;
+            
+            iframe.onload = function() {
+                try {
+                    let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                    iframe.style.height = iframeDoc.documentElement.scrollHeight + 'px';
+                } catch (e) {
+                    iframe.style.height = '800px'; 
+                }
+            };
+            
+            document.getElementById('downloadArea').style.display = 'none';
+        }
+
+        // 2. Fetch API के जरिए फाइल लोड करने का फंक्शन (फुटर के साथ)
+        function loadExternalFileViaFetch(fileName, postName) {
+            const searchInput = document.getElementById('searchInput');
+            searchInput.value = postName; 
+            document.getElementById('suggestionsList').style.display = 'none';
+
+            document.getElementById('rashifalButtons').style.display = 'none';
+            document.getElementById('navagrahaButtons').style.display = 'none';
+
+            hideAllContainers();
+
+            fetch(fileName)
+                .then(response => {
+                    if (!response.ok) throw new Error('फाइल लोड करने में विफल');
+                    return response.text();
+                })
+                .then(htmlData => {
+                    let tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = htmlData;
+
+                    if (!tempDiv.querySelector('.image-footer')) {
+                        tempDiv.innerHTML += standardFooterHTML;
+                    }
+
+                    document.getElementById('dynamic-content').innerHTML = tempDiv.innerHTML;
+                    document.getElementById('script-container').style.display = 'block';
+                    document.getElementById('downloadArea').style.display = 'block';
+                })
+                .catch(error => {
+                    console.error('एरर:', error);
+                    hideAllContainers();
+                    document.getElementById('script-container').style.display = 'block';
+                    document.getElementById('dynamic-content').innerHTML = '<p style="color: red; text-align: center; padding: 50px;">डेटा लोड करने में समस्या है।</p>';
+                    document.getElementById('downloadArea').style.display = 'none';
+                });
+        }
+
+        // वीडियो चलाने के लिए विशेष फंक्शन
+        function playDirectVideo(videoFile, postName) {
+            const searchInput = document.getElementById('searchInput');
+            searchInput.value = postName;
+            document.getElementById('suggestionsList').style.display = 'none';
+
+            document.getElementById('rashifalButtons').style.display = 'none';
+            document.getElementById('navagrahaButtons').style.display = 'none';
+
+            hideAllContainers();
+            document.getElementById('script-container').style.display = 'block';
+
+            document.getElementById('dynamic-content').innerHTML = `
+                <div style="padding: 20px; text-align: center;">
+                    <h3 style="margin-top:0; color: #6a11cb;">${postName}</h3>
+                    <video controls autoplay style="width: 100%; max-height: 500px; border-radius: 8px; background: #000;">
+                        <source src="${videoFile}" type="video/mp4">
+                        आपका ब्राउज़र वीडियो टैग को सपोर्ट नहीं करता है।
+                    </video>
+                </div>
+                ${standardFooterHTML}
+            `;
+            document.getElementById('downloadArea').style.display = 'none';
+        }
+
+        // मोबाइल और डेस्कटॉप दोनों के लिए परफेक्ट इमेज डाउनलोड फंक्शन
+        function captureAndDownloadContainer() {
+            const container = document.getElementById('script-container');
+            
+            html2canvas(container, { scale: 2, useCORS: true }).then(canvas => {
+                const imageURL = canvas.toDataURL('image/png');
+                const link = document.createElement('a');
+                link.href = imageURL;
+                link.download = 'jyotish-content.png';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }).catch(error => {
+                console.error('इमेज कैप्चर करने में त्रुटि:', error);
+                alert('इमेज डाउनलोड करने में विफल रही।');
+            });
+        }
+
+        function showAllSuggestions() {
+            let list = document.getElementById('suggestionsList');
+            let items = list.getElementsByClassName('suggestion-item');
+            for (let i = 0; i < items.length; i++) {
+                items[i].style.display = "";
+            }
+            list.style.display = 'block';
+        }
+
+        function filterSuggestions() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let list = document.getElementById('suggestionsList');
+            let items = list.getElementsByClassName('suggestion-item');
+            
+            list.style.display = 'block';
+            let hasMatch = false;
+
+            for (let i = 0; i < items.length; i++) {
+                let text = items[i].textContent.toLowerCase();
+                if (text.includes(input)) {
+                    items[i].style.display = "";
+                    hasMatch = true;
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+
+            if (!hasMatch) {
+                list.style.display = 'none';
+            }
+        }
+document.addEventListener('click', function(event) {
+            let searchContainer = document.querySelector('.search-box-container');
+            if (!searchContainer.contains(event.target)) {
+                document.getElementById('suggestionsList').style.display = 'none';
+            }
+        });
+    </script>
+    <script src="panchangdata.js"></script>
+    <script>
+        function redirectToPanchang(selectedDate) {
+            const searchInput = document.getElementById('searchInput');
+            searchInput.value = "पंचांग: " + selectedDate;
+
+            hideAllContainers();
+            document.getElementById('script-container').style.display = 'block';
+
+            const container = document.getElementById('dynamic-content');
+
+            if (typeof panchangData !== 'undefined' && panchangData[selectedDate]) {
+                let p = panchangData[selectedDate];
+
+                container.innerHTML = `
+                    <h3 style="color: #b30000; text-align: center; margin-bottom: 15px;">📅 ${p.date || selectedDate} (${p.day || ''}) का विस्तृत पंचांग</h3>
+                    <hr style="border: 0; border-top: 1px solid #ddd; margin-bottom: 15px;">
+                    
+                    <p><strong>संवत:</strong> ${p.vikramSambat || 'उपलब्ध नहीं'} ${p.shakSambat ? '| ' + p.shakSambat : ''}</p>
+                    <p><strong>अयन व ऋतु:</strong> ${p.ayan || 'उपलब्ध नहीं'}, ${p.ritu || ''}</p>
+                    <p><strong>मास:</strong> अमांत: ${p.amasMonth || 'N/A'} | पूर्णिमांत: ${p.purnimantMonth || 'N/A'}</p>
+                    <p><strong>तिथी:</strong> ${p.tithi || 'उपलब्ध नहीं'}</p>
+                    <p><strong>नक्षत्र:</strong> ${p.nakshatra || 'उपलब्ध नहीं'}</p>
+                    <p><strong>योग व करण:</strong> योग: ${p.yog || 'N/A'} | करण: ${p.karan || 'N/A'}</p>
+                    <p><strong>सूर्य/चन्द्र गोचर:</strong> ${p.sunMoonTransit || 'उपलब्ध नहीं'}</p>
+                    <p><strong>सूर्योदय / सूर्यास्त:</strong> ${p.sunriseSunset || 'उपलब्ध नहीं'}</p>
+                    <p><strong>अभिजीत मुहूर्त:</strong> ${p.abhijitMuhurat || 'उपलब्ध नहीं'}</p>
+                    <p><strong>राहुकाल:</strong> ${p.rahukaal || 'उपलब्ध नहीं'}</p>
+                    <p><strong>दिशा शूल:</strong> ${p.dishaShool || 'उपलब्ध नहीं'}</p>
+                    <p><strong>नक्षत्र फल:</strong> ${p.nakshatraphal || 'उपलब्ध नहीं'}</p>
+                    <p><strong>विशेष उपाय:</strong> <span style="color: #2575fc; font-weight: bold;">${p.remedy || 'उपलब्ध नहीं'}</span></p>
+                    <p><strong>विशेष विवरण:</strong> <span style="color: #b30000; font-weight: bold;">${p.special || 'उपलब्ध नहीं'}</span></p>
+                    ${standardFooterHTML}
+                `;
+                
+                document.getElementById('downloadArea').style.display = 'block';
+            } else {
+                container.innerHTML = `<p style="color: #e74c3c; text-align: center; font-weight: bold; margin: 50px 0;">क्षमा करें, ${selectedDate} का पंचांग डेटा उपलब्ध नहीं है या panchangdata.js लोड नहीं हुई है।</p>`;
+                document.getElementById('downloadArea').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
