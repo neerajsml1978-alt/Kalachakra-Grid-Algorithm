@@ -10,6 +10,15 @@ body {
     -moz-osx-font-smoothing: grayscale;
     text-rendering: geometricPrecision;
 }
+h1.main-title {
+            text-align: center;
+            color: #8b0000;
+            font-size: 25px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            border-bottom: 2px solid #8b0000;
+            padding-bottom: 10px;
+        }
 
 /* 2. ग्रिड कंटेनर - 3 कॉलम */
 .grid-container {
