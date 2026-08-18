@@ -7,7 +7,7 @@ function addDownloadButton(targetContainerId, fileName) {
     btn.style.display = 'block';
     btn.style.margin = '20px auto';
     btn.style.padding = '15px 30px';
-    btn.style.fontSize = '18px';
+    btn.style.fontSize = '20px';
     btn.style.backgroundColor = '#8b0000';
     btn.style.color = 'white';
     btn.style.border = 'none';
