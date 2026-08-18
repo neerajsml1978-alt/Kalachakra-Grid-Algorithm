@@ -30,18 +30,19 @@
         .rashmi-btn { background: #fff; border: 1px solid #cbd5e1; padding: 5px 12px; font-size: 13px; border-radius: 15px; cursor: pointer; }
         .rashmi-btn:hover { background: #ff7e5f; color: #fff; }
 
-        /* अलग-अलग कंटेनर स्टाइल ताकि लेआउट न कटे */
+        /* अलग-अलग कंटेनर स्टाइल ताकि लेआउट न कटे (मोबाइल पर फुल चौड़ाई के लिए अपडेटेड) */
         .content-wrapper {
             max-width: 900px; 
-            width: 92%; 
-            margin: 20px auto 0 auto; 
+            width: 100%; 
+            margin: 10px auto 0 auto; 
             background: #fff; 
             border-radius: 12px; 
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); 
             box-sizing: border-box;
             text-align: left;
+            padding: 5px !important;
         }
-
+        
         /* iframe का आपका मूल कोड सुरक्षित */
         iframe { 
             width: 100%; 
@@ -77,19 +78,32 @@
             background: linear-gradient(135deg, #8b0000, #b30000);
             transform: translateY(-2px);
         }
+  /* फेच होकर आने वाली सभी फाइलों के कंटेनर को मुख्य पोर्टल पर पूरी चौड़ाई में फैलाने के लिए (अपडेटेड) */
+        #script-container {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 5px !important;
+            box-sizing: border-box !important;
+        }
 
-        /* फेच होकर आने वाली सभी फाइलों के कंटेनर को मुख्य पोर्टल पर पूरी चौड़ाई में फैलाने के लिए */
         #script-container .container, 
         #script-container > div {
             max-width: 100% !important;
             width: 100% !important;
             margin: 0 !important;
-            padding: 15px !important;
+            padding: 10px !important;
             box-sizing: border-box !important;
             box-shadow: none !important;
             background: transparent !important;
         }
-
+        /* मोबाइल के लिए मीडिया क्वेरी (जोड़ दें) */
+        @media (max-width: 768px) {
+        .content-wrapper {
+        width: 100% !important;
+        border-radius: 0 !important;
+        padding: 5px !important;}
+        }
         /* केवल Fetch और Panchang के लिए फुटर डिज़ाइन */
 
          .image-footer {
