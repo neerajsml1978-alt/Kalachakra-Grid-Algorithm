@@ -170,4 +170,11 @@ white-space: normal; /* मोबाइल पर लंबी लाइन क�
     .astrologer-info, .phone-box {
         font-size: 16px !important;
     }
+      /* यहाँ मोबाइल के लिए डाउनलोड बटन की स्टाइल है */
+    .download-btn {
+        padding: 10px 20px !important;
+        font-size: 16px !important;
+        margin: 20px auto !important;
+        width: 90% !important;
+    }
 }
