@@ -156,17 +156,12 @@ body {
     .astrologer-info, .phone-box {
         font-size: 16px !important;
     }
+        /* यहाँ मोबाइल के लिए डाउनलोड बटन की स्टाइल है */
+    .download-btn {
+        padding: 10px 20px !important;
+        font-size: 16px !important;
+        margin: 20px auto !important;
+        width: 90% !important;
+    }
 }
 
-.download-btn {
-    display: block;
-    margin: 40px auto; /* ऊपर और नीचे जगह बनाने के लिए */
-    padding: 15px 40px;
-    background-color: #8b0000;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 20px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-}
