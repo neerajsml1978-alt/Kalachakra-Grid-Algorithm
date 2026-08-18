@@ -111,21 +111,53 @@ body {
     white-space: normal; /* मोबाइल पर लंबी लाइन को एडजस्ट करने के लिए */
 }
 
-/* 👇 मोबाइल स्क्रीन (छोटी स्क्रीन) के लिए ऑटोमैटिक फॉन्ट साइज छोटा करना */
+/* --- मोबाइल स्क्रीन (768px या उससे कम) के लिए सभी मीडिया क्वेरी एक साथ --- */
 @media (max-width: 768px) {
+    /* 1. ग्रिड लेआउट को सिंगल कॉलम करना */
+    .grid-container { 
+        grid-template-columns: 1fr !important; 
+        gap: 12px !important;
+    }
+
+    /* 2. मुख्य शीर्षक (Heading) का साइज */
+    h1 {
+        font-size: 20px !important;
+        margin: 10px 5px !important;
+    }
+
+    /* 3. कार्ड के अंदर की मुख्य हेडिंग और आइकॉन का साइज */
+    .card-header h3 {
+        font-size: 20px !important;
+    }
+
+    .rashi-icon {
+        font-size: 30px !important;
+        margin-right: 10px !important;
+    }
+
+    /* 4. बुलेट पॉइंट्स का साइज जो बहुत बड़ा आ रहा था */
+    .analysis-list {
+        font-size: 16px !important;
+        padding-left: 15px !important;
+        line-height: 1.6 !important;
+    }
+
+    /* 5. कार्ड की पैडिंग और मिनिमम हाइट */
+    .card {
+        padding: 12px !important;
+        min-height: auto !important;
+    }
+
+    /* 6. फुटर और कॉन्टैक्ट टेक्स्ट का साइज */
     .image-footer p {
-        font-size: 18px; /* मोबाइल पर सामान्य हेडिंग का साइज छोटा किया गया */
+        font-size: 18px !important;
     }
     
     .astrologer-info, .phone-box {
-        font-size: 16px; /* मोबाइल स्क्रीन पर नाम और फोन नंबर का फॉन्ट साइज ताकि यह बॉक्स के अंदर फिट रहे */
+        font-size: 16px !important;
     }
 }
 
-
-@media (max-width: 768px) {
-    .grid-container { grid-template-columns: 1fr; }
-}
 .download-btn {
     display: block;
     margin: 40px auto; /* ऊपर और नीचे जगह बनाने के लिए */
