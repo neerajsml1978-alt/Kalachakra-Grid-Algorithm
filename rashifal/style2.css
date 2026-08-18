@@ -127,7 +127,7 @@ body {
 
     /* 3. कार्ड के अंदर की मुख्य हेडिंग और आइकॉन का साइज */
     .card-header h3 {
-        font-size: 18px !important;
+        font-size: 20px !important;
     }
 
     .rashi-icon {
@@ -150,11 +150,11 @@ body {
 
     /* 6. फुटर और कॉन्टैक्ट टेक्स्ट का साइज */
     .image-footer p {
-        font-size: 16px !important;
+        font-size: 18px !important;
     }
     
     .astrologer-info, .phone-box {
-        font-size: 15px !important;
+        font-size: 16px !important;
     }
 }
 
