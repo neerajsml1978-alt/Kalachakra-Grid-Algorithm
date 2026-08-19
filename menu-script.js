@@ -41,23 +41,7 @@ function loadMenu() {
         <a href="./rashifal/kumbh.html">कुंभ राशि</a>
         <a href="./rashifal/meen.html">मीन राशि</a>
       </div>
-      <a href="./rashifal/upay.html">आज के अचूक उपाय</a>
-      <a href="./rashifal/navgrah.html">नवग्रह विवरण</a>
-      <div style="padding: 8px 15px;">
-        <select id="mantra-select" onchange="playVideo(this.value)" style="width: 100%; padding: 8px; border-radius: 5px; background: #fff; color: #000; border: 1px solid #ccc;">
-            <!-- यह डिफ़ॉल्ट विकल्प छिपा हुआ है ताकि पहली बार क्लिक करने पर ऑन-चेंज काम करे -->
-            <option value="" disabled selected hidden>मंत्र चुनें</option>
-            <option value="navgrah-mantra.mp4">नौ ग्रहों के मंत्र</option>
-        </select>
-      </div>
-      <a href="./rashifal/panchang.html">आज का पंचांग</a>
-      <a href="./rashifal/gurupurnima.html">गुरु पूर्णिमा 2026</a>
-      <a href="savan.html">श्रावण मास 2026</a>
-      <a href="shukra_gochar.html">शुक्र ग्रह का गोचर</a>
-      <a href="mangal_gochar.html">मंगल ग्रह का गोचर</a>
-      <a href="budh_gochar.html">बुध ग्रह का गोचर</a>
-      <a href="savan_upay.html">सावन के उपाय</a>
-    </div>
+  </div>
   `;
   document.getElementById('menu-container').innerHTML = menuHTML;
 }
