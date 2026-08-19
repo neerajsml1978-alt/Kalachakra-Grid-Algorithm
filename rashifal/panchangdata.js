@@ -370,7 +370,7 @@ const panchangData = {
   "sunriseSunset": "सूर्योदय: 05:52 AM | सूर्यास्त: 18:56 PM",
   "sunrise": "05:52:13 AM",
   "sunset": "18:56:08 PM",
-  "abhijitMuhurat": "11:58 - 12:50",
+  "abhijitMuhurat": "11:58 - 12:50 (अशुभ)",
   "rahukaal": "12:24 - 14:02",
   "dishaShool": "उत्तर दिशा",
   "remedy": "गणेश जी को दूर्वा अर्पित करें, संकट नाशक गणेश स्तोत्र का पाठ करें।",
