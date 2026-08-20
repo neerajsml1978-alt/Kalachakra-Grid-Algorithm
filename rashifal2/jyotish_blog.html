@@ -356,24 +356,33 @@
             document.getElementById('downloadArea').style.display = 'block';
         }
 
-        // मोबाइल और डेस्कटॉप दोनों के लिए परफेक्ट इमेज डाउनलोड फंक्शन
-        function captureAndDownloadContainer() {
-            const container = document.getElementById('script-container');
-            
-            html2canvas(container, { scale: 2, useCORS: true }).then(canvas => {
-                const imageURL = canvas.toDataURL('image/png');
-                const link = document.createElement('a');
-                link.href = imageURL;
-                link.download = 'jyotish-content.png';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            }).catch(error => {
-                console.error('इमेज कैप्चर करने में त्रुटि:', error);
-                alert('इमेज डाउनलोड करने में विफल रही।');
-            });
-        }
+        // मोबाइल और डेस्कटॉप दोनों के लिए परफेक्ट इमेज डाउनलोड फंक्शन (पैडिंग कंट्रोल के साथ)
+function captureAndDownloadContainer() {
+    const container = document.getElementById('script-container');
+    
+    // 1. कैप्चर करने से ठीक पहले पैडिंग को 0 करना ताकि साइड में खाली जगह न आए
+    const originalPadding = container.style.padding;
+    container.style.padding = '0px';
 
+    html2canvas(container, { scale: 2, useCORS: true }).then(canvas => {
+        const imageURL = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.href = imageURL;
+        link.download = 'jyotish-content.png';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        // 2. इमेज डाउनलोड होने के तुरंत बाद पैडिंग को वापस पुरानी स्थिति में लाना
+        container.style.padding = originalPadding;
+    }).catch(error => {
+        console.error('इमेज कैप्चर करने में त्रुटि:', error);
+        // अगर कोई एरर आ जाए, तब भी पैडिंग वापस ठीक कर देना
+        container.style.padding = originalPadding;
+        alert('इमेज डाउनलोड करने में विफल रही।');
+    });
+}
+    
         function showAllSuggestions() {
             let list = document.getElementById('suggestionsList');
             let items = list.getElementsByClassName('suggestion-item');
