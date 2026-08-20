@@ -27,7 +27,7 @@
             ✨ विशेष ज्योतिषीय उपाय - <span id="current-date"></span>
         </h1>
         
-        <!-- मेष से लेकर मीन तक के 12 कार्ड यहाँ अपने आप आएंगे -->
+        <!-- मेष से लेकर मीन तक के 12 कार्ड 3-कॉलम वाले ग्रिड में यहाँ आएंगे -->
         <div id="rashifal-container" class="grid-container"></div>
 
         <!-- फुटर (ज्योतिषाचार्य की जानकारी) -->
@@ -40,22 +40,22 @@
         </div>
 
     </div>
+
     <!-- करंट डेटा उठाकर 12 कार्ड भरने की स्क्रिप्ट -->
     <script>
         window.onload = function() {
             if (typeof allData !== 'undefined') {
                 
-                // 1. आज की असली करंट तारीख निकालने का तरीका (YYYY-MM-DD फॉर्मेट में)
+                // 1. आज की असली करंट तारीख निकालने का तरीका (YYYY-MM-DD फॉर्मेट)
                 const now = new Date();
                 const year = now.getFullYear();
                 const month = String(now.getMonth() + 1).padStart(2, '0');
                 const day = String(now.getDate()).padStart(2, '0');
-                const todayStr = `${year}-${month}-${day}`; // जैसे "2026-08-20"
+                const todayStr = `${year}-${month}-${day}`;
                 
-                // 2. चेक करना कि क्या आज की तारीख का डेटा upay.js में मौजूद है या नहीं
                 let matchedKey = null;
                 
-                // हम upay.js की तारीखों में ढूँढेंगे कि आज की तारीख से कौन सी मैच होती है
+                // upay.js से आज की तारीख का डेटा मैच करना
                 for (const dateKey in allData) {
                     if (dateKey.startsWith(todayStr)) {
                         matchedKey = dateKey;
@@ -63,16 +63,16 @@
                     }
                 }
                 
-                // अगर आज की तारीख का डेटा नहीं मिलता है, तो सुरक्षा के लिए सबसे आखिरी (Latest) डेटा ले लेगा
+                // अगर आज की तारीख का डेटा न मिले, तो सबसे आखिरी (Latest) डेटा ले लेगा
                 if (!matchedKey) {
                     const dateKeys = Object.keys(allData);
                     matchedKey = dateKeys[dateKeys.length - 1];
                 }
                 
-                // स्क्रीन पर टाइटल में तारीख दिखाने के लिए
+                // स्क्रीन पर टाइटल में तारीख दिखाना
                 document.getElementById('current-date').innerText = matchedKey.split('-').slice(0, 3).join('-');
 
-                // 3. उस तारीख का डेटा निकालकर कार्ड भरना
+                // 2. डेटा निकालकर कार्ड भरना (style2.css के अनुसार analysis-list का उपयोग)
                 const rashifalList = allData[matchedKey];
                 const container = document.getElementById('rashifal-container');
                 container.innerHTML = '';
@@ -81,12 +81,16 @@
                     rashifalList.forEach(item => {
                         let card = document.createElement('div');
                         card.className = 'card'; // style2.css की कार्ड क्लास
+                        
+                        // यहाँ आपके डेटा के फॉर्मेट के अनुसार मैसेज को लिस्ट या पैराग्राफ में ढाला गया है
                         card.innerHTML = `
                             <div class="card-header">
-                                <span class="card-icon">${item.icon}</span>
+                                <span class="rashi-icon">${item.icon}</span>
                                 <h3 class="card-title">${item.rashi}</h3>
                             </div>
-                            <p class="card-msg">${item.msg}</p>
+                            <ul class="analysis-list">
+                                <li>${item.msg}</li>
+                            </ul>
                         `;
                         container.appendChild(card);
                     });
@@ -101,5 +105,6 @@
             }
         };
     </script>
+
 </body>
 </html>
