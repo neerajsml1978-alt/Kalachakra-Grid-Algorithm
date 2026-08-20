@@ -23,7 +23,7 @@ function loadMenu() {
   const menuHTML = `
     <div id="mySideNav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">&times;</a>
-      <a href="./rashifal/jyotish_blog.html">ज्योतिष ब्लॉग पोर्टल</a>
+      <a href="./rashifal2/jyotish_blog.html">ज्योतिष ब्लॉग पोर्टल</a>
       
       <!-- ड्रॉपडाउन मेनू (सभी राशियों का राशिफल) -->
       <a href="#" class="dropdown-btn" onclick="toggleDropdown(event)">सभी राशियों का राशिफल &#9662;</a>
