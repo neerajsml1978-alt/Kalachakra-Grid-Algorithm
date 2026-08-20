@@ -42,11 +42,12 @@
     </div>
 
     <!-- करंट डेटा उठाकर 12 कार्ड भरने की स्क्रिप्ट -->
+    <!-- करंट डेटा उठाकर 12 कार्ड भरने की स्क्रिप्ट -->
     <script>
         window.onload = function() {
             if (typeof allData !== 'undefined') {
                 
-                // 1. आज की असली करंट तारीख निकालने का तरीका (YYYY-MM-DD फॉर्मेट)
+                // 1. आज की असली करंट तारीख निकालना (YYYY-MM-DD फॉर्मेट)
                 const now = new Date();
                 const year = now.getFullYear();
                 const month = String(now.getMonth() + 1).padStart(2, '0');
@@ -55,7 +56,6 @@
                 
                 let matchedKey = null;
                 
-                // upay.js से आज की तारीख का डेटा मैच करना
                 for (const dateKey in allData) {
                     if (dateKey.startsWith(todayStr)) {
                         matchedKey = dateKey;
@@ -63,16 +63,14 @@
                     }
                 }
                 
-                // अगर आज की तारीख का डेटा न मिले, तो सबसे आखिरी (Latest) डेटा ले लेगा
                 if (!matchedKey) {
                     const dateKeys = Object.keys(allData);
                     matchedKey = dateKeys[dateKeys.length - 1];
                 }
                 
-                // स्क्रीन पर टाइटल में तारीख दिखाना
                 document.getElementById('current-date').innerText = matchedKey.split('-').slice(0, 3).join('-');
 
-                // 2. डेटा निकालकर कार्ड भरना (style2.css के अनुसार analysis-list का उपयोग)
+                // 2. डेटा निकालकर कार्ड भरना
                 const rashifalList = allData[matchedKey];
                 const container = document.getElementById('rashifal-container');
                 container.innerHTML = '';
@@ -80,16 +78,23 @@
                 if (rashifalList) {
                     rashifalList.forEach(item => {
                         let card = document.createElement('div');
-                        card.className = 'card'; // style2.css की कार्ड क्लास
+                        card.className = 'card';
                         
-                        // यहाँ आपके डेटा के फॉर्मेट के अनुसार मैसेज को लिस्ट या पैराग्राफ में ढाला गया है
+                        // --- यहाँ बदलाव किया गया है ---
+                        // यह कोड उपाय के मैसेज को पूर्णविराम (।) के आधार पर अलग-अलग लाइनों (बुलेट पॉइंट्स) में तोड़ देगा
+                        let sentences = item.msg.split('।').filter(s => s.trim() !== '');
+                        let listHtml = '';
+                        sentences.forEach(sentence => {
+                            listHtml += `<li>${sentence.trim()}।</li>`;
+                        });
+                        
                         card.innerHTML = `
                             <div class="card-header">
                                 <span class="rashi-icon">${item.icon}</span>
                                 <h3 class="card-title">${item.rashi}</h3>
                             </div>
                             <ul class="analysis-list">
-                                <li>${item.msg}</li>
+                                ${listHtml}
                             </ul>
                         `;
                         container.appendChild(card);
@@ -99,12 +104,10 @@
                 console.error("upay.js फाइल सही से लोड नहीं हुई है!");
             }
             
-            // डाउनलोड बटन एक्टिवेट करना
             if (typeof addDownloadButton === 'function') {
                 addDownloadButton('capture-area', 'upay_rashifal.png');
             }
         };
     </script>
-
 </body>
 </html>
