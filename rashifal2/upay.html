@@ -40,8 +40,6 @@
         </div>
 
     </div>
-
-    <!-- करंट डेटा उठाकर 12 कार्ड भरने की स्क्रिप्ट -->
     <!-- करंट डेटा उठाकर 12 कार्ड भरने की स्क्रिप्ट -->
     <script>
         window.onload = function() {
@@ -80,12 +78,17 @@
                         let card = document.createElement('div');
                         card.className = 'card';
                         
-                        // --- यहाँ बदलाव किया गया है ---
-                        // यह कोड उपाय के मैसेज को पूर्णविराम (।) के आधार पर अलग-अलग लाइनों (बुलेट पॉइंट्स) में तोड़ देगा
-                        let sentences = item.msg.split('।').filter(s => s.trim() !== '');
+                        // --- आपका लॉजिक यहाँ काम करेगा ---
+                        // यह आपके डेटा में दिए गए डॉट (.) या पूर्णविराम से वाक्यों को अलग करेगा 
+                        // और स्क्रीन पर फालतू दिखने वाले डॉट को हटाकर साफ-सुथरे बुलेट पॉइंट्स बनाएगा
+                        let parts = item.msg.split('.');
                         let listHtml = '';
-                        sentences.forEach(sentence => {
-                            listHtml += `<li>${sentence.trim()}।</li>`;
+                        
+                        parts.forEach(part => {
+                            let cleanText = part.trim();
+                            if (cleanText !== '') {
+                                listHtml += `<li>${cleanText}</li>`;
+                            }
                         });
                         
                         card.innerHTML = `
@@ -108,6 +111,6 @@
                 addDownloadButton('capture-area', 'upay_rashifal.png');
             }
         };
-    </script>
+    </script>    
 </body>
 </html>
