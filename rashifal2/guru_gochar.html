@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>गुरु गोचर फल - 12 राशियाँ</title>
+    
+    <!-- CSS फाइल -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- html2canvas लाइब्रेरी -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <!-- 1. गुरु गोचर की डेटा फाइल -->
+    <script src="guru.js"></script>
+    
+    <!-- 2. डाउनलोड बटन वाली फाइल -->
+    <script src="download-button.js"></script>
+
+    <style>
+        h1.main-title {
+            text-align: center;
+            color: #8b0000;
+            font-size: 25px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            border-bottom: 2px solid #8b0000;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="capture-area">
+    <h1 class="main-title">
+        गुरु का कर्क राशि में गोचर - 12 राशियों का फल 
+        <span id="current-date" style="display: none;"></span>
+    </h1>
+    
+    <!-- 12 राशियों का ग्रिड कंटेनर -->
+    <div id="rashifal-container" class="grid-container"></div>
+    
+    <!-- फुटर -->
+    <div class="image-footer">
+        <p>📌 सटीक फलादेश और परामर्श के लिए संपर्क सूत्र:</p>
+        <p class="footer-content">
+            <span class="astrologer-info">👤 ज्योतिषाचार्य नीरज गोयल (शामली)</span>
+            <span class="phone-box">📞 9758007088</span>
+        </p>
+    </div>
+</div>
+
+<!-- 3. सही तारीख और डेटा लोड करने वाली स्क्रिप्ट -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hour = String(now.getHours()).padStart(2, '0');
+        const minute = String(now.getMinutes()).padStart(2, '0');
+
+        const currentTimeStr = `${year}${month}${day}${hour}${minute}`;
+        
+        if (typeof guruData !== 'undefined') {
+            const sortedKeys = Object.keys(guruData).sort();
+            let activeKey = null;
+
+            for (let key of sortedKeys) {
+                let keyNumeric = key.replace(/-/g, '');
+                if (keyNumeric <= currentTimeStr) {
+                    activeKey = key;
+                }
+            }
+
+            if (!activeKey && sortedKeys.length > 0) {
+                activeKey = sortedKeys[sortedKeys.length - 1];
+            }
+
+            const rashifalData = guruData[activeKey];
+            
+            const dateElement = document.getElementById('current-date');
+            if (dateElement) {
+                dateElement.innerText = new Date().toLocaleDateString('hi-IN');
+            }
+
+            const container = document.getElementById('rashifal-container');
+            if (container) {
+                container.innerHTML = '';
+
+                if (!rashifalData) {
+                    container.innerHTML = "<h2 style='text-align:center;'>आज के लिए अभी कोई गोचर अपडेट नहीं है।</h2>";
+                    return;
+                }
+
+                rashifalData.forEach((item) => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    
+                    const points = item.msg.split('.').filter(p => p.trim() !== "").map(p => `<li>${p.trim()}</li>`).join('');
+                    let upayHtml = item.upay ? `<p style="margin-top: 10px; color: #b22222; font-weight: bold;">💡 उपाय: ${item.upay}</p>` : '';
+
+                    card.innerHTML = `
+                        <div class="card-header">
+                            <span class="rashi-icon">${item.icon}</span>
+                            <h3>${item.title || (item.rashi + " राशि")}</h3>
+                        </div>
+                        <ul class="analysis-list">${points}</ul>
+                        ${upayHtml}
+                    `;
+                    container.appendChild(card);
+                });
+            }
+        }
+    });
+
+    window.addEventListener('load', function() {
+        if (typeof addDownloadButton === 'function') {
+            addDownloadButton('capture-area', 'guru_gochar_phal.png');
+        }
+    });
+</script>
+
+</body>
+</html>

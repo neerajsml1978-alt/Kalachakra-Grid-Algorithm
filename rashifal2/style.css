@@ -1,0 +1,180 @@
+/* 1. बैकग्राउंड और हाई-शार्प फॉंट रेंडरिंग सेटिंग */
+body {
+    background-color: #f4f7f6; /* ग्रे बैकग्राउंड */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    /* टेक्स्ट क्लैरिटी और शार्पनेस बढ़ाने के लिए */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
+}
+h1.main-title {
+            text-align: center;
+            color: #8b0000;
+            font-size: 25px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            border-bottom: 2px solid #8b0000;
+            padding-bottom: 10px;
+        }
+
+/* 2. ग्रिड कंटेनर - 3 कॉलम */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; /* कार्ड्स के बीच की दूरी */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 3. कार्ड का डिज़ाइन */
+.card {
+    border: 2px solid #d4af37;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 220px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* कार्ड्स के अलग-अलग रंग (फेड होने से बचाने के लिए थोड़े गहरे और रिच टोन) */
+.card:nth-child(6n+1) { background: #ffebee; } 
+.card:nth-child(6n+2) { background: #e3f2fd; } 
+.card:nth-child(6n+3) { background: #e8f5e9; } 
+.card:nth-child(6n+4) { background: #fff3e0; } 
+.card:nth-child(6n+5) { background: #f3e5f5; } 
+.card:nth-child(6n+6) { background: #fffde7; }
+
+/* लेफ्ट कॉर्नर आइकन और हेडिंग */
+.card-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #d4af37;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.rashi-icon {
+    font-size: 45px;
+    margin-right: 15px;
+}
+
+.card-header h3 {
+    margin: 0;
+    color: #8b0000;
+    font-size: 30px;
+}
+
+/* बुलेट पॉइंट्स और टेक्स्ट क्लैरिटी */
+.analysis-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700; /* फॉंट को और अधिक ठोस और बोल्ड किया गया है */
+    color: #111111;   /* रंग को एकदम गाढ़ा काला किया गया है ताकि फीका न लगे */
+    line-height: 1.5;
+}
+
+.analysis-list li {
+    margin-bottom: 5px;
+}
+
+.image-footer {
+margin-top: 30px;
+padding: 15px;
+background-color: #8b0000;
+color: #ffffff;
+text-align: center;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+word-break: break-word; /* टेक्स्ट को बॉक्स के बाहर जाने से रोकने के लिए */
+}
+
+.image-footer p {
+margin: 5px 0;
+font-size: 24px;
+font-weight: bold;
+letter-spacing: 0.5px;
+}
+
+/* फ्लेक्सबॉक्स जो डेस्कटॉप पर एक लाइन में रखेगा */
+.footer-content {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+gap: 15px;
+}
+
+/* फोन इमोजी और नंबर को एक साथ रखने के लिए */
+.phone-box {
+white-space: nowrap;
+display: inline-block;
+}
+
+.astrologer-info {
+white-space: normal; /* मोबाइल पर लंबी लाइन को एडजस्ट करने के लिए */
+}
+
+/* --- मोबाइल स्क्रीन (768px या उससे कम) के लिए सभी मीडिया क्वेरी एक साथ --- */
+@media (max-width: 768px) {
+    /* 1. ग्रिड लेआउट को सिंगल कॉलम करना */
+    .grid-container { 
+        grid-template-columns: 1fr !important; 
+        gap: 12px !important;
+    }
+
+    /* 2. मुख्य शीर्षक (Heading) का साइज */
+    h1 {
+        font-size: 20px !important;
+        margin: 10px 5px !important;
+    }
+
+    /* 3. कार्ड के अंदर की मुख्य हेडिंग और आइकॉन का साइज */
+    .card-header h3 {
+        font-size: 20px !important;
+    }
+
+    .rashi-icon {
+        font-size: 30px !important;
+        margin-right: 10px !important;
+    }
+
+    /* 4. बुलेट पॉइंट्स का साइज जो बहुत बड़ा आ रहा था */
+    .analysis-list {
+        font-size: 16px !important;
+        padding-left: 15px !important;
+        line-height: 1.6 !important;
+    }
+
+    /* 5. कार्ड की पैडिंग और मिनिमम हाइट */
+    .card {
+        padding: 12px !important;
+        min-height: auto !important;
+    }
+
+    /* 6. फुटर और कॉन्टैक्ट टेक्स्ट का साइज */
+    .image-footer p {
+        font-size: 18px !important;
+    }
+    
+    .astrologer-info, .phone-box {
+        font-size: 16px !important;
+    }
+      /* यहाँ मोबाइल के लिए डाउनलोड बटन की स्टाइल है */
+    .download-btn {
+        padding: 10px 20px !important;
+        font-size: 16px !important;
+        margin: 20px auto !important;
+        width: 90% !important;
+    }
+}

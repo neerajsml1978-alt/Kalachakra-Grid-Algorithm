@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>कर्क राशि विशेष राशिफल</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <script src="surya.js"></script>
+    <script src="chandra.js"></script>
+    <script src="mangal.js"></script>
+    <script src="budh.js"></script>
+    <script src="guru.js"></script>
+    <script src="shukra.js"></script>
+    <script src="shani.js"></script>
+    <script src="rahu.js"></script>
+    <script src="ketu.js"></script>
+
+    <script src="script.js"></script>
+    <script src="download-button.js"></script>
+</head>
+<body>
+
+    <div id="capture-area">
+        <h1 class="main-title">
+            ♋ कर्क राशि भविष्यफल - <span id="current-date"></span>
+        </h1>
+        
+        <div id="rashifal-container" class="grid-container"></div>
+
+        <div class="image-footer">
+            <p>📌 सटीक फलादेश और परामर्श के लिए संपर्क सूत्र:</p>
+            <p class="footer-content">
+                <span class="astrologer-info">👤 ज्योतिषाचार्य नीरज गोयल (शामली)</span>
+                <span class="phone-box">📞 9758007088</span>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            if (typeof loadPlanetWiseRashifal === 'function') {
+                loadPlanetWiseRashifal();
+            }
+            if (typeof addDownloadButton === 'function') {
+                addDownloadButton('capture-area', 'kark_rashifal.png');
+            }
+        };
+    </script>
+</body>
+</html>
