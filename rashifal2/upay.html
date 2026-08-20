@@ -40,24 +40,40 @@
         </div>
 
     </div>
-
-    <!-- करंट डेटा उठाकर 12 कार्ड भरने की स्क्रिप्ट (सीधे यहीं लिखी है) -->
+    <!-- करंट डेटा उठाकर 12 कार्ड भरने की स्क्रिप्ट -->
     <script>
         window.onload = function() {
-            // 1. आज की तारीख पता करना (जैसे 2026-08-20 या आपके डेटा के हिसाब से फॉर्मेट)
-            // यह कोड आपके upay.js के डेटा से आज की या सबसे नजदीकी तारीख का डेटा मैच करेगा
             if (typeof allData !== 'undefined') {
-                // तारीख निकालने का लॉजिक (आपकी जरूरत के हिसाब से)
-                const dateKeys = Object.keys(allData);
                 
-                // फिलहाल हम यहाँ आखिरी या आज की तारीख का डेटा ले रहे हैं 
-                // (या आप चाहें तो यहाँ सीधी अपनी तारीख डाल सकते हैं जैसे "2026-08-20-06-00")
-                let todayKey = dateKeys[dateKeys.length - 1]; // डिफ़ॉल्ट रूप से लेटेस्ट डेटा ले रहा है
+                // 1. आज की असली करंट तारीख निकालने का तरीका (YYYY-MM-DD फॉर्मेट में)
+                const now = new Date();
+                const year = now.getFullYear();
+                const month = String(now.getMonth() + 1).padStart(2, '0');
+                const day = String(now.getDate()).padStart(2, '0');
+                const todayStr = `${year}-${month}-${day}`; // जैसे "2026-08-20"
                 
-                // तारीख दिखाने के लिए
-                document.getElementById('current-date').innerText = todayKey.split('-').slice(0, 3).join('-');
+                // 2. चेक करना कि क्या आज की तारीख का डेटा upay.js में मौजूद है या नहीं
+                let matchedKey = null;
+                
+                // हम upay.js की तारीखों में ढूँढेंगे कि आज की तारीख से कौन सी मैच होती है
+                for (const dateKey in allData) {
+                    if (dateKey.startsWith(todayStr)) {
+                        matchedKey = dateKey;
+                        break;
+                    }
+                }
+                
+                // अगर आज की तारीख का डेटा नहीं मिलता है, तो सुरक्षा के लिए सबसे आखिरी (Latest) डेटा ले लेगा
+                if (!matchedKey) {
+                    const dateKeys = Object.keys(allData);
+                    matchedKey = dateKeys[dateKeys.length - 1];
+                }
+                
+                // स्क्रीन पर टाइटल में तारीख दिखाने के लिए
+                document.getElementById('current-date').innerText = matchedKey.split('-').slice(0, 3).join('-');
 
-                const rashifalList = allData[todayKey];
+                // 3. उस तारीख का डेटा निकालकर कार्ड भरना
+                const rashifalList = allData[matchedKey];
                 const container = document.getElementById('rashifal-container');
                 container.innerHTML = '';
 
@@ -79,12 +95,11 @@
                 console.error("upay.js फाइल सही से लोड नहीं हुई है!");
             }
             
-            // 2. डाउनलोड बटन एक्टिवेट करना
+            // डाउनलोड बटन एक्टिवेट करना
             if (typeof addDownloadButton === 'function') {
                 addDownloadButton('capture-area', 'upay_rashifal.png');
             }
         };
     </script>
-
 </body>
 </html>
