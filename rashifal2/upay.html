@@ -41,6 +41,83 @@
 
     </div>
     <!-- करंट डेटा उठाकर 12 कार्ड भरने की स्क्रिप्ट -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hour = String(now.getHours()).padStart(2, '0');
+        const minute = String(now.getMinutes()).padStart(2, '0');
 
+        // वर्तमान समय का की (Key) प्रारूप[span_3](start_span)[span_3](end_span)
+        const currentTimeStr = `${year}${month}${day}${hour}${minute}`;
+        
+        // चेक करें कि upayData (upay.js से) मौजूद है या नहीं[span_4](start_span)[span_4](end_span)[span_5](start_span)[span_5](end_span)
+        if (typeof upayData !== 'undefined') {
+            const sortedKeys = Object.keys(upayData).sort();
+            let activeKey = null;
+
+            // सही गोचर समय ढूँढने का लॉजिक (जो मास्टर स्क्रिप्ट में था)[span_6](start_span)[span_6](end_span)
+            for (let key of sortedKeys) {
+                let keyNumeric = key.replace(/-/g, '');
+                if (keyNumeric <= currentTimeStr) {
+                    activeKey = key;
+                }
+            }
+
+            // अगर सटीक समय न मिले तो आखिरी उपलब्ध डेटा लें[span_7](start_span)[span_7](end_span)
+            if (!activeKey && sortedKeys.length > 0) {
+                activeKey = sortedKeys[sortedKeys.length - 1];
+            }
+
+            const rashifalData = upayData[activeKey];
+            
+            // दिनांक सेट करें
+            const dateElement = document.getElementById('current-date');
+            if (dateElement) {
+                dateElement.innerText = new Date().toLocaleDateString('hi-IN');
+            }
+
+            const container = document.getElementById('rashifal-container');
+            if (container) {
+                container.innerHTML = '';
+
+                if (!rashifalData) {
+                    container.innerHTML = "<h2 style='text-align:center;'>आज के लिए अभी कोई गोचर अपडेट नहीं है।</h2>";
+                    return;
+                }
+
+                // 12 राशियों के कार्ड तैयार करना[span_8](start_span)[span_8](end_span)
+                rashifalData.forEach((item) => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    
+                    const points = item.msg.split('.').filter(p => p.trim() !== "").map(p => `<li>${p.trim()}</li>`).join('');
+                    
+                    // अगर उपाय दिया गया हो तो उसे जोड़ें
+                    let upayHtml = item.upay ? `<p style="margin-top: 10px; color: #b22222; font-weight: bold;">💡 उपाय: ${item.upay}</p>` : '';
+
+                    card.innerHTML = `
+                        <div class="card-header">
+                            <span class="rashi-icon">${item.icon}</span>
+                            <h3>${item.rashi}</h3>
+                        </div>
+                        <ul class="analysis-list">${points}</ul>
+                        ${upayHtml}
+                    `;
+                    container.appendChild(card);
+                });
+            }
+        }
+    });
+
+    // डाउनलोड बटन एक्टिवेट करना[span_9](start_span)[span_9](end_span)
+    window.addEventListener('load', function() {
+        if (typeof addDownloadButton === 'function') {
+            addDownloadButton('capture-area', 'upay.png');
+        }
+    });
+</script>
 </body>
 </html>
