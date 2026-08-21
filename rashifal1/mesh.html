@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>मेष राशि विशेष राशिफल</title>
+    
+    <!-- आपकी स्टाइलशीट फाइल -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- इमेज डाउनलोड करने के लिए लाइब्रेरी -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <!-- ग्रहों की अलग-अलग डेटा फाइलें (जो-जो ग्रह आप दिखाना चाहें) -->
+   <script src="surya.js"></script>
+   <script src="chandra.js"></script>
+   <script src="mangal.js"></script>
+   <script src="budh.js"></script>
+   <script src="guru.js"></script>
+   <script src="shukra.js"></script>
+   <script src="shani.js"></script>
+   <script src="rahu.js"></script>
+   <script src="ketu.js"></script>
+    <!-- जरूरत के अनुसार और ग्रह फाइलें यहाँ जोड़ सकते हैं -->
+
+    <!-- हमारी मास्टर स्क्रिप्ट फाइल जो सब कुछ ऑटोमैटिक बनाएगी -->
+    <script src="script.js"></script>
+    
+    <!-- डाउनलोड बटन फंक्शन फाइल -->
+    <script src="download-button.js"></script>
+</head>
+<body>
+
+    <!-- यह पूरा एरिया इमेज के रूप में डाउनलोड होगा -->
+    <div id="capture-area">
+        
+        <!-- मुख्य शीर्षक (तारीख अपने आप अपडेट होगी) -->
+        <h1 class="main-title">
+            ♈ मेष राशि भविष्यफल - <span id="current-date"></span>
+        </h1>
+        
+        <!-- सारे ग्रहों के कार्ड्स इस डिब्बे के अंदर अपने आप आकर जुड़ जाएंगे -->
+        <div id="rashifal-container" class="grid-container">
+            <!-- यहाँ स्क्रिप्ट खुद-ब-खुद सारे कार्ड बना देगी, आपको हाथ से कुछ नहीं लिखना है! -->
+        </div>
+
+        <!-- फुटर (ज्योतिषाचार्य की जानकारी) -->
+        <div class="image-footer">
+            <p>📌 सटीक फलादेश और परामर्श के लिए संपर्क सूत्र:</p>
+            <p class="footer-content">
+                <span class="astrologer-info">👤 ज्योतिषाचार्य नीरज गोयल (शामली)</span>
+                <span class="phone-box">📞 9758007088</span>
+            </p>
+        </div>
+
+    </div>
+
+    <!-- पेज लोड होने पर डाउनलोड बटन एक्टिवेट करने के लिए -->
+      <!-- पेज लोड होने पर राशिफल और डाउनलोड बटन दोनों एक साथ लोड होंगे -->
+    <script>
+        window.onload = function() {
+            // 1. पहले ग्रहों का राशिफल लोड होगा
+            if (typeof loadPlanetWiseRashifal === 'function') {
+                loadPlanetWiseRashifal();
+            }
+            
+            // 2. उसके बाद डाउनलोड बटन एक्टिवेट होगा
+            if (typeof addDownloadButton === 'function') {
+                addDownloadButton('capture-area', 'mesh_rashifal.png');
+            }
+        };
+    </script>
+
+</body>
+</html>
