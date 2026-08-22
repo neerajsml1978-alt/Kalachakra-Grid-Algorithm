@@ -22,8 +22,33 @@
         .search-box-container { position: relative; width: 95%; max-width: 600px; margin: 0 auto 15px auto; }
         .search-input { width: 100%; padding: 10px 15px; font-size: 15px; border: 2px solid #6a11cb; border-radius: 25px; outline: none; box-sizing: border-box; }
 
-        .suggestions-list { position: absolute; top: 110%; left: 0; right: 0; background: #fff; border-radius: 10px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); z-index: 10; max-height: 75vh; overflow-y: auto; text-align: left; display: none; }
-        .suggestion-item { padding: 10px 15px; font-size: 14px; cursor: pointer; border-bottom: 1px solid #f1f1f1; }
+           /* सर्च सजेशन मेनू बॉक्स (सबसे ऊपर तैरने के लिए) */
+        .suggestions-list {
+            position: absolute !important;
+            top: 110% !important;
+            left: 0 !important;
+            right: 0 !important;
+            background: #ffffff !important; /* पूरी तरह से ठोस सफेद, ताकि पीछे का कुछ न दिखे */
+            border-radius: 10px !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important; /* गहरी परछाई ताकि यह ऊपर उठा हुआ दिखे */
+            z-index: 2147483647 !important; /* ब्राउज़र की सबसे अधिकतम ज़ेड-इंडेक्स वैल्यू, ताकि इसे कोई न ढंक सके */
+            max-height: 75vh !important;
+            overflow-y: auto !important;
+            text-align: left !important;
+            display: none;
+            border: 1px solid #ccc !important;
+        }
+        
+        /* मेनू के अंदर के आइटम्स (टेक्स्ट साफ दिखे इसके लिए अपडेटेड) */
+        .suggestion-item { 
+            padding: 10px 15px; 
+            font-size: 14px; 
+            cursor: pointer; 
+            border-bottom: 1px solid #f1f1f1; 
+            color: #000000 !important; /* गाढ़ा काला रंग ताकि सफेद बैकग्राउंड पर अक्षर न छिपें */
+            background-color: #ffffff !important;
+        }
+   
         .suggestion-item:hover { background: #6a11cb; color: #fff; }
 
         .button-container { display: none; flex-wrap: wrap; justify-content: center; gap: 5px; max-width: 850px; margin: 10px auto 20px auto; }
