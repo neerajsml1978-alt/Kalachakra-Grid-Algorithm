@@ -14,15 +14,18 @@
             padding: 15px;
         }
         .Container {
-            max-width: 800px;
-            margin: 0;
-            background: #260909; /* मुख्य कंटेनर के लिए गहरा और प्रीमियम रंग */
-            padding: 25px 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-            border-top: 6px solid #e63946;
-            border: 1px solid #4a1515;
+    width: 100% !important;
+    max-width: 100% !important; /* इसे 800px से हटाकर 100% करें */
+    margin: 0 !important;
+    background: #260909;
+    padding: 25px 30px;
+    border-radius: 0; /* अगर पूरी चौड़ाई करनी है तो कोने सीधे रख सकते हैं या 12px भी रहने दे सकते हैं */
+    box-shadow: none;
+    border-top: 6px solid #e63946;
+    border: 1px solid #4a1515;
+    box-sizing: border-box !important; /* ताकि पैडिंग की वजह से बॉक्स बाहर न निकले */
         }
+        
         h1 {
             text-align: center;
             color: #ffb703;
