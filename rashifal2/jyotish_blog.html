@@ -388,15 +388,23 @@
             document.getElementById('downloadArea').style.display = 'block';
         }
 
-        // मोबाइल और डेस्कटॉप दोनों के लिए परफेक्ट इमेज डाउनलोड फंक्शन (पैडिंग कंट्रोल के साथ)
+        // हाई-क्वालिटी (HD) इमेज कैप्चर फंक्शन ताकि ज़ूम करने पर टेक्स्ट फटे या फेड न हों
 function captureAndDownloadContainer() {
     const container = document.getElementById('script-container');
+    const dynamicContent = document.getElementById('dynamic-content');
     
-    // 1. कैप्चर करने से ठीक पहले पैडिंग को 0 करना ताकि साइड में खाली जगह न आए
+    // पुरानी स्टाइल को सुरक्षित रखें
     const originalPadding = container.style.padding;
-    container.style.padding = '0px';
+    const originalBackground = container.style.background;
+    const originalInnerBg = dynamicContent.style.background;
+    
+    // चारों तरफ गैप और क्रीम बैकग्राउंड सेट करें
+    container.style.padding = '20px'; 
+    container.style.background = '#fffbeb'; 
+    dynamicContent.style.background = '#fffbeb';
 
-    html2canvas(container, { scale: 2, useCORS: true }).then(canvas => {
+    // scale: 3 करने से इमेज की क्वालिटी बहुत हाई हो जाएगी और टेक्स्ट फेड नहीं होंगे
+    html2canvas(container, { scale: 3, useCORS: true }).then(canvas => {
         const imageURL = canvas.toDataURL('image/png');
         const link = document.createElement('a');
         link.href = imageURL;
@@ -405,12 +413,15 @@ function captureAndDownloadContainer() {
         link.click();
         document.body.removeChild(link);
 
-        // 2. इमेज डाउनलोड होने के तुरंत बाद पैडिंग को वापस पुरानी स्थिति में लाना
+        // डाउनलोड होने के बाद मूल स्टाइल वापस लाएं
         container.style.padding = originalPadding;
+        container.style.background = originalBackground;
+        dynamicContent.style.background = originalInnerBg;
     }).catch(error => {
         console.error('इमेज कैप्चर करने में त्रुटि:', error);
-        // अगर कोई एरर आ जाए, तब भी पैडिंग वापस ठीक कर देना
         container.style.padding = originalPadding;
+        container.style.background = originalBackground;
+        dynamicContent.style.background = originalInnerBg;
         alert('इमेज डाउनलोड करने में विफल रही।');
     });
 }
