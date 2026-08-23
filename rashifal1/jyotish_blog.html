@@ -385,7 +385,7 @@
             document.getElementById('downloadArea').style.display = 'block';
         }
 
-        // सही गैप और बैकग्राउंड के साथ इमेज कैप्चर करने का अपडेटेड फंक्शन
+        // हाई-क्वालिटी (HD) इमेज कैप्चर फंक्शन ताकि ज़ूम करने पर टेक्स्ट फटे या फेड न हों
 function captureAndDownloadContainer() {
     const container = document.getElementById('script-container');
     const dynamicContent = document.getElementById('dynamic-content');
@@ -395,12 +395,13 @@ function captureAndDownloadContainer() {
     const originalBackground = container.style.background;
     const originalInnerBg = dynamicContent.style.background;
     
-    // चारों तरफ गैप और खूबसूरत क्रीम/येलो बैकग्राउंड सेट करें
+    // चारों तरफ गैप और क्रीम बैकग्राउंड सेट करें
     container.style.padding = '20px'; 
     container.style.background = '#fffbeb'; 
-    dynamicContent.style.background = '#fffbeb'; // अंदर के हिस्से को भी वही रंग दें ताकि किनारों पर सफेद या पारदर्शी न दिखे
+    dynamicContent.style.background = '#fffbeb';
 
-    html2canvas(container, { scale: 2, useCORS: true }).then(canvas => {
+    // scale: 3 करने से इमेज की क्वालिटी बहुत हाई हो जाएगी और टेक्स्ट फेड नहीं होंगे
+    html2canvas(container, { scale: 3, useCORS: true }).then(canvas => {
         const imageURL = canvas.toDataURL('image/png');
         const link = document.createElement('a');
         link.href = imageURL;
@@ -409,7 +410,7 @@ function captureAndDownloadContainer() {
         link.click();
         document.body.removeChild(link);
 
-        // डाउनलोड होने के बाद सभी स्टाइल को मूल स्थिति में वापस लाएं
+        // डाउनलोड होने के बाद मूल स्टाइल वापस लाएं
         container.style.padding = originalPadding;
         container.style.background = originalBackground;
         dynamicContent.style.background = originalInnerBg;
@@ -421,7 +422,7 @@ function captureAndDownloadContainer() {
         alert('इमेज डाउनलोड करने में विफल रही।');
     });
 }
-        
+         
         function showAllSuggestions() {
             let list = document.getElementById('suggestionsList');
             let items = list.getElementsByClassName('suggestion-item');
