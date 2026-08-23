@@ -69,7 +69,7 @@
         
         container.innerHTML = '';
 
-        // यदि कोई तारीख नहीं दी गई है, तो सिस्टम की आज की तारीख लें (YYYY-MM-DD फॉर्मेट में)
+        // यदि कोई तारीख नहीं दी गई है, तो सिस्टम की आज की तारीख लें
         let dateToFetch = targetDateStr;
         if (!dateToFetch) {
             const now = new Date();
@@ -89,8 +89,6 @@
             dateHeading.innerText = "अमान्य तारीख";
         }
 
-        // 🛑 घंटे और मिनट की जाँच पूरी तरह हटा दी गई है। 
-        // अब यह सीधे panchangData में केवल तारीख (YYYY-MM-DD) के आधार पर डेटा खोजेगा।
         const data = panchangData[dateToFetch];
 
         // यदि उस तारीख का डेटा उपलब्ध नहीं है
@@ -100,8 +98,11 @@
             return;
         }
 
-        // यदि डेटा उपलब्ध है तो संवत और अन्य जानकारी दिखाएं
+        // संवत और अन्य जानकारी दिखाएं
         sambatInfo.innerText = `${data.vikramSambat || ''} | ${data.ayan || ''} | ${data.ritu || ''}`;
+
+        // 🔥 यहाँ नया लॉजिक जोड़ा गया है: यदि वार बुधवार है, तो अभिजीत मुहूर्त स्वतः 'वर्जित' हो जाएगा
+        const abhijitText = (data.day === 'बुधवार') ? "वर्जित (बुधवार को मान्य नहीं)" : (data.abhijitMuhurat || "उपलब्ध नहीं");
 
         // 12 कार्ड्स की सूची
         const items = [
@@ -111,7 +112,7 @@
             { title: "करण", icon: "⚡", desc: data.karan },
             { title: "सूर्य व चन्द्र गोचर", icon: "🪐", desc: `सूर्य: ${data.sunSign} | चन्द्रमा: ${data.moonSign}` },
             { title: "सूर्योदय / सूर्यास्त", icon: "🌅", desc: `सूर्योदय: ${data.sunrise} | सूर्यास्त: ${data.sunset}` },
-            { title: "अभिजीत मुहूर्त (शुभ)", icon: "⏰", desc: data.abhijitMuhurat, isHighlight: true },
+            { title: "अभिजीत मुहूर्त (शुभ)", icon: "⏰", desc: abhijitText, isHighlight: true },
             { title: "राहुकाल (अशुभ)", icon: "⚠️", desc: data.rahukaal, isHighlight: true },
             { title: "दिशा शूल", icon: "🧭", desc: `आज दिशा शूल: ${data.dishaShool} दिशा में रहेगा।` },
             { title: "आज का विशेष उपाय", icon: "🪔", desc: data.remedy },
@@ -136,9 +137,10 @@
     }
 
     window.addEventListener('load', function() {
-        loadPanchang(); // पेज लोड होने पर आज की तारीख का डेटा दिखाएगा
+        loadPanchang();
         addDownloadButton('capture-area', 'advanced-panchang.png');
     });
-</script>    
+</script>
+    
 </body>
 </html>
