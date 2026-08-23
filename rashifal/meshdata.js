@@ -1,4 +1,4 @@
-const baseData = [
+const allData = [
         { 
             rashi: " मंगल गोचर (तीसरे भाव में)", 
             icon: "🔴", 
@@ -48,7 +48,7 @@ const getUpdatedData = () => {
 };
 
 // 2. अब allData ऑब्जेक्ट को सही तरीके से बनाएं
-const allData = {
+const baseData = {
     "2026-07-21-08-00": baseData,
     "2026-08-17-04-33": getUpdatedData()
 };
