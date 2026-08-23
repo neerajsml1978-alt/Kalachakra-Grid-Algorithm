@@ -391,7 +391,7 @@ function captureAndDownloadContainer() {
     
     // 1. कैप्चर करने से ठीक पहले पैडिंग को 0 करना ताकि साइड में खाली जगह न आए
     const originalPadding = container.style.padding;
-    container.style.padding = '5px';
+    container.style.padding = '10px';
 
     html2canvas(container, { scale: 2, useCORS: true }).then(canvas => {
         const imageURL = canvas.toDataURL('image/png');
