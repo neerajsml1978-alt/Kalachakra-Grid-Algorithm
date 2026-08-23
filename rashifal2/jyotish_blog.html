@@ -62,7 +62,7 @@
             max-width: 900px; 
             width: 100%; 
             margin: 10px auto 0 auto; 
-            background: #fff; 
+            background: #fffbeb; 
             border-radius: 12px; 
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); 
             box-sizing: border-box;
@@ -123,7 +123,7 @@
             padding: 10px !important;
             box-sizing: border-box !important;
             box-shadow: none !important;
-            background: transparent !important;
+            background: #fffbeb !important;
         }
 
         /* मोबाइल के लिए मीडिया क्वेरी */
@@ -388,22 +388,11 @@
             document.getElementById('downloadArea').style.display = 'block';
         }
 
-        // हाई-क्वालिटी (HD) इमेज कैप्चर फंक्शन ताकि ज़ूम करने पर टेक्स्ट फटे या फेड न हों
+        // केवल HD क्वालिटी और कैप्चर करने वाला सरल फंक्शन
 function captureAndDownloadContainer() {
     const container = document.getElementById('script-container');
-    const dynamicContent = document.getElementById('dynamic-content');
-    
-    // पुरानी स्टाइल को सुरक्षित रखें
-    const originalPadding = container.style.padding;
-    const originalBackground = container.style.background;
-    const originalInnerBg = dynamicContent.style.background;
-    
-    // चारों तरफ गैप और क्रीम बैकग्राउंड सेट करें
-    container.style.padding = '20px'; 
-    container.style.background = '#fffbeb'; 
-    dynamicContent.style.background = '#fffbeb';
 
-    // scale: 3 करने से इमेज की क्वालिटी बहुत हाई हो जाएगी और टेक्स्ट फेड नहीं होंगे
+    // scale: 3 से इमेज हाई-क्वालिटी में डाउनलोड होगी और टेक्स्ट बिल्कुल फेड नहीं होंगे
     html2canvas(container, { scale: 3, useCORS: true }).then(canvas => {
         const imageURL = canvas.toDataURL('image/png');
         const link = document.createElement('a');
@@ -412,20 +401,12 @@ function captureAndDownloadContainer() {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-
-        // डाउनलोड होने के बाद मूल स्टाइल वापस लाएं
-        container.style.padding = originalPadding;
-        container.style.background = originalBackground;
-        dynamicContent.style.background = originalInnerBg;
     }).catch(error => {
         console.error('इमेज कैप्चर करने में त्रुटि:', error);
-        container.style.padding = originalPadding;
-        container.style.background = originalBackground;
-        dynamicContent.style.background = originalInnerBg;
         alert('इमेज डाउनलोड करने में विफल रही।');
     });
 }
-    
+        
         function showAllSuggestions() {
             let list = document.getElementById('suggestionsList');
             let items = list.getElementsByClassName('suggestion-item');
