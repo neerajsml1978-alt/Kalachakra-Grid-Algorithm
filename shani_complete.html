@@ -129,7 +129,8 @@
 
     <!-- 1. शुभ और अशुभ शनि की निशानी -->
     <div class="accordion-item" id="shubh-ashubh-shani">
-        <button class="accordion-header">1. शुभ और अशुभ शनि की निशानी (यहाँ क्लिक करें)</button>
+    <button class="accordion-header"><span class="accordion-main-title">1. शुभ और अशुभ शनि की निशानी</span> <span style="font-size: 20px; font-weight: bold;">+</span></button>
+        
         <div class="accordion-body">
             <div class="content-inner" id="capture-box-1">
                 <p style="font-weight: bold; color: #dc2626; margin-top: 0;">⚠️ अशुभ शनि की निशानी:</p>
@@ -237,6 +238,8 @@
 <!-- html2canvas लाइब्रेरी इमेज कैप्चर करने के लिए -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         // अकॉर्डियन खोलने और बंद करने की स्क्रिप्ट
@@ -255,28 +258,42 @@
             });
         });
 
-        // हर डिब्बे की इमेज डाउनलोड करने की स्क्रिप्ट
+        // इमेज डाउनलोड करने की स्मार्ट स्क्रिप्ट
         var downloadButtons = document.querySelectorAll(".download-btn");
         downloadButtons.forEach(function(button) {
             button.addEventListener("click", function(e) {
-                e.stopPropagation(); // ताकि बटन क्लिक करने पर अकॉर्डियन बंद न हो
+                e.stopPropagation(); 
                 
                 var targetId = this.getAttribute("data-target");
                 var captureElement = document.getElementById(targetId);
+                
+                // 1. जिस बटन पर क्लिक हुआ है, उसे इमेज लेते समय कुछ देर के लिए छिपा दें
+                this.style.display = "none";
 
+                // 2. html2canvas से इमेज कैप्चर करें (बटन छिपा हुआ होगा)
                 html2canvas(captureElement, {
-                    scale: 2, // हाई क्वालिटी इमेज के लिए
+                    scale: 3, 
                     useCORS: true
                 }).then(function(canvas) {
+                    // 3. इमेज डाउनलोड होने के बाद बटन को वापस तुरंत दिखा दें
+                    document.querySelectorAll(".download-btn").forEach(function(btn) {
+                        btn.style.display = "inline-block";
+                    });
+
+                    // इमेज डाउनलोड कराने की प्रक्रिया
                     var link = document.createElement('a');
                     link.download = targetId + '-shani-info.png';
                     link.href = canvas.toDataURL('image/png');
                     link.click();
+                }).catch(function(error) {
+                    // अगर कोई एरर आए तो भी बटन वापस दिख जाना चाहिए
+                    document.querySelectorAll(".download-btn").forEach(function(btn) {
+                        btn.style.display = "inline-block";
+                    });
                 });
             });
         });
     });
 </script>
-
 </body>
 </html>
