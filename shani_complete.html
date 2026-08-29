@@ -259,7 +259,7 @@ h2 {
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // 1. अकॉर्डियन खोलने और बंद करने का फंक्शन (प्लस / माइनस के साथ)
+        // 1. अकॉर्डियन खोलने और बंद करने का फंक्शन
         var headers = document.querySelectorAll(".accordion-header");
         headers.forEach(function(header) {
             header.addEventListener("click", function() {
@@ -275,7 +275,7 @@ h2 {
             });
         });
 
-        // 2. ऑटोमैटिक फुटर जोड़ने और इमेज डाउनलोड करने वाला फंक्शन
+        // 2. ऑटोमैटिक आपका कस्टम फुटर जोड़ने और इमेज डाउनलोड करने वाला फंक्शन
         var downloadButtons = document.querySelectorAll(".download-btn");
         downloadButtons.forEach(function(button) {
             button.addEventListener("click", function(e) {
@@ -284,29 +284,26 @@ h2 {
                 var targetId = this.getAttribute("data-target");
                 var captureElement = document.getElementById(targetId);
                 
-                // क्लिक करते ही डाउनलोड बटन को छिपा दें ताकि वह इमेज में न आए
+                // क्लिक करते ही डाउनलोड बटन को छिपा दें
                 this.style.display = "none";
 
-                // --- ऑटोमैटिक फुटर यहाँ डायनामिकली जोड़ा जाएगा ---
+                // --- आपका कस्टम फुटर यहाँ ऑटोमैटिक जुड़ेगा ---
                 var autoFooter = document.createElement("div");
-                autoFooter.className = "temp-auto-footer";
-                autoFooter.style.textAlign = "center";
-                autoFooter.style.marginTop = "20px";
-                autoFooter.style.paddingTop = "10px";
-                autoFooter.style.borderTop = "1px solid #e2e8f0";
-                autoFooter.style.fontSize = "12px";
-                autoFooter.style.color = "#64748b";
-                autoFooter.innerHTML = "<span>📌 साभार: ज्योतिष पोर्टल | सभी अधिकार सुरक्षित</span>";
+                autoFooter.className = "image-footer";
+                autoFooter.innerHTML = `
+                    <h3>व्यक्तिगत कुंडली विश्लेषण के लिए संपर्क करें</h3>
+                    <h3>ज्योतिषाचार्य नीरज गोयल (शामली)<span class="phone-box">📞 9758007088</span></h3>
+                `;
                 
-                // इसे डिब्बे के सबसे अंत में जोड़ दें
+                // इसे डिब्बे के अंत में जोड़ दें
                 captureElement.appendChild(autoFooter);
 
-                // html2canvas से इमेज कैप्चर करें (जिसमें फुटर भी शामिल होगा)
+                // html2canvas से इमेज कैप्चर करें
                 html2canvas(captureElement, {
                     scale: 2, 
                     useCORS: true
                 }).then(function(canvas) {
-                    // इमेज बनने के तुरंत बाद ऑटो-फुटर को हटा दें ताकि वेबसाइट पर वह नजर न आए
+                    // इमेज बनने के तुरंत बाद ऑटो-फुटर को हटा दें
                     autoFooter.remove();
 
                     // डाउनलोड बटन को वापस दिखाएं
@@ -316,11 +313,10 @@ h2 {
 
                     // इमेज डाउनलोड कराने की प्रक्रिया
                     var link = document.createElement('a');
-                    link.download = targetId + '-shani-info.png';
+                    link.download = targetId + '-jyotish-info.png';
                     link.href = canvas.toDataURL('image/png');
                     link.click();
                 }).catch(function(error) {
-                    // अगर कोई एरर आ जाए तो भी फुटर और बटन को सामान्य स्थिति में ले आएं
                     autoFooter.remove();
                     document.querySelectorAll(".download-btn").forEach(function(btn) {
                         btn.style.display = "inline-block";
