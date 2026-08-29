@@ -278,7 +278,7 @@ h2 {
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // अकॉर्डियन खोलने और बंद करने का फंक्शन (प्लस / माइनस के साथ)
+        // 1. अकॉर्डियन खोलने और बंद करने का फंक्शन (प्लस / माइनस के साथ)
         var headers = document.querySelectorAll(".accordion-header");
         headers.forEach(function(header) {
             header.addEventListener("click", function() {
@@ -294,7 +294,7 @@ h2 {
             });
         });
 
-        // इमेज डाउनलोड करने का फंक्शन
+        // 2. ऑटोमैटिक फुटर जोड़ने और इमेज डाउनलोड करने वाला फंक्शन
         var downloadButtons = document.querySelectorAll(".download-btn");
         downloadButtons.forEach(function(button) {
             button.addEventListener("click", function(e) {
@@ -303,23 +303,44 @@ h2 {
                 var targetId = this.getAttribute("data-target");
                 var captureElement = document.getElementById(targetId);
                 
-                // इमेज खींचते वक्त बटन छिपाएं
+                // क्लिक करते ही डाउनलोड बटन को छिपा दें ताकि वह इमेज में न आए
                 this.style.display = "none";
 
+                // --- ऑटोमैटिक फुटर यहाँ डायनामिकली जोड़ा जाएगा ---
+                var autoFooter = document.createElement("div");
+                autoFooter.className = "temp-auto-footer";
+                autoFooter.style.textAlign = "center";
+                autoFooter.style.marginTop = "20px";
+                autoFooter.style.paddingTop = "10px";
+                autoFooter.style.borderTop = "1px solid #e2e8f0";
+                autoFooter.style.fontSize = "12px";
+                autoFooter.style.color = "#64748b";
+                autoFooter.innerHTML = "<span>📌 साभार: ज्योतिष पोर्टल | सभी अधिकार सुरक्षित</span>";
+                
+                // इसे डिब्बे के सबसे अंत में जोड़ दें
+                captureElement.appendChild(autoFooter);
+
+                // html2canvas से इमेज कैप्चर करें (जिसमें फुटर भी शामिल होगा)
                 html2canvas(captureElement, {
                     scale: 2, 
                     useCORS: true
                 }).then(function(canvas) {
-                    // डाउनलोड होने के बाद बटन वापस दिखाएं
+                    // इमेज बनने के तुरंत बाद ऑटो-फुटर को हटा दें ताकि वेबसाइट पर वह नजर न आए
+                    autoFooter.remove();
+
+                    // डाउनलोड बटन को वापस दिखाएं
                     document.querySelectorAll(".download-btn").forEach(function(btn) {
                         btn.style.display = "inline-block";
                     });
 
+                    // इमेज डाउनलोड कराने की प्रक्रिया
                     var link = document.createElement('a');
                     link.download = targetId + '-shani-info.png';
                     link.href = canvas.toDataURL('image/png');
                     link.click();
                 }).catch(function(error) {
+                    // अगर कोई एरर आ जाए तो भी फुटर और बटन को सामान्य स्थिति में ले आएं
+                    autoFooter.remove();
                     document.querySelectorAll(".download-btn").forEach(function(btn) {
                         btn.style.display = "inline-block";
                     });
@@ -327,6 +348,6 @@ h2 {
             });
         });
     });
-</script>    
+</script>
 </body>
 </html>
