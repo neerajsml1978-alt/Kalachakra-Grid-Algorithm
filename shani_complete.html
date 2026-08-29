@@ -5,48 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>शनि ग्रह संपूर्ण जानकारी - ज्योतिष पोर्टल</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8fafc;
-            color: #2c3e50;
-            margin: 0;
-            padding: 15px;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-        .navagraha-container {
-            max-width: 850px;
-            margin: 0 auto;
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            padding: 20px;
-            border: 1px solid #cbd5e1;
-        }
-        h2 {
-            text-align: center;
-            color: #1e293b;
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 20pt;
-        }
-        .subtitle {
-            text-align: center;
-            color: #64748b;
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
         
-        /* अकॉर्डियन स्टाइल */
-        .accordion-item {
-            margin-bottom: 12px;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            overflow: hidden;
-            background: #fff;
-        }
-        .accordion-header {
-        .accordion-header {
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f8fafc;
+    color: #2c3e50;
+    margin: 0;
+    padding: 15px;
+    box-sizing: border-box;
+}
+.navagraha-container {
+    max-width: 850px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    padding: 20px;
+    border: 1px solid #cbd5e1;
+}
+h2 {
+    text-align: center;
+    color: #1e293b;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 20pt;
+}
+.subtitle {
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* अकॉर्डियन स्टाइल (प्लस-माइनस के साथ) */
+.accordion-item {
+    margin-bottom: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+}
+.accordion-header {
     background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
     color: #0f172a;
     cursor: pointer;
@@ -55,85 +54,89 @@
     text-align: left;
     border: none;
     outline: none;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: bold;
     transition: 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .accordion-header:hover {
     background: linear-gradient(135deg, #cbd5e1, #94a3b8);
 }
-            
-        .accordion-header::after {
-            content: '+';
-            font-size: 20px;
-            font-weight: bold;
+.accordion-header::after {
+    content: '+';
+    font-size: 20px;
+    font-weight: bold;
+}
+.accordion-header.active::after {
+    content: '-';
+}
+.accordion-body {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease;
+    background-color: #ffffff;
+    text-align: left;
+}
+.content-inner {
+    padding: 15px 0;
+    border-top: 1px solid #f1f1f1;
+}
+.bullet-point {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 18px;
+    line-height: 1.6;
+}
+.bullet-point::before {
+    content: "🔹";
+    position: absolute;
+    left: 0;
+    font-size: 10px;
+    top: 4px;
+}
+.download-btn-box {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px dashed #cbd5e1;
+    padding-top: 15px;
+}
+.download-btn {
+    background: #1e293b;
+    color: #fff;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 13px;
+    transition: 0.2s;
+}
+.download-btn:hover {
+    background: #0f172a;
         }
-        .accordion-header.active::after {
-            content: '-';
-        }
-        .accordion-body {
-            padding: 0 18px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out, padding 0.3s ease;
-            background-color: #ffffff;
-            text-align: left;
-        }
-        .content-inner {
-            padding: 15px 0;
-            border-top: 1px solid #f1f1f1;
-        }
-        .bullet-point {
-            margin-bottom: 10px;
-            position: relative;
-            padding-left: 18px;
-            line-height: 1.6;
-        }
-        .bullet-point::before {
-            content: "🔹";
-            position: absolute;
-            left: 0;
-            font-size: 10px;
-            top: 4px;
-        }
-        .download-btn-box {
-            text-align: center;
-            margin-top: 20px;
-            border-top: 1px dashed #cbd5e1;
-            padding-top: 15px;
-        }
-        .download-btn {
-            background: #1e293b;
-            color: #fff;
-            border: none;
-            padding: 9px 18px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 13px;
-            transition: 0.2s;
-        }
-        .download-btn:hover {
-            background: #0f172a;
-        }
+        
     </style>
 </head>
 <body>
 
 <div class="navagraha-container" id="top-section">
     <h2>🪐 शनि ग्रह संपूर्ण जानकारी विशेष 🪐</h2>
-    <p class="subtitle">
-        👇 नीचे दिए गए शीर्षकों पर क्लिक करके शनि ग्रह से जुड़ी जानकारी देखें और इमेज डाउनलोड करें:
-    </p>
+    <p class="subtitle">👇 नीचे दिए गए शीर्षकों पर क्लिक करके जानकारी देखें और इमेज डाउनलोड करें:</p>
 
     <!-- 1. शुभ और अशुभ शनि की निशानी -->
-<div class="accordion-item" id="shubh-ashubh-shani">
-    <button class="accordion-header">
-        <span class="accordion-main-title">1. शुभ और अशुभ शनि की निशानी</span>
-    </button>
-    
+    <div class="accordion-item">
+        <button class="accordion-header">1. शुभ और अशुभ शनि की निशानी</button>
         <div class="accordion-body">
             <div class="content-inner" id="capture-box-1">
+                
+                <!-- इमेज के अंदर दिखने वाली हेडिंग -->
+                <div style="font-size: 17px; font-weight: bold; color: #1e293b; margin-bottom: 15px; border-bottom: 2px solid #cbd5e1; padding-bottom: 8px;">
+                    1. शुभ और अशुभ शनि की निशानी
+                </div>
+
                 <p style="font-weight: bold; color: #dc2626; margin-top: 0;">⚠️ अशुभ शनि की निशानी:</p>
                 <div class="bullet-point">शनि के अशुभ प्रभाव के कारण मकान या मकान का हिस्सा गिर जाता है या क्षतिग्रस्त हो जाता है या मकान बिक जाता है।</div>
                 <div class="bullet-point">घर में लड़ाई-झगड़े के कारण परिवार में फूट पड़ जाती है।</div>
@@ -148,6 +151,11 @@
                 <div class="bullet-point">शनि की स्थिति यदि शुभ है तो व्यक्ति हर क्षेत्र में प्रगति और उन्नति करता रहता है। उसके जीवन में किसी भी प्रकार का कष्ट नहीं होता है। बाल और नाखून मजबूत होते हैं।</div>
                 <div class="bullet-point">ऐसा व्यक्ति न्यायप्रिय होता है और समाज में उसका मान-सम्मान खूब रहता हैं। धन की किसी भी प्रकार से कभी कमी नहीं होती और व्यक्ति हर तरह की घटना-दुर्घटना से बचा रहता है।</div>
 
+                <!-- फुटर जो इमेज में भी आएगा -->
+                <div style="text-align: center; margin-top: 20px; padding-top: 10px; border-top: 1px solid #e2e8f0; font-size: 12px; color: #64748b;">
+                    <span>📌 साभार: ज्योतिष पोर्टल | सभी अधिकार सुरक्षित</span>
+                </div>
+
                 <!-- डाउनलोड बटन -->
                 <div class="download-btn-box">
                     <button type="button" class="download-btn" data-target="capture-box-1">📥 इस हिस्से की इमेज डाउनलोड करें</button>
@@ -155,6 +163,8 @@
             </div>
         </div>
     </div>
+</div>
+    
 
     <!-- 2. कैसे होता है शनि खराब -->
     <div class="accordion-item" id="kaise-hota-hai-kharab">
@@ -239,11 +249,9 @@
 <!-- html2canvas लाइब्रेरी इमेज कैप्चर करने के लिए -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // अकॉर्डियन खोलने और बंद करने की स्क्रिप्ट
+        // अकॉर्डियन खोलने और बंद करने का फंक्शन (प्लस / माइनस के साथ)
         var headers = document.querySelectorAll(".accordion-header");
         headers.forEach(function(header) {
             header.addEventListener("click", function() {
@@ -259,7 +267,7 @@
             });
         });
 
-        // इमेज डाउनलोड करने की स्मार्ट स्क्रिप्ट
+        // इमेज डाउनलोड करने का फंक्शन
         var downloadButtons = document.querySelectorAll(".download-btn");
         downloadButtons.forEach(function(button) {
             button.addEventListener("click", function(e) {
@@ -268,26 +276,23 @@
                 var targetId = this.getAttribute("data-target");
                 var captureElement = document.getElementById(targetId);
                 
-                // 1. जिस बटन पर क्लिक हुआ है, उसे इमेज लेते समय कुछ देर के लिए छिपा दें
+                // इमेज खींचते वक्त बटन छिपाएं
                 this.style.display = "none";
 
-                // 2. html2canvas से इमेज कैप्चर करें (बटन छिपा हुआ होगा)
                 html2canvas(captureElement, {
-                    scale: 3, 
+                    scale: 2, 
                     useCORS: true
                 }).then(function(canvas) {
-                    // 3. इमेज डाउनलोड होने के बाद बटन को वापस तुरंत दिखा दें
+                    // डाउनलोड होने के बाद बटन वापस दिखाएं
                     document.querySelectorAll(".download-btn").forEach(function(btn) {
                         btn.style.display = "inline-block";
                     });
 
-                    // इमेज डाउनलोड कराने की प्रक्रिया
                     var link = document.createElement('a');
                     link.download = targetId + '-shani-info.png';
                     link.href = canvas.toDataURL('image/png');
                     link.click();
                 }).catch(function(error) {
-                    // अगर कोई एरर आए तो भी बटन वापस दिख जाना चाहिए
                     document.querySelectorAll(".download-btn").forEach(function(btn) {
                         btn.style.display = "inline-block";
                     });
@@ -295,6 +300,6 @@
             });
         });
     });
-</script>
+</script>    
 </body>
 </html>
