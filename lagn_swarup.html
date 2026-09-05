@@ -117,41 +117,231 @@
         .shlok-title {
             font-weight: bold;
             color: #b45309;
-            margin-bottom: 5px;
+   <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 15px;
+        }
+
+        /* डिफ़ॉल्ट रूप से मोबाइल व्यू के लिए */
+        .lagna-container {
+            max-width: 100%;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            padding: 20px;
+            border: 2px solid #3b82f6;
+        }
+
+        h2 {
+            text-align: center;
+            color: #1e3a8a;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 20pt;
+        }
+
+        /* अकॉर्डियन बटन / हेडिंग स्टाइल */
+        .accordion-item {
+            margin-bottom: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #fff;
+        }
+        .accordion-header {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            color: #1e40af;
+            cursor: pointer;
+            padding: 15px 18px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .accordion-header:hover {
+            background: linear-gradient(135deg, #bfdbfe, #93c5fd);
+            color: #172554;
+        }
+        .accordion-header::after {
+            content: '+';
+            font-size: 20px;
+            font-weight: bold;
+            color: #1d4ed8;
+        }
+        .accordion-header.active::after {
+            content: '-';
+        }
+        
+        /* खुलने और बंद होने वाला एरिया */
+        .accordion-body {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease-out, padding 0.35s ease;
+            background-color: #ffffff;
+            text-align: left;
+        }
+        .content-inner {
+            padding: 15px 0;
+            border-top: 1px solid #f1f1f1;
+        }
+        .info-block {
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #e2e8f0;
+            font-size: 15px;
+            line-height: 1.6;
+            display: flex;
+            justify-content: space-between;
+        }
+        .info-label {
+            font-weight: bold;
+            color: #1e3a8a;
+            width: 40%;
+        }
+        .info-value {
+            color: #334155;
+            width: 60%;
+            text-align: right;
+        }
+        .nakshatra-desc {
+            background: #f8fafc;
+            padding: 12px 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 15px;
+            color: #475569;
+            border-left: 4px solid #3b82f6;
+            line-height: 1.5;
+        }
+        .shlok-box {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 6px;
+            padding: 14px 15px;
+            margin-top: 15px;
+        }
+        .shlok-title {
+            font-weight: bold;
+            color: #b45309;
+            margin-bottom: 6px;
+            font-size: 15px;
         }
         .shlok-text {
             font-style: italic;
             color: #78350f;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             white-space: pre-line;
+            line-height: 1.5;
         }
         .shlok-meaning {
             color: #451a03;
             font-size: 14px;
+            line-height: 1.5;
         }
 
         .image-footer {
             background: linear-gradient(135deg, #fffbeb, #fef3c7);
             border: 1px solid #f59e0b;
             border-radius: 8px;
-            padding: 12px;
+            padding: 15px;
             text-align: center;
-            margin-top: 30px;
+            margin-top: 25px;
         }
         .image-footer h3 {
             margin: 0 0 5px 0;
             color: #b45309;
-            font-size: 13pt;
+            font-size: 14pt;
         }
         .image-footer p {
             margin: 0;
             color: #78350f;
+            font-size: 16px;
         }
         .phone-box {
             white-space: nowrap;
             display: inline-block;
         }
+
+        /* ------------------------------------------------ */
+        /* डेस्कटॉप / लैपटॉप स्क्रीन के लिए बड़ा और भव्य व्यू (Media Query) */
+        /* ------------------------------------------------ */
+        @media screen and (min-width: 768px) {
+            body {
+                padding: 40px;
+            }
+            .lagna-container {
+                max-width: 1050px; /* डेस्कटॉप पर चौड़ाई बढ़ाई गई */
+                padding: 40px;
+                border-width: 3px;
+            }
+            h2 {
+                font-size: 28pt;
+                margin-bottom: 35px;
+            }
+            .sub-title {
+                font-size: 18px !important;
+                margin-bottom: 35px !important;
+            }
+            .accordion-item {
+                margin-bottom: 20px;
+                border-radius: 10px;
+            }
+            .accordion-header {
+                padding: 20px 25px;
+                font-size: 20px; /* डेस्कटॉप पर हेडिंग बड़ी */
+            }
+            .accordion-header::after {
+                font-size: 26px;
+            }
+            .accordion-body {
+                padding: 0 25px;
+            }
+            .nakshatra-desc {
+                font-size: 17px;
+                padding: 15px 20px;
+            }
+            .info-block {
+                font-size: 17px; /* जानकारी के फॉन्ट बड़े किए गए */
+                margin-bottom: 15px;
+                padding-bottom: 12px;
+            }
+            .shlok-box {
+                padding: 20px;
+            }
+            .shlok-title {
+                font-size: 17px;
+            }
+            .shlok-text {
+                font-size: 16px;
+            }
+            .shlok-meaning {
+                font-size: 16px;
+            }
+            .image-footer {
+                max-width: 1050px !important;
+                padding: 20px;
+                margin-top: 40px !important;
+            }
+            .image-footer h3 {
+                font-size: 16pt;
+            }
+            .image-footer p {
+                font-size: 18px;
+            }
+        }
     </style>
+
 </head>
 <body>
 
