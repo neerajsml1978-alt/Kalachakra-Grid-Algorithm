@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>नव लग्न - रूप, रंग, स्वरूप एवं विशेषताएं</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 20px;
+        }
+        .lagna-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            padding: 25px;
+            border: 2px solid #3b82f6;
+        }
+        h2 {
+            text-align: center;
+            color: #1e3a8a;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 22pt;
+        }
+        
+        /* अकॉर्डियन बटन / हेडिंग स्टाइल */
+        .accordion-item {
+            margin-bottom: 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #fff;
+        }
+        .accordion-header {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            color: #1e40af;
+            cursor: pointer;
+            padding: 16px 20px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .accordion-header:hover {
+            background: linear-gradient(135deg, #bfdbfe, #93c5fd);
+            color: #172554;
+        }
+        .accordion-header::after {
+            content: '+';
+            font-size: 22px;
+            font-weight: bold;
+            color: #1d4ed8;
+        }
+        .accordion-header.active::after {
+            content: '-';
+        }
+        
+        /* खुलने और बंद होने वाला एरिया */
+        .accordion-body {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease-out, padding 0.35s ease;
+            background-color: #ffffff;
+            text-align: left;
+        }
+        .content-inner {
+            padding: 15px 0;
+            border-top: 1px solid #f1f1f1;
+        }
+        .info-block {
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #e2e8f0;
+            font-size: 15px;
+            line-height: 1.6;
+            display: flex;
+            justify-content: space-between;
+        }
+        .info-label {
+            font-weight: bold;
+            color: #1e3a8a;
+            width: 35%;
+        }
+        .info-value {
+            color: #334155;
+            width: 65%;
+            text-align: right;
+        }
+        .nakshatra-desc {
+            background: #f8fafc;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #475569;
+            border-left: 4px solid #3b82f6;
+        }
+        .shlok-box {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: 6px;
+            padding: 12px 15px;
+            margin-top: 15px;
+        }
+        .shlok-title {
+            font-weight: bold;
+            color: #b45309;
+            margin-bottom: 5px;
+        }
+        .shlok-text {
+            font-style: italic;
+            color: #78350f;
+            margin-bottom: 8px;
+            white-space: pre-line;
+        }
+        .shlok-meaning {
+            color: #451a03;
+            font-size: 14px;
+        }
+
+        .image-footer {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .image-footer h3 {
+            margin: 0 0 5px 0;
+            color: #b45309;
+            font-size: 13pt;
+        }
+        .image-footer p {
+            margin: 0;
+            color: #78350f;
+        }
+        .phone-box {
+            white-space: nowrap;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="lagna-container">
+    <h2>✨ नौ लग्न: रूप, रंग, स्वरूप एवं विशेषताएँ ✨</h2>
+    <p style="text-align: center; color: #555; font-size: 15px; margin-bottom: 25px;">
+        👇 नीचे दिए गए लग्नों पर क्लिक करके उनकी विस्तृत जानकारी देखें:
+    </p>
+
+    <!-- 1. मेष लग्न -->
+    <div class="accordion-item">
+        <button class="accordion-header">1. मेष लग्न का रूप, रंग, स्वरूप एवं विशेषताएँ</button>
+        <div class="accordion-body">
+            <div class="content-inner">
+                <div class="nakshatra-desc">अश्विनी, भरणी एवं कृत्तिका के प्रथम चरण के संयोग से मेष राशि बनती है।</div>
+                <div class="info-block"><span class="info-label">लग्न स्वामी:</span><span class="info-value">मंगल</span></div>
+                <div class="info-block"><span class="info-label">लग्न तत्व:</span><span class="info-value">अग्नि</span></div>
+                <div class="info-block"><span class="info-label">लग्न चिन्ह:</span><span class="info-value">मेढ़ा</span></div>
+                <div class="info-block"><span class="info-label">लग्न स्वरूप:</span><span class="info-value">चर</span></div>
+                <div class="info-block"><span class="info-label">लग्न स्वभाव:</span><span class="info-value">उग्र</span></div>
+                <div class="info-block"><span class="info-label">लग्न उदय:</span><span class="info-value">पूर्व</span></div>
+                <div class="info-block"><span class="info-label">लग्न प्रकृति:</span><span class="info-value">चित्त प्रकृति</span></div>
+                <div class="info-block"><span class="info-label">जीवन रत्न:</span><span class="info-value">मूंगा</span></div>
+                <div class="info-block"><span class="info-label">आराध्य:</span><span class="info-value">भगवान शिव, भैरों, हनुमान</span></div>
+                <div class="info-block"><span class="info-label">लग्न धातु:</span><span class="info-value">ताम्बा</span></div>
+                <div class="info-block"><span class="info-label">अनुकूल रंग:</span><span class="info-value">लाल, क्रीम</span></div>
+                <div class="info-block"><span class="info-label">लग्न जाति:</span><span class="info-value">क्षत्रिय</span></div>
+                <div class="info-block"><span class="info-label">शुभ दिन:</span><span class="info-value">मंगलवार, रविवार</span></div>
+                <div class="info-block"><span class="info-label">शुभ अंक:</span><span class="info-value">9</span></div>
+                <div class="info-block"><span class="info-label">जातक विशेषता:</span><span class="info-value">तेजस्वी</span></div>
+                <div class="info-block"><span class="info-label">मित्र लग्न:</span><span class="info-value">तुला, धनु, मकर</span></div>
+                <div class="info-block"><span class="info-label">शत्रु लग्न:</span><span class="info-value">कन्या</span></div>
+                <div class="info-block"><span class="info-label">लग्न लिंग:</span><span class="info-value">पुरुष</span></div>
+                
+                <div class="shlok-box">
+                    <div class="shlok-title">संस्कृत श्लोक एवं अर्थ:</div>
+                    <div class="shlok-text">पित्तानिलत्रिधा त्वैक्यं श्लेष्मिकाश्च क्रियोदयः।
+रक्तवर्णो बृहद्वाश्चतुष्पादात्रि विक्रमी।।
+पूर्ववासी नृपज्याति शैलचारी रजोगुणी।
+पृष्ठोदयी पावकी च मेषराशिः कुजादिपः।।</div>
+                    <div class="shlok-meaning"><strong>अर्थ:</strong> पित्त, वायु, कफ ये तीनो मिली हुई प्रकृति है। मेष राशि का लाल वर्ण, बड़ा शरीर, चार पैर है। यह रात मे बलवान है। पूर्व दिशा, क्षत्रिय वर्ण, पर्वतीय प्रदेश मे घूमने वाली, रजोगुणी, पृष्ठोदयी, अग्निराशि है और इसके स्वामी मंगल हैं।</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. वृषभ लग्न -->
+    <div class="accordion-item">
+        <button class="accordion-header">2. वृषभ लग्न का रूप, रंग, स्वरूप एवं विशेषताएं</button>
+        <div class="accordion-body">
+            <div class="content-inner">
+                <div class="nakshatra-desc">कृत्तिका (द्वितीय, तृतीय, चतुर्थ चरण), रोहिणी तथा, मृगशीर्ष (प्रथम, द्वितीय चरण) के संयोग से वृषभ राशि बनती है।</div>
+                <div class="info-block"><span class="info-label">लग्न स्वामी:</span><span class="info-value">शुक्र</span></div>
+                <div class="info-block"><span class="info-label">लग्न तत्व:</span><span class="info-value">पृथ्वी</span></div>
+                <div class="info-block"><span class="info-label">लग्न चिन्ह:</span><span class="info-value">वृषभ (बैल)</span></div>
+                <div class="info-block"><span class="info-label">लग्न स्वरूप:</span><span class="info-value">स्थिर</span></div>
+                <div class="info-block"><span class="info-label">लग्न स्वभाव:</span><span class="info-value">सौम्य</span></div>
+                <div class="info-block"><span class="info-label">लग्न उदय:</span><span class="info-value">दक्षिण</span></div>
+                <div class="info-block"><span class="info-label">लग्न प्रकृति:</span><span class="info-value">वात प्रकृति</span></div>
+                <div class="info-block"><span class="info-label">जीवन रत्न:</span><span class="info-value">हीरा</span></div>
+                <div class="info-block"><span class="info-label">आराध्य:</span><span class="info-value">भगवान विष्णु, श्री लक्ष्मी</span></div>
+                <div class="info-block"><span class="info-label">लग्न धातु:</span><span class="info-value">चांदी</span></div>
+                <div class="info-block"><span class="info-label">अनुकूल रंग:</span><span class="info-value">हरा, हल्का नीला, श्वेत</span></div>
+                <div class="info-block"><span class="info-label">लग्न जाति:</span><span class="info-value">वैश्य</span></div>
+                <div class="info-block"><span class="info-label">शुभ दिन:</span><span class="info-value">शुक्रवार, शनिवार</span></div>
+                <div class="info-block"><span class="info-label">शुभ अंक:</span><span class="info-value">6</span></div>
+                <div class="info-block"><span class="info-label">जातक विशेषता:</span><span class="info-value">दयालु</span></div>
+                <div class="info-block"><span class="info-label">मित्र लग्न:</span><span class="info-value">मकर, कन्या</span></div>
+                <div class="info-block"><span class="info-label">शत्रु लग्न:</span><span class="info-value">तुला, धनु</span></div>
+                <div class="info-block"><span class="info-label">लग्न लिंग:</span><span class="info-value">स्त्री</span></div>
+                
+                <div class="shlok-box">
+                    <div class="shlok-title">वृहत पराशर होराशास्त्र के संस्कृत श्लोक एवं अर्थ:</div>
+                    <div class="shlok-text">श्वेतः शुक्राधिपो दीर्घः चतुष्पाच्छ्वरी बली।
+याम्येट्राम्यो वनिःभूमिः स्त्री पृष्ठोदयो वृषः।।</div>
+                    <div class="shlok-meaning"><strong>अर्थ:</strong> वर्ष राशि श्वेत वर्ण, लंबा शरीर, चार पैर, रात्रिबली, दक्षिण दिशा, ग्रामवासी, वैश्य वर्ण, भूमि प्रिय, स्त्रीसंज्ञा और पृष्ठोदयी है। शुक्र इसके स्वामी हैं।</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. मिथुन लग्न -->
+    <div class="accordion-item">
+        <button class="accordion-header">3. मिथुन लग्न का रूप, रंग, स्वरूप एवं विशेषताएं</button>
+        <div class="accordion-body">
+            <div class="content-inner">
+                <div class="nakshatra-desc">मृगशीर्ष (तृतीय एवं चतुर्थ चरण), आर्द्रा तथा पुनर्वसु (प्रथम, द्वितीय एवं तृतीय चरण) के संयोग से मिथुन राशि बनती है।</div>
+                <div class="info-block"><span class="info-label">लग्न स्वामी:</span><span class="info-value">बुध</span></div>
+                <div class="info-block"><span class="info-label">लग्न तत्व:</span><span class="info-value">वायु</span></div>
+                <div class="info-block"><span class="info-label">लग्न चिन्ह:</span><span class="info-value">स्त्री पुरुष जोड़ा</span></div>
+                <div class="info-block"><span class="info-label">लग्न स्वरूप:</span><span class="info-value">द्विस्वभाव</span></div>
+                <div class="info-block"><span class="info-label">लग्न स्वभाव:</span><span class="info-value">क्रूर</span></div>
+                <div class="info-block"><span class="info-label">लग्न उदय:</span><span class="info-value">पश्चिम</span></div>
+                <div class="info-block"><span class="info-label">लग्न प्रकृति:</span><span class="info-value">त्रिधातु प्रकृति</span></div>
+                <div class="info-block"><span class="info-label">जीवन रत्न:</span><span class="info-value">पन्ना</span></div>
+                <div class="info-block"><span class="info-label">आराध्य:</span><span class="info-value">गणपति</span></div>
+                <div class="info-block"><span class="info-label">लग्न धातु:</span><span class="info-value">तांबा</span></div>
+                <div class="info-block"><span class="info-label">अनुकूल रंग:</span><span class="info-value">हरा, सफ़ेद</span></div>
+                <div class="info-block"><span class="info-label">लग्न जाति:</span><span class="info-value">शूद्र</span></div>
+                <div class="info-block"><span class="info-label">शुभ दिन:</span><span class="info-value">बुधवार</span></div>
+                <div class="info-block"><span class="info-label">शुभ अंक:</span><span class="info-value">5</span></div>
+                <div class="info-block"><span class="info-label">जातक विशेषता:</span><span class="info-value">चतुर, निडर</span></div>
+                <div class="info-block"><span class="info-label">लग्न लिंग:</span><span class="info-value">पुरुष (कुमार)</span></div>
+                
+                <div class="shlok-box">
+                    <div class="shlok-title">वृहत पराशर होराशास्त्र के संस्कृत श्लोक एवं अर्थ:</div>
+                    <div class="shlok-text">शीर्षोदयी नृमिथुनं सगदं च सवीणकम्।
+प्रत्वस्वामी द्विपाद्रात्रिबली ग्राम्याग्रगोनिली।।
+समगात्रो हरिद्वर्णो मिथुनआख्यो बुधाधिपः।</div>
+                    <div class="shlok-meaning"><strong>अर्थ:</strong> मिथुन राशि शीर्षोदयी पुरुष-स्त्री पुरुष गदा को लिए और स्त्री वीणा को लिए हुए पश्चिम दिशा के स्वामी द्विपद रात्रिबली ग्राम में रहने वाली वायु प्रकृति है हरे रंग का इसका श्री हैं और बुध इसके स्वामी हैं।</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. कर्क लग्न -->
+    <div class="accordion-item">
+        <button class="accordion-header">4. कर्क लग्न का रूप, रंग, स्वरूप एवं विशेषताएं</button>
+        <div class="accordion-body">
+            <div class="content-inner">
+                <div class="nakshatra-desc">पुनर्वसु (चतुर्थ चरण), पुष्य (चारों चरण) तथा आश्लेषा (चारों चरण) के संयोग से कर्क लग्न बनता है।</div>
+                <div class="info-block"><span class="info-label">लग्न स्वामी:</span><span class="info-value">चन्द्र</span></div>
+                <div class="info-block"><span class="info-label">लग्न तत्व:</span><span class="info-value">जल</span></div>
+                <div class="info-block"><span class="info-label">लग्न चिन्ह:</span><span class="info-value">केकड़ा</span></div>
+                <div class="info-block"><span class="info-label">लग्न स्वरूप:</span><span class="info-value">चर</span></div>
+                <div class="info-block"><span class="info-label">लग्न स्वभाव:</span><span class="info-value">सौम्य</span></div>
+                <div class="info-block"><span class="info-label">लग्न उदय:</span><span class="info-value">उत्तर</span></div>
+                <div class="info-block"><span class="info-label">लग्न प्रकृति:</span><span class="info-value">कफ प्रकृति</span></div>
+                <div class="info-block"><span class="info-label">जीवन रत्न:</span><span class="info-value">मोती</span></div>
+                <div class="info-block"><span class="info-label">आराध्य:</span><span class="info-value">भगवान शिव</span></div>
+                <div class="info-block"><span class="info-label">लग्न गुण:</span><span class="info-value">सतोगुण</span></div>
+                <div class="info-block"><span class="info-label">अनुकूल रंग:</span><span class="info-value">सफेद, क्रीम</span></div>
+                <div class="info-block"><span class="info-label">लग्न जाति:</span><span class="info-value">ब्राह्मण</span></div>
+                <div class="info-block"><span class="info-label">शुभ दिन:</span><span class="info-value">सोमवार</span></div>
+                <div class="info-block"><span class="info-label">शुभ अंक:</span><span class="info-value">2</span></div>
+                <div class="info-block"><span class="info-label">जातक विशेषता:</span><span class="info-value">भावुक</span></div>
+                <div class="info-block"><span class="info-label">लग्न लिंग:</span><span class="info-value">स्त्री</span></div>
+                
+                <div class="shlok-box">
+                    <div class="shlok-title">वृहतपराशर होराशास्त्र के संस्कृत श्लोक एवं अर्थ:</div>
+                    <div class="shlok-text">पाटलो वनचारी च ब्रह्मणो निशि वीर्यवान।।
+बहुपटुतरः स्थौल्यतनुः स्वगुणी जली।
+पृष्ठोदयी कर्कराशिमृगाङ्कोऽधिपति स्मृतः।।</div>
+                    <div class="shlok-meaning"><strong>अर्थ:</strong> कर्क राशि का थोड़ा लाल और सफेद मिला हुआ रंग, वनचारी, ब्राह्मण वर्ण है। रात में बली है। यह अत्यंत विद्वान, स्थूल शरीर, जल में रहने वाली, पृष्ठोदयी राशि है और चन्द्र इसके स्वामी हैं।</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. सिंह लग्न -->
+    <div class="accordion-item">
+        <button class="accordion-header">5. सिंह लग्न का रूप, रंग, स्वरूप एवं विशेषताएं</button>
+        <div class="accordion-body">
+            <div class="content-inner">
+                <div class="nakshatra-desc">मघा (चारों चरण), पूर्वाफाल्गुनी (चारों चरण) तथा उत्तराफाल्गुनी (प्रथम चरण) के संयोग से सिंह लग्न बनता है।</div>
+                <div class="info-block"><span class="info-label">लग्न स्वामी:</span><span class="info-value">सूर्य</span></div>
+                <div class="info-block"><span class="info-label">लग्न तत्व:</span><span class="info-value">अग्नि</span></div>
+                <div class="info-block"><span class="info-label">लग्न चिन्ह:</span><span class="info-value">सिंह</span></div>
+                <div class="info-block"><span class="info-label">लग्न स्वरूप:</span><span class="info-value">स्थिर</span></div>
+                <div class="info-block"><span class="info-label">लग्न स्वभाव:</span><span class="info-value">क्रूर</span></div>
+                <div class="info-block"><span class="info-label">लग्न उदय:</span><span class="info-value">पूर्व</span></div>
+                <div class="info-block"><span class="info-label">लग्न प्रकृति:</span><span class="info-value">पित्त प्रकृति</span></div>
+                <div class="info-block"><span class="info-label">जीवन रत्न:</span><span class="info-value">माणिक्य</span></div>
+                <div class="info-block"><span class="info-label">आराध्य:</span><span class="info-value">सूर्य</span></div>
+                <div class="info-block"><span class="info-label">लग्न गुण:</span><span class="info-value">सतोगुण</span></div>
+                <div class="info-block"><span class="info-label">अनुकूल रंग:</span><span class="info-value">पीला, भगवा, श्वेत</span></div>
+                <div class="info-block"><span class="info-label">लग्न जाति:</span><span class="info-value">क्षत्रिय</span></div>
+                <div class="info-block"><span class="info-label">शुभ दिन:</span><span class="info-value">रविवार</span></div>
+                <div class="info-block"><span class="info-label">शुभ अंक:</span><span class="info-value">1</span></div>
+                <div class="info-block"><span class="info-label">जातक विशेषता:</span><span class="info-value">अति आत्मविश्वासी</span></div>
+                <div class="info-block"><span class="info-label">लग्न लिंग:</span><span class="info-value">पुरुष</span></div>
+  <div class="shlok-box">
+                    <div class="shlok-title">वृहत पराशर होराशास्त्र के संस्कृत श्लोक एवं अर्थ:</div>
+                    <div class="shlok-text">सूर्याधिपः सत्त्वी चतुष्पात्क्षत्रियो बली।
+शीर्षोदयी बृहद्गात्रः पाण्डुः पूर्वेऽद्द्युवीर्यवान्।।</div>
+                    <div class="shlok-meaning"><strong>अर्थ:</strong> सिंह राशि सतोगुणी, चतुष्पद, क्षत्रिय वर्ण, बलवान शीर्षोदयी राशि, लंबा शरीर, पाण्डुवर्ण, पूर्व दिशा की स्वामी, दिन में बली है और सूर्य इसके स्वामी हैं।</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. कन्या लग्न -->
+    <div class="accordion-item">
+        <button class="accordion-header">6. कन्या लग्न का रूप, रंग, स्वरूप एवं विशेषताएं</button>
+        <div class="accordion-body">
+            <div class="content-inner">
+                <div class="nakshatra-desc">उत्तराफाल्गुनी (द्वितीय, तृतीय, चतुर्थ चरण), हस्त नक्षत्र (चारों चरण), तथा चित्रा (प्रथम, द्वितीय चरण) के संयोग से कन्या लग्न बनता है।</div>
+                <div class="info-block"><span class="info-label">लग्न स्वामी:</span><span class="info-value">बुध</span></div>
+                <div class="info-block"><span class="info-label">लग्न तत्व:</span><span class="info-value">पृथ्वी</span></div>
+                <div class="info-block"><span class="info-label">लग्न चिन्ह:</span><span class="info-value">हाथ में अग्नि लिए कुवांरी कन्या</span></div>
+                <div class="info-block"><span class="info-label">लग्न स्वरूप:</span><span class="info-value">द्विस्वभाव</span></div>
+                <div class="info-block"><span class="info-label">लग्न स्वभाव:</span><span class="info-value">सौम्य</span></div>
+                <div class="info-block"><span class="info-label">लग्न उदय:</span><span class="info-value">दक्षिण</span></div>
+                <div class="info-block"><span class="info-label">लग्न प्रकृति:</span><span class="info-value">वात प्रकृति</span></div>
+                <div class="info-block"><span class="info-label">जीवन रत्न:</span><span class="info-value">पन्ना</span></div>
+                <div class="info-block"><span class="info-label">आराध्य:</span><span class="info-value">गणपति</span></div>
+                <div class="info-block"><span class="info-label">लग्न गुण:</span><span class="info-value">तमोगुण</span></div>
+                <div class="info-block"><span class="info-label">अनुकूल रंग:</span><span class="info-value">हरा</span></div>
+                <div class="info-block"><span class="info-label">लग्न जाति:</span><span class="info-value">वैश्य</span></div>
+                <div class="info-block"><span class="info-label">शुभ दिन:</span><span class="info-value">बुधवार</span></div>
+                <div class="info-block"><span class="info-label">शुभ अंक:</span><span class="info-value">5</span></div>
+                <div class="info-block"><span class="info-label">जातक विशेषता:</span><span class="info-value">अति व्यवहारिक</span></div>
+                <div class="info-block"><span class="info-label">लग्न लिंग:</span><span class="info-value">स्त्री</span></div>
+                
+                <div class="shlok-box">
+                    <div class="shlok-title">वृहत पराशर होराशास्त्र के संस्कृत श्लोक एवं अर्थ:</div>
+                    <div class="shlok-text">पार्वतीयाथ कन्याख्या राशिर्दिनबलाानिवता।।
+शीर्षोदया च मध्याङ्गा द्विपाद्याम्यचरा स्मृता।
+ससस्यदहना वैश्य चित्रवर्णा प्रभजिजनी।।
+कुमारी तमसायुक्ता बालभावा बुधाधिपः।</div>
+                    <div class="shlok-meaning"><strong>अर्थ:</strong> कन्या राशि पर्वत में विशेष रुचिवाली, दिवाबली, शीर्षोदयी, मध्यम शरीर, विपद, दक्षिण दिशा में रहने वाली, वैश्य वर्ण है। धान को भून्ती हुई चित्र वर्ण के वस्त्र को पहने हुए कन्या तमोगुण से युक्त बाल भाव वाली है तथा बुध इसके स्वामी हैं।</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. तुला लग्न -->
+    <div class="accordion-item">
+        <button class="accordion-header">7. तुला लग्न का रूप, रंग, स्वरूप एवं विशेषताएं</button>
+        <div class="accordion-body">
+            <div class="content-inner">
+                <div class="nakshatra-desc">चित्रा (तृतीय, चतुर्थ चरण), स्वाति नक्षत्र (चारों चरण), तथा विशाखा नक्षत्र (प्रथम, द्वितीय, तृतीय चरण) के संयोग से तुला लग्न बनता है।</div>
+                <div class="info-block"><span class="info-label">लग्न स्वामी:</span><span class="info-value">शुक्र</span></div>
+                <div class="info-block"><span class="info-label">लग्न तत्व:</span><span class="info-value">वायु</span></div>
+                <div class="info-block"><span class="info-label">लग्न चिन्ह:</span><span class="info-value">तराजू</span></div>
+                <div class="info-block"><span class="info-label">लग्न स्वरूप:</span><span class="info-value">चर</span></div>
+                <div class="info-block"><span class="info-label">लग्न स्वभाव:</span><span class="info-value">क्रूर</span></div>
+                <div class="info-block"><span class="info-label">लग्न उदय:</span><span class="info-value">पश्चिम</span></div>
+                <div class="info-block"><span class="info-label">लग्न प्रकृति:</span><span class="info-value">त्रिधातु</span></div>
+                <div class="info-block"><span class="info-label">जीवन रत्न:</span><span class="info-value">हीरा</span></div>
+                <div class="info-block"><span class="info-label">आराध्य:</span><span class="info-value">श्री लक्ष्मी</span></div>
+                <div class="info-block"><span class="info-label">लग्न गुण:</span><span class="info-value">रजोगुण</span></div>
+                <div class="info-label">अनुकूल रंग:</div><span class="info-value">सफ़ेद</span></div>
+                <div class="info-block"><span class="info-label">लग्न जाति:</span><span class="info-value">शूद्र</span></div>
+                <div class="info-block"><span class="info-label">शुभ दिन:</span><span class="info-value">शुक्रवार</span></div>
+                <div class="info-block"><span class="info-label">शुभ अंक:</span><span class="info-value">6</span></div>
+                <div class="info-block"><span class="info-label">जातक विशेषता:</span><span class="info-value">खोजी प्रवृत्ति</span></div>
+                <div class="info-block"><span class="info-label">लग्न लिंग:</span><span class="info-value">पुरुष</span></div>
+                
+                <div class="shlok-box">
+                    <div class="shlok-title">वृहतपराशर होराशास्त्र के संस्कृत श्लोक एवं अर्थ:</div>
+                    <div class="shlok-text">शीर्षोदयी द्युवीर्यान्ध्यस्था शूद्रो रजोगुणी।।
+शुक्रोधिपो पश्चिमेशो तुलो मध्यतनुर्द्विपात्।</div>
+                    <div class="shlok-meaning"><strong>अर्थ:</strong> तुला राशि शीर्षोदयी, दिवाबली, शूद्रवर्ण, रजोगुणी, पश्चिम दिशा की स्वामी, माध्यम शरीर वाली है। जिसके स्वामी शुक्र हैं।</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. वृश्चिक लग्न -->
+    <div class="accordion-item">
+        <button class="accordion-header">8. वृश्चिक लग्न का रूप, रंग, स्वरूप एवं विशेषताएं</button>
+        <div class="accordion-body">
+            <div class="content-inner">
+                <div class="nakshatra-desc">विशाखा (चतुर्थ चरण), अनुराधा नक्षत्र (चारों चरण), तथा ज्येष्ठा नक्षत्र (चारों चरण) के संयोग से वृश्चिक लग्न बनता है।</div>
+                <div class="info-block"><span class="info-label">लग्न स्वामी:</span><span class="info-value">मंगल</span></div>
+                <div class="info-block"><span class="info-label">लग्न तत्व:</span><span class="info-value">जल</span></div>
+                <div class="info-block"><span class="info-label">लग्न चिन्ह:</span><span class="info-value">बिच्छू</span></div>
+                <div class="info-block"><span class="info-label">लग्न स्वरूप:</span><span class="info-value">स्थिर</span></div>
+                <div class="info-block"><span class="info-label">लग्न स्वभाव:</span><span class="info-value">सौम्य</span></div>
+                <div class="info-block"><span class="info-label">लग्न उदय:</span><span class="info-value">उत्तर</span></div>
+                <div class="info-block"><span class="info-label">लग्न प्रकृति:</span><span class="info-value">कफ प्रकृति</span></div>
+                <div class="info-block"><span class="info-label">जीवन रत्न:</span><span class="info-value">मूंगा</span></div>
+                <div class="info-block"><span class="info-label">आराध्य:</span><span class="info-value">भगवान शिव, हनुमान</span></div>
+                <div class="info-block"><span class="info-label">लग्न गुण:</span><span class="info-value">तमोगुण</span></div>
+                <div class="info-block"><span class="info-label">अनुकूल रंग:</span><span class="info-value">लाल</span></div>
+                <div class="info-block"><span class="info-label">लग्न जाति:</span><span class="info-value">ब्राह्मण</span></div>
+                <div class="info-block"><span class="info-label">शुभ दिन:</span><span class="info-value">मंगलवार</span></div>
+                <div class="info-block"><span class="info-label">शुभ अंक:</span><span class="info-value">9</span></div>
+                <div class="info-block"><span class="info-label">जातक विशेषता:</span><span class="info-value">निडर, प्रकृति प्रेमी</span></div>
+                <div class="info-block"><span class="info-label">लग्न लिंग:</span><span class="info-value">स्त्री</span></div>
+                
+                <div class="shlok-box">
+                    <div class="shlok-title">वृहत पराशर होराशास्त्र के संस्कृत श्लोक एवं अर्थ:</div>
+                    <div class="shlok-text">शीर्षोदयोऽस्थ स्वल्पाङ्गो बहुपाद ब्राह्मणो बली।।
+सौम्यस्थो दिनवीर्याढ्यः पिशङ्गो जलभूचरः।
+रोमस्वाढ्योऽतितीक्ष्णाङ्गो वृश्चिकश्च कुजाधिपः।।</div>
+                    <div class="shlok-meaning"><strong>अर्थ:</strong> वृश्चिक राशि शीर्षोदयी, छोटा शरीर, अनेक चरण, ब्राह्मण वर्ण, उत्तर दिशा की स्वामी, दिवाबली, धुमྲवर्ण, जल भूमि पर चलने वाली है। रोम से युक्त शरीर, अत्यंत तीखे अंगो वाली है। इसके स्वामी मंगल हैं।</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 9. धनु लग्न -->
+    <div class="accordion-item">
+        <button class="accordion-header">9. धनु लग्न का रूप, रंग, स्वरूप एवं विशेषताएं</button>
+        <div class="accordion-body">
+            <div class="content-inner">
+                <div class="nakshatra-desc">मूल नक्षत्र (चारों चरण), पूर्वाषाढ़ा (चारों चरण) तथा, उत्तराषाढ़ा (प्रथम चरण) के संयोग से धनु लग्न बनता है।</div>
+                <div class="info-block"><span class="info-label">लग्न स्वामी:</span><span class="info-value">गुरु</span></div>
+                <div class="info-block"><span class="info-label">लग्न तत्व:</span><span class="info-value">अग्नि</span></div>
+                <div class="info-block"><span class="info-label">लग्न चिन्ह:</span><span class="info-value">दो हाथ और चार पैर वाला धनुर्धारी</span></div>
+                <div class="info-block"><span class="info-label">लग्न स्वरूप:</span><span class="info-value">द्विस्वभाव</span></div>
+                <div class="info-block"><span class="info-label">लग्न स्वभाव:</span><span class="info-value">क्रूर</span></div>
+                <div class="info-block"><span class="info-label">लग्न उदय:</span><span class="info-value">पूर्व</span></div>
+                <div class="info-block"><span class="info-label">लग्न प्रकृति:</span><span class="info-value">पित्त प्रकृति</span></div>
+                <div class="info-block"><span class="info-label">जीवन रत्न:</span><span class="info-value">पुखराज</span></div>
+                <div class="info-block"><span class="info-label">आराध्य:</span><span class="info-value">भगवान विष्णु</span></div>
+                <div class="info-block"><span class="info-label">लग्न गुण:</span><span class="info-value">सतोगुण</span></div>
+                <div class="info-block"><span class="info-label">अनुकूल रंग:</span><span class="info-value">पीला</span></div>
+                <div class="info-block"><span class="info-label">लग्न जाति:</span><span class="info-value">क्षत्रिय</span></div>
+                <div class="info-block"><span class="info-label">शुभ दिन:</span><span class="info-value">बृहस्पतिवार</span></div>
+                <div class="info-block"><span class="info-label">शुभ अंक:</span><span class="info-value">3</span></div>
+                <div class="info-block"><span class="info-label">जातक विशेषता:</span><span class="info-value">लक्ष्य प्राप्ति की चेष्टा</span></div>
+                <div class="info-block"><span class="info-label">लग्न लिंग:</span><span class="info-value">पुरुष</span></div>
+                
+                <div class="shlok-box">
+                    <div class="shlok-title">बृहतपराशर होरा शास्त्र के संस्कृत श्लोक एवं अर्थ:</div>
+                    <div class="shlok-text">अश्वजङ्घो त्वथ धनुर्गुरुस्वामी च सात्त्विकः।
+पिङ्गलो निशि वीर्याढ्यः पावकः क्षत्रियो द्विपाद्।।
+आदावन्ते चतुष्पाद् समगात्रो धनुर्धरः।
+पूर्वस्थो वसुधाचारी तेजवान् पृष्ठोद्द्मी।।</div>
+                    <div class="shlok-meaning"><strong>अर्थ:</strong> धनु राशि को घोड़े की जंघा है एवं सात्विक राशि है। पिंगल वर्ण, रात्री बली, अग्निराशि, क्षत्रिय वर्ण, पूर्वार्ध द्विपद और उत्तरार्ध चतुष्पद, समान शरीर, धनुष लिए हुए है। यह पूर्व दिशा की स्वामी, भूमि पर रहने वाली, तेजस्वी, पृष्ठोदयी राशि है और इसके स्वामी गुरु हैं।</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div
