@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ज्योतिष में चंद्र ग्रह का महत्व, प्रभाव एवं उपाय</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 15px;
+        }
+
+        .chandra-container {
+            max-width: 100%;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            padding: 20px;
+            border: 2px solid #3b82f6;
+        }
+
+        h2 {
+            text-align: center;
+            color: #1e3a8a;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 20pt;
+        }
+
+        .sub-title {
+            text-align: center;
+            color: #555;
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+
+        /* अकॉर्डियन हेडिंग स्टाइल */
+        .accordion-item {
+            margin-bottom: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #fff;
+        }
+        
+        .accordion-header {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            color: #1e40af;
+            cursor: pointer;
+            padding: 15px 18px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            font-size: 17px;
+            font-weight: bold;
+            transition: background 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .accordion-header:hover {
+            background: linear-gradient(135deg, #bfdbfe, #93c5fd);
+            color: #172554;
+        }
+        
+        .accordion-header::after {
+            content: '+';
+            font-size: 20px;
+            font-weight: bold;
+            color: #1d4ed8;
+        }
+        
+        .accordion-header.active::after {
+            content: '-';
+        }
+        
+        .accordion-body {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease-out, padding 0.35s ease;
+            background-color: #ffffff;
+            text-align: left;
+        }
+        
+        .content-inner {
+            padding: 15px 0;
+            border-top: 1px solid #f1f1f1;
+        }
+
+        /* पैरा पैराग्राफ और लिस्ट स्टाइल */
+        .desc-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #1e293b;
+            background: #f8fafc;
+            margin-bottom: 12px;
+            padding: 12px 14px;
+            border-radius: 6px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .chandra-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .chandra-list li {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #1e293b;
+            background: #f8fafc;
+            margin-bottom: 10px;
+            padding: 10px 14px;
+            border-radius: 6px;
+            border-left: 4px solid #3b82f6;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .chandra-list li span.num {
+            font-weight: bold;
+            color: #1e40af;
+            min-width: 30px;
+            display: inline-block;
+        }
+
+        .chandra-list li span.text {
+            flex: 1;
+        }
+
+        .section-heading {
+            font-size: 16px;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin: 15px 0 10px 0;
+            border-bottom: 2px dashed #93c5fd;
+            padding-bottom: 5px;
+        }
+
+        /* फुटर स्टाइल */
+        .image-footer {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            margin-top: 25px;
+        }
+        .image-footer h3 {
+            margin: 0 0 5px 0;
+            color: #b45309;
+            font-size: 14pt;
+        }
+        .image-footer p {
+            margin: 0;
+            color: #78350f;
+            font-size: 16px;
+        }
+        .phone-box {
+            white-space: nowrap;
+            display: inline-block;
+        }
+
+        /* डेस्कटॉप स्क्रीन के लिए भव्य व्यू (Media Query) */
+        @media screen and (min-width: 768px) {
+            body {
+                padding: 40px;
+            }
+            .chandra-container {
+                max-width: 1050px;
+                padding: 40px;
+                border-width: 3px;
+            }
+            h2 {
+                font-size: 28pt;
+                margin-bottom: 35px;
+            }
+            .sub-title {
+                font-size: 18px !important;
+                margin-bottom: 35px !important;
+            }
+            .accordion-item {
+                margin-bottom: 20px;
+                border-radius: 10px;
+            }
+            .accordion-header {
+                padding: 20px 25px;
+                font-size: 20px;
+            }
+            .accordion-header::after {
+                font-size: 26px;
+            }
+            .accordion-body {
+                padding: 0 25px;
+            }
+            .desc-text {
+                font-size: 17px;
+                padding: 14px 18px;
+                margin-bottom: 15px;
+            }
+            .chandra-list li {
+                font-size: 17px;
+                padding: 14px 18px;
+                margin-bottom: 12px;
+            }
+            .section-heading {
+                font-size: 19px;
+                margin: 20px 0 12px 0;
+            }
+            .image-footer {
+                max-width: 1050px !important;
+                padding: 20px;
+                margin-top: 40px !important;
+            }
+            .image-footer h3 {
+                font-size: 16pt;
+            }
+            .image-footer p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="chandra-container">
+    <h2>✨ ज्योतिष में चंद्र ग्रह का महत्व, प्रभाव एवं उपाय ✨</h2>
+    <p class="sub-title">👇 नीचे दिए गए विषयों पर क्लिक करके विस्तृत जानकारी देखें:</p>
+
+    <!-- 1. चंद्र ग्रह का महत्व और खराब होने के कारण -->
+    <div class="accordion-item">
+        <button class="accordion-header">1. ज्योतिष में चंद्र ग्रह का महत्व एवं खराब होने के कारण</button>
+        <div class="accordion-body">
+            <div class="content-inner">
+                <div class="desc-text">
+                    सूर्य के बाद धरती के उपग्रह चन्द्र का प्रभाव धरती पर पूर्णिमा के दिन सबसे ज्यादा रहता है। जिस तरह मंगल के प्रभाव से समुद्र में मूंगे की पहाड़ियाँ बन जाती हैं और लोगों का खून दौड़ने लगता है उसी तरह चन्द से समुद्र में ज्वार-भाटा उत्पन्न होने लगता है। जितने भी दूध वाले वृक्ष हैं सभी चन्द के कारण उत्पन्न हैं। चन्द्रमा बीज, औषधि, जल, मोती, दूध, अश्व और मन पर राज करता है। लोगों की बेचैनी और शांति का कारण भी चन्द्रमा है। चन्द्रमा माता का सूचक और मन का कारक है। कुंडली में चन्द्र के अशुभ होने पर मन और माता पर प्रभाव पड़ता है।
+                </div>
+
+                <div class="section-heading">कैसे होता चन्द्र खराब? :</div>
+                <ul class="chandra-list">
+                    <li><span class="num">1.</span><span class="text">घर का वायव्य कोण दूषित होने पर भी चन्द खराब हो जाता है।</span></li>
+                    <li><span class="num">2.</span><span class="text">घर में जल का स्थान-दिशा यदि दूषित है तो भी चन्द्र मंदा फल देता है।</span></li>
+                    <li><span class="num">3.</span><span class="text">पूर्वजों का अपमान करने और श्राद्ध कर्म नहीं करने से भी चन्द दूषित हो जाता है।</span></li>
+                    <li><span class="num">4.</span><span class="text">माता का अपमान करने या उससे विवाद करने पर चन्द्र अशुभ प्रभाव देने लगता है।</span></li>
+                    <li><span class="num">5.</span><span class="text">शरीर में जल यदि दूषित हो गया है तो भी चन्द्र का अशुभ प्रभाव पड़ने लगता है।</span></li>
+                    <li><span class="num">6.</span><span class="text">गृह कलह करने और पारिवारिक सदस्य को धोखा देने से भी चन्द्र मंदा फल देता है।</span></li>
+                    <li><span class="num">7.</span><span class="text">राहु, केतु या शनि के साथ होने से तथा उनकी दृष्टि चन्द्र पर पड़ने से चन्द्र खराब फल देने लगता है।</span></li>
+                </ul>
+
+                <div class="desc-text" style="margin-top: 15px;">
+                    शुभ चन्द्र व्यक्ति को धनवान और दयालु बनाता है। सुख और शांति देता है। भूमि और भवन के मालिक चन्द्रमा से चतुर्थ में शुभ ग्रह होने पर घर संबंधी शुभ फल मिलते हैं।
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. चंद्र खराब होने की पहचान एवं बीमारियाँ -->
+    <div class="accordion-item">
+        <button class="accordion-header">2. कैसे जानें कि चन्द्र खराब है एवं इससे होने वाली बीमारियाँ</button>
+        <div class="accordion-body">
+            <div class="content-inner">
+                <div class="section-heading">कैसे जानें कि चन्द्र खराब है...</div>
+                <ul class="chandra-list">
+                    <li><span class="num">1.</span><span class="text">दूध देने वाला जानवर मर जाए।</span></li>
+                    <li><span class="num">2.</span><span class="text">यदि घोड़ा पाल रखा हो तो उसकी मृत्यु भी तय है, किंतु आमतौर पर अब लोगों के यहां ये जानवर नहीं होते।</span></li>
+                    <li><span class="num">3.</span><span class="text">माता का बीमार होना या घर के जलस्रोतों का सूख जाना भी चन्द्र के अशुभ होने की निशानी है।</span></li>
+                    <li><span class="num">4.</span><span class="text">महसूस करने की क्षमता क्षीण हो जाती है।</span></li>
+                    <li><span class="num">5.</span><span class="text">राहु, केतु या शनि के साथ होने से तथा उनकी दृष्टि चन्द्र पर पड़ने से चन्द्र अशुभ हो जाता है।</span></li>
+                    <li><span class="num">6.</span><span class="text">मानसिक रोगों का कारण भी चन्द्र को माना गया है।</span></li>
+                </ul>
+
+                <div class="section-heading">चन्द्र ग्रह से होती ये बीमारी:</div>
+                <ul class="chandra-list">
+                    <li><span class="num">1.</span><span class="text">चन्द्र में मुख्य रूप से दिल, बायां भाग से संबंध रखता है।</span></li>
+                    <li><span class="num">2.</span><span class="text">मिर्गी का रोग।</span></li>
+                    <li><span class="num">3.</span><span class="text">पागलपन।</span></li>
+                    <li><span class="num">4.</span><span class="text">बेहोशी।</span></li>
+                    <li><span class="num">5.</span><span class="text">फेफड़े संबंधी रोग।</span></li>
+                    <li><span class="num">6.</span><span class="text">मासिक धर्म गड़बड़ाना।</span></li>
+                    <li><span class="num">7.</span><span class="text">स्मरण शक्ति कमजोर हों जाती है।</span></li>
+                    <li><span class="num">8.</span><span class="text">मानसिक तनाव और मन में घबराहट।</span></li>
+                    <li><span class="num">9.</span><span class="text">तरह-तरह की शंका और अनिश्चित भय।</span></li>
+                    <li><span class="num">10.</span><span class="text">सर्दी-जुकाम बना रहता है।</span></li>
+                    <li><span class="num">11.</span><span class="text">व्यक्ति के मन में आत्महत्या करने के विचार बार-बार आते रहते हैं।</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. चंद्र ग्रह के लिए उपाय -->
+    <div class="accordion-item">
+        <button class="accordion-header">3. चंद्र ग्रह के अचूक उपाय एवं समाधान</button>
+        <div class="accordion-body">
+            <div class="content-inner">
+                <div class="section-heading">चन्द्र ग्रह के लिए ये करें उपाय:</div>
+                <ul class="chandra-list">
+                    <li><span class="num">1.</span><span class="text">सोमवार का व्रत करना, माता की सेवा करना, शिव की आराधना करना, मोती धारण करना।</span></li>
+                    <li><span class="num">2.</span><span class="text">ॐ सोम सोमाय नम: का १०८ बार नित्य जाप करना श्रेयस्कर होता है।</span></li>
+                    <li><span class="num">3.</span><span class="text">रात्रि में ऐसे स्थान पर सोना चाहिए जहाँ पर चन्द्रमा की रोशनी आती हो।</span></li>
+                    <li><span class="num">4.</span><span class="text">वर्षा का पानी काँच की बोतल में भरकर घर में रखना चाहिए।</span></li>
+                    <li><span class="num">5.</span><span class="text">वर्ष में एक बार किसी पवित्र नदी या सरोवर में स्नान अवश्य करना चाहिए।</span></li>
+                    <li><span class="num">6.</span><span class="text">सफेद सुगंधित पुष्प वाले पौधे घर में लगाकर उनकी देखभाल करनी चाहिए।</span></li>
+                    <li><span class="num">7.</span><span class="text">चन्द्रमा के नीच अथवा मंद होने पर शंख का दान करना उत्तम होता है। इसके अलावा सफेद वस्त्र, चांदी, चावल, भात एवं दूध का दान भी पीड़ित चन्द्रमा वाले व्यक्ति के लिए लाभदायक होता है।</span></li>
+                    <li><span class="num">8.</span><span class="text">आपका चन्द्रमा कमजोर है तो आपको सोमवार के दिन व्रत करना चाहिए।</span></li>
+                    <li><span class="num">9.</span><span class="text">गाय को गूंधा हुआ आटा खिलाना चाहिए तथा कौए को भात और चीनी मिलाकर देना चाहिए।</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="image-footer" style="max-width: 1050px; margin: 25px auto 0 auto;">
+    <h3>व्यक्तिगत कुंडली विश्लेषण एवं समाधान के लिए संपर्क करें</h3>
+    <p>ज्योतिषाचार्य नीरज गोयल (शामली) <span class="phone-box">📞 9758007088</span></p>
+</div>
+
+<!-- जावास्क्रिप्ट जो क्लिक करने पर डेटा खोलेगी और बंद करेगी -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var headers = document.querySelectorAll(".accordion-header");
+        
+        headers.forEach(function(header) {
+            header.addEventListener("click", function() {
+                this.classList.toggle("active");
+                var body = this.nextElementSibling;
+                
+                if (body.style.maxHeight) {
+                    body.style.maxHeight = null;
+                    body.style.padding = "0 15px";
+                } else {
+                    body.style.maxHeight = body.scrollHeight + "px";
+                    body.style.padding = "15px";
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
