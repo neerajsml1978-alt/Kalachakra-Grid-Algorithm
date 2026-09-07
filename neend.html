@@ -1,56 +1,58 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>अच्छी नींद और शांति के लिए रात के उपाय</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Yatra+One&display=swap" rel="stylesheet">
+<div class="sleep-tips-wrapper">
     <style>
-
-        .poster-container {
+        .sleep-tips-wrapper {
+            font-family: 'Poppins', sans-serif;
+            color: #2b2b2b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .sleep-tips-wrapper .poster-container {
             width: 100%;
             max-width: 950px;
-            background: #ffffff; /* बिल्कुल साफ़ सफेद बेस */
+            background: #ffffff;
             border: 4px solid #dda15e;
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             padding: 24px;
-            position: relative;
+            box-sizing: border-box;
         }
-        /* Header Styling */
-        .header {
+        .sleep-tips-wrapper .header {
             text-align: center;
             margin-bottom: 22px;
             border-bottom: 2px dashed #dda15e;
             padding-bottom: 14px;
         }
-        .header h1 {
-            font-family: 'Yatra One', cursive;
-            font-size: 2rem;
+        .sleep-tips-wrapper .header h1 {
+            font-size: 1.8rem;
             color: #bc6c25;
             line-height: 1.4;
+            margin: 0;
         }
-        .header p {
-            font-size: 1.05rem;
+        .sleep-tips-wrapper .header p {
+            font-size: 1rem;
             color: #606c38;
             margin-top: 6px;
             font-weight: 600;
         }
-        /* Grid Layout: डिफ़ॉल्ट रूप से डेस्कटॉप पर 2 कॉलम */
-        .grid-container {
+        .sleep-tips-wrapper .grid-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 18px;
         }
-        .card {
+        .sleep-tips-wrapper .card {
             background: #fdfcdc;
             border: 2px solid #ccd5ae;
             border-radius: 12px;
             padding: 18px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            box-sizing: border-box;
         }
-        .card h3 {
-            font-size: 1.3rem;
+        .sleep-tips-wrapper .card h3 {
+            font-size: 1.2rem;
             color: #9b2226;
             margin-bottom: 12px;
             display: flex;
@@ -59,11 +61,13 @@
             border-bottom: 1px solid #ccd5ae;
             padding-bottom: 8px;
         }
-        .card ul {
+        .sleep-tips-wrapper .card ul {
             list-style-type: none;
+            padding: 0;
+            margin: 0;
         }
-        .card ul li {
-            font-size: 1.1rem;
+        .sleep-tips-wrapper .card ul li {
+            font-size: 1.05rem;
             line-height: 1.6;
             margin-bottom: 12px;
             position: relative;
@@ -71,21 +75,20 @@
             color: #2b2b2b;
             font-weight: 500;
         }
-        .card ul li::before {
+        .sleep-tips-wrapper .card ul li::before {
             content: "✨";
             position: absolute;
             left: 0;
             top: 2px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
-        .card ul li strong {
+        .sleep-tips-wrapper .card ul li strong {
             color: #ae2012;
         }
-        /* Footer Note */
-        .footer-note {
+        .sleep-tips-wrapper .footer-note {
             text-align: center;
             margin-top: 22px;
-            font-size: 1.05rem;
+            font-size: 1rem;
             line-height: 1.5;
             color: #283618;
             background: #e9edc9;
@@ -94,25 +97,21 @@
             border: 1px dashed #606c38;
             font-weight: 600;
         }
-        
-        /* मोबाइल व्यू: स्क्रीन चौड़ाई 768px से कम होने पर ऑटोमैटिक 1 कॉलम हो जाएगा */
+        /* मोबाइल व्यू के लिए रिस्पॉन्सिव */
         @media(max-width: 768px) {
-            .grid-container {
+            .sleep-tips-wrapper .grid-container {
                 grid-template-columns: 1fr; 
             }
-            .header h1 { 
-                font-size: 1.6rem; 
+            .sleep-tips-wrapper .header h1 { 
+                font-size: 1.4rem; 
             }
-            .card ul li {
-                font-size: 1.15rem; 
+            .sleep-tips-wrapper .card ul li {
+                font-size: 1.1rem; 
             }
         }
     </style>
-</head>
-<body>
 
     <div class="poster-container">
-        .
         <div class="header">
             <h1>🌙 अच्छी नींद और मानसिक शांति के उपाय 🌙</h1>
             <p>गाढ़ी नींद, तनाव मुक्ति और सकारात्मक ऊर्जा के लिए अचूक मार्गदर्शिका</p>
@@ -162,6 +161,5 @@
             🌿 इन नियमों को अपनाने से शरीर का तंत्रिका तंत्र (Nervous System) शांत होता है और आपको गाढ़ी, मीठी नींद आती है। 🌿
         </div>
     </div>
+</div>
 
-</body>
-</html>
